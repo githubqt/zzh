@@ -1,0 +1,150 @@
+$img-cell-width:2.1rem;
+.create-recycling-container {
+    .bbb {
+        color: #bbb;
+    }
+    .placeholder-right {
+        input[type=text] {
+            text-align: right !important;
+        }
+    }
+    .multiple-check {
+        white-space: normal;
+        padding: 0.2rem 0;
+        label {
+            padding: 0.1rem 0;
+            width: 3rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    }
+    .item-no-border {
+        &::after {
+            border: none;
+        }
+    }
+    .item-tips {
+        display: block;
+        .yd-cell-right {
+            display: block;
+            min-height: 0.5rem;
+            color: $primary;
+        }
+    }
+    .no-border {
+        .yd-cell::after {
+            border: none;
+        }
+    }
+    .upload-img {
+        .yd-cell-title {
+            &::after {
+                border: none;
+            }
+        }
+        .upload-img-tips {
+            display: block;
+            padding-left: 0;
+            .yd-cell-left {
+                display: block;
+                min-height: 0;
+                padding: 0.1rem 0;
+                background: #f5f5f5;
+                color: #aaa;
+                padding-left: 0.24rem;
+            }
+            .yd-cell-right {
+                display: none;
+            }
+        }
+        .img-picker {
+            padding: 0 0.24rem;
+            .yd-cell-left {
+                padding: 0;
+                // margin: auto;
+                width: 100%;
+                .yd-cell-icon {
+                    margin: 0;
+                }
+            }
+            .yd-cell-right {
+                display: none;
+            }
+            .img-position {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                display: -webkit-flex;
+                .file-hide {
+                    display: none;
+                }
+                .item-placeholeder {
+                    margin-top: 0 !important;
+                    margin-bottom: 0 !important;
+                    height: 0 !important;
+                }
+                .img-position-item {
+                    margin-top: 0.2rem;
+                    margin-bottom: 0.2rem;
+                    position: relative;
+                    width: $img-cell-width;
+                    height: $img-cell-width;
+                    img {
+                        width: $img-cell-width;
+                        height: $img-cell-width;
+                        object-fit: cover;
+                        display: block;
+                    }
+                    .img-croppa {
+                        width: $img-cell-width;
+                        height: $img-cell-width;
+                        object-fit: cover;
+                        display: block;
+                        canvas {
+                            width: $img-cell-width !important;
+                            height: $img-cell-width !important;
+                            object-fit: cover;
+                        }
+                    }
+                    .img-position-desc {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: $img-cell-width;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        background-color: rgba($color: $black, $alpha: 0.4);
+                        padding: 0.1rem 0;
+                        color: $white;
+                        text-align: center;
+                        font-size: 0.25rem;
+                    }
+                }
+            }
+        }
+    }
+    .submit-form {
+        color: $primary;
+        font-size: 0.35rem;
+    }
+    .form-section {
+        span[required]::after {
+            content: "*";
+            color: $primary;
+            padding-left: 0.1rem;
+            vertical-align: middle;
+        }
+        .upload-required {
+            .yd-cell-title::after {
+                content: "*";
+                color: $primary;
+                padding-left: 0.1rem;
+                vertical-align: middle;
+                position: relative;
+            }
+        }
+    }
+}

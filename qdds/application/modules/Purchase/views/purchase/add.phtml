@@ -1,0 +1,202 @@
+<?php include APPLICATION_PATH . '/application/views/index/layout/_header_v2.phtml'; ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo HOST_STATIC; ?>common/css/table.css">
+    <script type="text/javascript" charset="utf-8"
+            src="<?php echo HOST_STATIC; ?>common/js/kindeditor/kindeditor-all-min.js"></script>
+    <link href="<?php echo HOST_STATIC; ?>common/css/basic_info.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo HOST_STATIC; ?>qdds/css/page/product/detail.css">
+    <div style="margin:20px 0;"></div>
+    <div style="padding:10px 60px 20px 60px">
+        <form id="ff2" method="post" action="/index.php?m=Purchase&c=Purchase&a=add&format=add" autocomplete="off">
+            <table cellpadding="5" class="table table-bordered" style="margin-bottom: 100px;">
+                <tbody>
+                <tr>
+                    <td style="width: 100px;min-width: 100px"><span class="red">*</span> 采购名称</td>
+                    <td><input class="easyui-textbox" type="text" name="info[title]" data-options="required: true"
+                               value="<?php echo '采购'.date('Ymd') ?>"
+                               style="width:300px;height:35px;line-height:35px;"/></td>
+                </tr>
+                <tr>
+                    <td><span class="red">*</span> 姓名</td>
+                    <td><input class="easyui-textbox" type="text" name="info[name]" data-options="required: true"
+                               value="<?php echo $assigns['supplier']['contact']; ?>"
+                               style="width:300px;height:35px;line-height:35px;"/></td>
+                </tr>
+                <tr>
+                    <td><span class="red">*</span> 手机号</td>
+                    <td><input class="easyui-textbox" type="text" name="info[mobile]"
+                               data-options="required: true,validType:['phone']"
+                               value="<?php echo $assigns['supplier']['mobile']?:$assigns['auth']['mobile']; ?>"
+                               style="width:300px;height:35px;line-height:35px;"/></td>
+                </tr>
+
+                <tr>
+                    <td><span class="red">*</span> 收货地址</td>
+                    <td>
+                        <select id="province_id" name="info[province_id]"
+                                style="width:166px;height:35px;line-height:35px;">
+                        </select>
+                        <select id="city_id" name="info[city_id]"
+                                style="width:166px;height:35px;line-height:35px;">
+                        </select>
+                        <select id="area_id" name="info[area_id]"
+                                style="width:166px;height:35px;line-height:35px;">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="red">*</span> 详细地址</td>
+                    <td><input class="easyui-textbox" type="text" name="info[address]" data-options="required: true"
+                               value="<?php echo $assigns['supplier']['address']; ?>"
+                               style="width:300px;height:35px;line-height:35px;"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><span class="red">*</span> 支付方式</td>
+                    <td>
+                        <?php
+                        foreach ($assigns['pay_types'] as $key => $type) {
+                            echo "<label for='pay_types_{$key}'" . ($key != 'offline' ? 'style="color:gray" ' : ' ') . "><input name='info[pay_type]'  type='radio' id='pay_types_{$key}' value='{$key}' " . ($key == 'offline' ? 'checked="checked" ' : ' ') . ($key != 'offline' ? 'disabled="disabled" ' : ' ') . "/>{$type}</label>";
+                        }
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <p>打款账户：<?php echo BANK_ACCOUNT; ?></p>
+                        <p>银行名称：<?php echo BANK_BRANCH_NAME; ?></p>
+                        <p>账号名称：<?php echo BANK_ACCOUNT_NAME; ?></p>
+
+                        <div style="font-size: 14px;color: gray; padding: 10px; border: 1px dashed gray">
+                            <p>付款提示：</p>
+                            <p>
+                                1.当您一次采购多个商品时，可能会涉及到多供应商，系统会将订单自动拆分并传递给不同供应商；
+                            </p>
+                            <p>
+                                2.若您发起采购订单并付款后，由于供应商原因不能发货时(可能是同时线下门店售出等原因)，趣典当平台会在三个工作日之内将您的采购款退回至您的付款账户；
+                            </p>
+                            <p>
+                                3.若您一次采购多个商品时，其中部分商品由于供应商原因不能发货时(可能是同时线下门店售出等原因)，趣典当平台会在三个工作日之内将未能发货商品的采购款退回至您的付款账户。
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <!--选择商品 start -->
+                <tr>
+                    <td><span class="red">*</span> 选择商品</td>
+                    <td>
+                        <input type="button" class="easyui-linkbutton" id="show_purchase_add_select_dialog"
+                               data-options="selected:true" value="选择商品">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <div style="overflow: auto; width: 800px;">
+                            <table class="table table-bordered" style="text-align: center">
+                                <tr class="info">
+                                    <th style="min-width: 80px">序号</th>
+                                    <th style="min-width: 100px">商品图片</th>
+                                    <th style="min-width: 150px">商品编号</th>
+                                    <th style="min-width: 200px">商品名称</th>
+                                    <th style="min-width: 150px">分类</th>
+                                    <th style="min-width: 150px">品牌</th>
+                                    <th style="min-width: 120px">市场价</th>
+                                    <th style="min-width: 120px">供应价</th>
+                                    <th style="min-width: 80px">数量</th>
+                                    <th style="min-width: 80px">库存</th>
+                                    <th style="min-width: 80px">小计</th>
+                                    <th style="min-width: 80px">操作</th>
+                                </tr>
+                                <tbody id="tbody">
+
+                                </tbody>
+                                <tr>
+                                    <td>总计</td>
+                                    <td colspan="9"></td>
+                                    <td><span class="total_price">0.00</span></td>
+                                    <td></td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <!-- 选择商品 end -->
+
+
+                <tr>
+                    <td>购买总数</td>
+                    <td>
+                        <span class="total_amount">0.00</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>购买总额</td>
+                    <td>
+                        <span class="total_price">0.00</span>
+                    </td>
+                </tr>
+
+
+                </tbody>
+            </table>
+            <div style="padding:25px;position: fixed;bottom: 0px;width: 100%;background: #f1f1f1;text-align: center;margin-left: -70px;">
+                <input type="hidden" name="hdn_product" id="hdn-product">
+                <input type="submit" class="easyui-linkbutton" data-options="selected:true" value="保存">
+                <a href="/index.php?m=Purchase&c=Purchase&a=list" style="margin-left:15px"
+                   class="easyui-linkbutton">返回</a>
+            </div>
+        </form>
+
+    </div>
+
+    <!--  选择商品弹窗 start  -->
+<?php include APPLICATION_PATH . '/application/views/index/templates/purchase/purchase_add_select_dialog.phtml'; ?>
+    <!--  选择商品弹窗 end  -->
+
+    <!--  商品选择模板 start  -->
+<?php include APPLICATION_PATH . '/application/views/index/templates/purchase/purchase_add_selected.phtml'; ?>
+    <!--  商品选择模板 end  -->
+
+    <!--  查看商品详情模板 start  -->
+<?php include APPLICATION_PATH . '/application/views/index/templates/purchase/purchase_add_detail.phtml'; ?>
+<?php include APPLICATION_PATH . '/application/views/index/templates/common/img_box.phtml'; ?>
+    <!--  查看商品详情模板 end  -->
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/common/qdd.grid.js"></script>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/common/qdd.list.js"></script>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/common/qdd.edit.js"></script>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/area.js"></script>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>qdds/js/page/purchase/add.js"></script>
+    <script>
+        $(function () {
+            var s = {
+                p: '<?php echo $assigns['supplier']['province_id'] ?: '0' ?>',
+                c: '<?php echo $assigns['supplier']['city_id'] ?: '0' ?>'
+            };
+            area_child(0, 1, s.p, s.c);
+
+            KindEditor.ready(function(K) {
+                K.create('#myEditor', {
+                    items:[
+                        'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'code', 'cut', 'copy', 'paste',
+                        'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                        'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                        'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+                        'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                        'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
+                        'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+                        'anchor', 'link', 'unlink', '|', 'about'
+                    ],
+                    allowFileManager : true,
+                    uploadJson : '<?php echo HOST_FILE;?>/upload_json.php',
+                    fileManagerJson : '<?php echo HOST_FILE;?>/file_manager_json.php'
+                });
+            });
+
+        });
+    </script>
+
+<?php include APPLICATION_PATH . '/application/views/index/layout/_footer.phtml'; ?>

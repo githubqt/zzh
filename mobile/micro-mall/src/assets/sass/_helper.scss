@@ -1,0 +1,88 @@
+.yd-cell-box {
+    margin-bottom: .12rem !important;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+input::-webkit-input-placeholder {
+    color: #dddddd;
+    font-family: 'Consolas', 'Microsoft YaHei', 'Avenir', Helvetica, Arial, sans-serif;
+}
+
+button {
+    font-family: 'Consolas', 'Microsoft YaHei', 'Avenir', Helvetica, Arial, sans-serif;
+}
+
+.fixed-header {
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.m-t-1 {
+    margin-top: 1rem;
+}
+
+.sale-price {
+    color: $primary;
+    font-size: 0.4rem;
+}
+
+.market-price {
+    color: $gray-500;
+    font-size: 0.2rem;
+    text-decoration: line-through;
+}
+
+.yellow {
+    color: $primary;
+}
+
+.primary-color {
+    color: $primary;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.view-num {
+    text-align: right;
+}
+
+.newarrival-item {
+    margin-top: 0.05rem;
+}
+
+.clearfix::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.disabled-icon {
+    color: $gray-300;
+}
+
+.no-radius {
+    border-radius: 0 !important;
+}
+
+.no-mt {
+    margin-top: 0 !important;
+}

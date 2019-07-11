@@ -1,0 +1,137 @@
+.store-container {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 1.12rem;
+    .store-search-container {
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    .store-search-container .yd-search-input {
+        padding: 0.24rem 0 0.24rem 0.24rem;
+    }
+    .store-search-container .yd-search-input>.search-input {
+        height: 0.72rem;
+    }
+    .yd-search-input {
+        background-color: #fff;
+    }
+    .yd-search-input>.search-input {
+        background-color: #f5f5f5;
+    }
+    .yd-search-input>.search-input .search-icon {
+        line-height: 0.72rem;
+    }
+    .yd-search-input>.cancel-text {
+        font-size: 14px;
+        height: 0.72rem;
+        line-height: 0.72rem;
+        color: #5e5d61;
+        padding: 0 0.24rem;
+        margin: 0 0.24rem 0 0;
+        background-color: #f5f5f5;
+    }
+    .yd-list-img {
+        position: relative;
+        width: 100%;
+        background-color: #fff;
+    }
+    .store-loadList-box {
+        // width: 100%;
+        // height: 100%;
+        padding-top: 2rem;
+    }
+    .yd-list-img:after {
+        position: absolute;
+        content: "";
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        background-color: #cccccc;
+        transform: scale3d(1, 0.5, 1);
+    }
+    .yd-list-theme2 .yd-list-item:nth-child(2n) {
+        padding: 0.12rem 0 0 0.06rem;
+    }
+    .yd-list-theme2 .yd-list-item:nth-child(odd) {
+        padding: 0.12rem 0.06rem 0 0;
+    }
+    .yd-list-theme2 .yd-list-mes {
+        padding: 0.12rem 0.24rem;
+    }
+    .yd-list-title {
+        font-weight: 600;
+    }
+    .shopping-cart-box {
+        position: fixed;
+        right: 0.24rem;
+        bottom: 1.24rem;
+        width: 1.12rem;
+        height: 1.12rem;
+        border-radius: 50%;
+        background-color: rgba($color: $primary, $alpha: .5);
+        box-shadow: 0 0 6px rgba($color: $primary, $alpha: .5);
+    }
+    .shopping-btn-icon {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 0.7rem !important;
+        text-align: center;
+        line-height: 1.12rem;
+    }
+    .shopping-btn-icon i {
+        position: absolute;
+        top: 0.14rem;
+        right: 0.14rem;
+        font-size: 0.24rem;
+        width: 0.38rem;
+        height: 0.38rem;
+        line-height: 0.38rem;
+        border-radius: 50%;
+        background-color: #ea3d39;
+    }
+    .list-title {
+        word-wrap: normal;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: justify;
+        width: 75%;
+    }
+    .list-like {
+        padding-left: 0.15rem;
+        border-left: 1px solid #ccc;
+    }
+    .price-item {
+        height: 0.6rem;
+        line-height: 0.6rem;
+        .yd-badge {
+            font-size: 0.2rem;
+        }
+    }
+    .view-item {
+        height: 0.3rem;
+        line-height: 0.3rem;
+        margin-top: 0.1rem;
+    }
+    .badge-item {
+        height: 0.3rem;
+        line-height: 0.3rem;
+        margin-top: 0.05rem;
+        .yd-badge {
+            font-size: 0.2rem;
+        }
+    }
+    .position-item {
+        height: 0.5rem;
+        margin-top: 0.1rem;
+        font-size: 0.21rem;
+    }
+}

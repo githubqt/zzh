@@ -1,0 +1,68 @@
+.site-container {
+  margin-bottom: 1.12rem;
+}
+
+.site-list-box {
+  position: relative;
+  margin-top: .12rem;
+  background-color: #ffffff;
+}
+
+.site-list-after {
+  position: relative;
+}
+
+.site-list-box:after,
+.site-list-after:after {
+  position: absolute;
+  content: '';
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  border-top: 1px dashed #ccc;
+  transform: scale3d(1, 0.5, 1);
+}
+
+.site-list-box:after {
+  border: none;
+  background-color: #ccc;
+}
+
+.site-list-name {
+  display: block;
+  font-size: 14px;
+  padding: .12rem 0 0 .24rem;
+}
+
+.site-list-content {
+  display: block;
+  font-size: 13px;
+  padding: .12rem 0 .12rem .24rem;
+}
+
+.site-list-phone {
+  display: block;
+  font-size: 13px;
+  padding: .12rem .24rem;
+}
+
+.site-list-btn,
+.site-list-radio {
+  padding: .12rem .24rem;
+}
+
+.site-list-radio .yd-radio-text {
+  font-size: 13px;
+}
+
+.site-list-btn button {
+  padding: 0 .24rem;
+  height: .4rem;
+  font-size: 13px;
+  border: 1px solid #ccc;
+}
+
+.create-site-bax {
+  padding: .12rem .24rem;
+}

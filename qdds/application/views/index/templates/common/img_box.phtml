@@ -1,0 +1,73 @@
+<style>
+    .bigimg {
+        width: 500px !important;
+        height: 400px !important;
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        display: none;
+        z-index: 19999;
+        border: 10px solid #fff;
+    }
+
+    .mask {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #000;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        z-index: 19998;
+        transition: all 1s;
+        display: none
+    }
+
+    .imgbox {
+        width: 60px;
+        height: 40px;
+        float: left;
+        border-radius: 2px;
+        overflow: hidden;
+        margin: 0 10px 10px 10px;
+    }
+
+    .imgbox > img {
+        width: 100%;
+    }
+
+    .imgbox:hover {
+        cursor: zoom-in
+    }
+
+    .mask:hover {
+        /*cursor: zoom-out*/
+    }
+
+    .mask > img {
+        position: fixed;
+        right: 10px;
+        top: 10px;
+        width: 60px;
+    }
+
+    .mask > img:hover {
+        cursor: pointer
+    }
+</style>
+<img src="" alt="" class="bigimg">
+<div class="mask">
+    <img src="<?php echo HOST_STATIC; ?>common/img/close.png" alt="">
+</div>
+<script>
+    $(function () {
+        var obj = new zoom('mask', 'bigimg', 'smallimg');
+        obj.init();
+    });
+</script>
+
+<script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/zoom.js"></script>

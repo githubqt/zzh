@@ -1,0 +1,107 @@
+.tools_defalut{
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+    overflow: hidden;
+    padding: 20px;
+    text-align: center;
+}
+.step5 .step1_text .one_step{
+    background: #6dbdc6 url(../../../img/import/import_done.png) no-repeat center;
+    background-size: 56px 56px;
+}
+.step1,.step2,.step3,.step4,.step5{
+    text-align: center;
+    margin-top: 80px;
+}
+.step1 .step1_text,.step2 .step1_text,.step3 .step1_text,.step4 .step1_text,.step5 .step1_text{
+    font-size: 30px;
+    width: 100%;
+    overflow:hidden;
+}
+.step1 .step1_text span,.step2 .step1_text span,.step3 .step1_text span,.step4 .step1_text span,.step5 .step1_text span{
+    display: inline-block;
+    vertical-align: middle;
+}
+.step1 .step1_text .text,.step2 .step1_text .text,.step3 .step1_text .text,.step4 .step1_text .text,.step5 .step1_text .text{
+    padding-left: 15px;
+}
+.step1 .step1_text .one_step,.step2 .step1_text .one_step,.step3 .step1_text .one_step,.step4 .step1_text .one_step,.step5 .step1_text .one_step{
+    width:80px;
+    height: 80px;
+    display: inline-block;
+    border-radius: 10px;
+}
+.step1 .step1_text .one_step,.step4 .step1_text .one_step{
+    background:#6dbdc6 url(../../../img/import/icon_import.png) no-repeat center;
+    background-size: 56px 56px;
+}
+.step2 .step1_text .one_step,.step3 .step1_text .one_step{
+    background:#6dbdc6 url(../../../img/import/icon_check.png) no-repeat center;
+    background-size: 56px 56px;
+}
+.step1 .option,.step2 .option,.step3 .option{
+    width:383px;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-top:20px;
+}
+.step1 .option .btn{
+   height: 28px; 
+   line-height: 19px;    
+}
+.fail_color{
+    color:red;
+}
+.success_color{
+    color:#00cc00;
+}
+.fail_color,.success_color{
+    font-weight: bold;
+    font-size: 16px;
+    padding-left: 5px;
+}
+.step1 .option .uploader-thum-container{
+    margin: 10px;
+    line-height: 24px;
+    float: left;
+}
+#filename{
+    margin: 14px 10px;
+    line-height: 24px;
+    float: left;
+}
+#next-btn{
+    margin: 10px;
+    line-height: 24px;
+    float: left;
+}
+.progress{
+    margin: 20px;
+    width: 350px;
+    display: inline-block;
+    border-radius: 5px;
+    border:1px #95b8e7 solid;
+    position: relative;
+    font-size: 12px;
+}
+.count{
+    margin: 20px;
+    width: 350px;
+    display: inline-block;
+    position: relative;
+}
+.progress, .progress-bar, .sr-only{
+    height:17px;
+}
+.sr-only{
+    background:#ffe48d; 
+}
+#progress-text{
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    top: 0;
+    line-height: 17px;
+    width: 100%;
+    text-align: center;
+}

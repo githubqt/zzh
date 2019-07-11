@@ -1,0 +1,140 @@
+
+
+.uOrder-box {
+    padding: .24rem;
+    margin-bottom: .24rem;
+    background-color: #fff;
+}
+.uOrder-number {
+    width: 100%;
+    font-size: 14px;
+    padding-bottom: .12rem;
+}
+.uOrder-product-img {
+    display: block;
+    width: 2.6rem;
+    height: 2.6rem;
+    padding: .24rem 0;
+    box-sizing: border-box;
+}
+.uOrder-product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.uOrder-product-box {
+    padding: 0 !important;
+}
+.uOrder-product-box .yd-cell-right {
+    text-align: left !important;
+}
+.uOrder-product-box .yd-cell-right span {
+    width: 100% !important;
+}
+.uOrder-product-name {
+    color: #000;
+    font-size: 14px;
+    padding-top: .12rem;
+    padding-bottom: .12rem;
+}
+.cart-status-txt {
+    font-size: 14px;
+    color: #ea3d39;
+    padding-top: .12rem;
+}
+.uOrder-product-box:first-child:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid #b2b2b2;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+.uOrder-product-num {
+    color: #333;
+    font-size: 16px;
+    text-align: right;
+}
+.uOrder-product-num em {
+    font-size: 18px;
+    padding: 0 .12rem;
+}
+.details-slide-box{
+    display: -webkit-box;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling:touch;
+    background: #ffffff;
+}
+.details-slide-item{
+    position: relative;
+    display: block;
+    width: 2rem;
+    padding: .24rem;
+}
+.details-slide-item:before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: #b2b2b2;
+    transform: scale3d(1, .5, 1);
+}
+.details-slide-item:after {
+    content: '';
+    position: absolute;
+    top: .12rem;
+    right: 0;
+    bottom: .12rem;
+    width: 1px;
+    background: #b2b2b2;
+    transform: scale3d(.5, 1, 1);
+}
+.details-slide-item:last-child:after {
+    display: none;
+}
+.details-slide-item-image {
+    width: 100%;
+    overflow: hidden;
+    text-align: right;
+    vertical-align: middle;
+    border-radius: 100px;
+}
+.details-slide-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+.details-slide-name {
+    display: inline-block;
+    font-size: .3rem;
+    width: 100%;
+    text-align: center;
+}
+.info-left-img-label {
+    text-align: center;
+    font-size: 13px;
+    background-color: rgb(218, 180, 97);
+    color: white;
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 20px;
+    border-radius: 10px;
+    width: .7rem;
+}
+
+.details-button {
+    position: fixed;
+    z-index: 10;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+}

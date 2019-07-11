@@ -1,0 +1,500 @@
+<?php include APPLICATION_PATH.'/application/views/index/layout/_header_v2.phtml'; ?>
+<script type="text/javascript">
+	document.domain  = 'zhahehe.com';
+</script>
+<link rel="stylesheet" type="text/css" href="<?php echo HOST_STATIC;?>common/js/webuploader/0.1.5/webuploader.css">
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>common/js/webuploader/0.1.5/webuploader.js"></script> 
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>common/js/upload.js"></script> 
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>common/js/sprintf.js"></script> 
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>common/js/multiple_upload.js"></script> 
+<link rel="stylesheet" type="text/css" href="<?php echo HOST_STATIC;?>common/js/kindeditor/themes/default/default.css">
+<script type="text/javascript" charset="utf-8" src="<?php echo HOST_STATIC;?>common/js/kindeditor/kindeditor-all-min.js"></script>
+ <style>
+
+table th { 
+	font-weight: 400
+}
+.table td ,.table th{
+	padding: 8px 6px;
+	word-break: break-all
+}
+.table td{
+    line-height:13px;
+}
+.table th{
+    line-height: 23px;
+}
+.table .table {
+	background-color: #fff
+}
+.table-border th,.table-border td {
+	border-bottom: 1px solid #ddd
+}
+.table-bordered {
+	border: 1px solid #ddd;
+	border-collapse: separate;
+	*border-collapse: collapse;
+	border-left: 0
+}
+.table-bordered .sorting_1{
+    background:#c9eeff;
+}
+.table-bordered th,.table-bordered td {
+	border-left: 1px solid #ddd
+}
+
+.table-border.table-bordered {
+	border-bottom: 0;
+ 
+}
+
+.table-hover tbody tr:hover td,.table-hover tbody tr:hover th {
+	background-color: #feee76;
+}
+.panel.window.dialog {
+	position: fixed !important;
+	top: 20px !important;
+}
+</style>   
+	<div style="margin:20px 0;"></div>
+		<div style="padding:10px 60px 20px 60px">
+	    <form id="ff" method="post" action="/index.php?m=Product&c=Product&a=onstatus&channel=<?php echo $channel;?>&format=edit&id=<?php echo $detail['id'];?>" autocomplete="off">
+	    	<table cellpadding="5" style="margin-bottom: 100px;">
+	    		<tbody>
+		    		<tr>
+		    			<td><span class="red">*</span> 商品名称</td>
+		    			<td><input value="<?php echo $detail['name'];?>" class="easyui-textbox"  type="text" name="info[name]"  data-options="required: true" style="width:300px;height:35px;line-height:35px;" /></td>
+		    		</tr>
+		    		<tr>
+		    			<td><span class="red">*</span> 商品编号</td>
+		    			<td><input value="<?php echo $detail['self_code'];?>" readonly class="easyui-textbox" type="text" name="info[self_code]" data-options="required: true" style="width:300px;height:35px;line-height:35px;" /></td>
+		    		</tr>
+		    		<tr>
+		    			<td> 自定义码</td>
+		    			<td><input class="easyui-textbox" data-options="validType:['engnumber']" type="text" name="info[custom_code]" value="<?php echo $detail['custom_code'];?>" style="width:300px;height:35px;line-height:35px;" /></td>
+		    		</tr>
+		    		<tr>
+		    			<td> 是否含有鉴定证书</td>
+		    			<td>
+		    				<select name="info[appraisal_status]" style="width:300px;height:35px;line-height:35px;">
+		    					<option value="1" <?php if ($detail['appraisal_status'] == '1') {?>selected<?php }?>>否</option>
+		    					<option value="2" <?php if ($detail['appraisal_status'] == '2') {?>selected<?php }?>>是</option>
+		    				</select>
+		    			</td>
+		    		</tr>
+		    		<tr>
+		    			<td><span class="red">*</span> 商品分类</td>
+		    			<td>
+		    				<select id="category_id" class="easyui-combotree" <?php echo $detail['is_purchase']=='3'?'disabled':'';?>  name="info[category_id]"  style="width:300px;height:35px;line-height:35px;">		
+		    				</select>（输入关键词匹配要选择的分类）
+		    			</td>
+		    		</tr>
+		    		<tr>
+		    			<td> 商品品牌</td>
+		    			<td>
+		    					<input value="<?php echo $detail['brand_id']=='0'?'':$detail['brand_id'];?>" <?php echo $detail['is_purchase']=='3'?'disabled':'';?> class="easyui-combobox" name="info[brand_id]"  style="width:300px;height:35px;line-height:35px;"
+									data-options="
+										url:'/?c=Public&a=brand',
+										method:'get',
+										valueField:'id',
+										textField:'name',
+										panelHeight:'200'
+									">
+		    				（输入关键词匹配要选择的品牌）
+		    			</td>
+		    		</tr>
+		    		<tr>
+		    			<td><span class="red">*</span> 网点</td>
+		    			<td>
+	    					<input value="<?php echo $detail['multi_point']['0']['multi_point_id'];?>" class="easyui-combobox" name="info[multi_point_id]"  style="width:300px;height:35px;line-height:35px;"
+								data-options="
+									url:'/?c=Public&a=multiPoint',
+									method:'get',
+									valueField:'id',
+									textField:'name',
+									panelHeight:'200',
+									required: true
+								">
+		    				（输入关键词匹配要选择的网点）
+		    			</td>
+		    		</tr>
+                    <tr class="is_up" hidden>
+                        <td> 黄金重量</td>
+                        <td>
+                            <input value="<?php echo $detail['weight'];?>" class="easyui-numberbox" data-options="precision:2,groupSeparator:','" type="text" name="info[weight]"  style="width:300px;height:35px;line-height:35px;" /> 克
+                            （如果按照上海金价上调价格，黄金重量必填）
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="red">*</span> 公价</td>
+                        <td><input value="<?php echo $detail['market_price'];?>" class="easyui-numberbox" data-options="precision:2,groupSeparator:',',required: true" type="text" name="info[market_price]"  style="width:300px;height:35px;line-height:35px;" /> 元</td>
+                    </tr>
+                    <tr>
+                        <td><span class="red">*</span> 销售价</td>
+                        <td>
+                            <input value="<?php echo $detail['sale_price'];?>" class="easyui-numberbox" data-options="precision:2,groupSeparator:',',required: true" type="text" id="sale_price" name="info[sale_price]"  style="width:300px;height:35px;line-height:35px;" /> 元
+                            <span class="is_up" hidden >
+                                <input name="info[sale_is_up]" type="checkbox" <?php if ($detail['sale_is_up'] == \Product\ProductModel::IS_UP_2) {?> checked <?php }?> id="sale_is_up" value="2"/>
+                                <label for="sale_is_up">按照上海金价上调</label>
+                                <input class="easyui-numberbox" type="text" data-options="precision:2,groupSeparator:',',prompt:'请输入上调金额'" value="<?php echo $detail['sale_up_price'];?>" id="sale_up_price" name="info[sale_up_price]" style="width:200px;height:35px;line-height:35px;" /> 元
+                                <span title="销售价=（上海金价单价+上调金额）*重量" class="easyui-tooltip icon Hui-iconfont" iconCls="icon-help">&#xe633;</span>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="red">*</span> 渠道价</td>
+                        <td>
+                            <input value="<?php echo $detail['channel_price'];?>" <?php echo $detail['is_purchase']=='3'?'disabled readonly':'';?> class="easyui-numberbox" data-options="precision:2,groupSeparator:',',required: true" type="text" id="channel_price" name="info[channel_price]"  style="width:300px;height:35px;line-height:35px;" /> 元
+                            <span class="is_up" hidden >
+                                <input name="info[channel_is_up]" type="checkbox" <?php if ($detail['channel_is_up'] == \Product\ProductModel::IS_UP_2) {?> checked <?php }?> id="channel_is_up" value="2"/>
+                                <label for="channel_is_up">按照上海金价上调</label>
+                                <input class="easyui-numberbox" type="text" data-options="precision:2,groupSeparator:',',prompt:'请输入上调金额'" value="<?php echo $detail['channel_up_price'];?>" id="channel_up_price" name="info[channel_up_price]" style="width:200px;height:35px;line-height:35px;" /> 元
+                                <span title="渠道价=（上海金价单价+上调金额）*重量" class="easyui-tooltip icon Hui-iconfont" iconCls="icon-help">&#xe633;</span>
+                            </span>
+                        </td>
+                    </tr>
+		    		<tr>
+		    			<td>库存</td>
+		    			<td><?php echo $detail['stock'];?></td>
+		    		</tr>
+		    		<tr>
+		    			<td>是否支持退换货</td>
+		    			<td>
+							<select onchange="is_return()" id="is_return_select"  name="info[is_return]" <?php echo $detail['is_purchase']=='3'?'disabled':'';?> style="width:300px;height:35px;line-height:35px;">	
+								<option value="2" <?php if ($detail['is_return'] == '2') {?> selected <?php }?>>是</option>	
+								<option value="1" <?php if ($detail['is_return'] == '1') {?> selected <?php }?>>否</option>	
+		    				</select>
+						</td>
+		    		</tr>
+                    <tr id="return_note" <?php if ($detail['is_return'] == '2') {?>style="display:none"<?php }?>>
+                        <td>  </td>
+                        <td width="800" style="border: 1px solid #cacaca;">
+                            <span>不退货声明：</span><br>
+                            <span>  绝当品是指质押在商行到期未赎的民用物品，一般包括各种有价的名表名包、珠宝玉 石、贵金属首饰、数码产品等。绝当品具有以下优势:<br/>
+                               1.正品保真，绝当品在上柜销售之前均经过专业鉴定师鉴定，确保为真品;<br/>
+                               2.价格实惠，商的特性让绝当品在价格上具有很大优势，自古以来，商行都是淘宝的好去处。鉴于以上原因，商行销售的绝当品非质量问题不支持 7 天无理由退换货，所有商品在您点击确认收货或系统 14 天自动确认收货后即不支持退款退货，请您知悉。
+                            </span>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 备注</td>
+                        <td width="800">
+                            <textarea name="info[note]" style="width:800px; height:80px;"><?php echo $detail['note'];?></textarea>
+                        </td>
+                    </tr>
+		    		<tr>
+		    			<td><span class="red">*</span> 商品主图</td>
+		    			<td>
+		    				<div class="uploader-thum-container">
+								<div id="filePicker">选择图片</div>
+								<span class="c-red li27 ml15">*图片规格800*800  大小1M内</span>
+							</div>
+							<input id="logo_url" value="<?php echo $detail['logo_url']; ?>" type="hidden" class="input-text" placeholder="" name="info[logo_url]" />
+		    			</td>
+		    		</tr>
+		    		<tr>
+		    			<td></td>
+		    			<td>
+		    				<img id="logo_show_info" width="100" height="100" class="lazy" data-original="<?php echo HOST_FILE.$detail['logo_url'];?>" />
+		    			</td>
+		    		</tr>
+		    		<tr>
+		    			<td><span class="red">*</span> 商品附图</td>
+		    			<td>
+		    				<ul class="filelist1">
+		    					<?php
+		    					 if (is_array($detail['imglist']) &&  count($detail['imglist']) > 0) {
+									 foreach ($detail['imglist'] as $key => $value) {
+		    					 ?>
+		    					<li id="imgfile_<?php echo $value['id'];?>">
+		    						<p class="title">营业执照 - 小内存.jpg</p>
+		    						<p class="imgWrap">
+		    							<img class="lazy" data-original="<?php echo HOST_FILE.$value['img_url'];?>">
+		    							<input type="hidden" name="items[]" value="<?php echo $value['img_url'];?>" />
+		    						</p>
+		    						<p class="progress">
+		    							<span></span>
+		    						</p>
+		    						<div class="file-panel" style="height: 30px;">
+		    							<span onclick="$('#imgfile_<?php echo $value['id'];?>').remove();" class="cancel">取消上传</span>
+		    						</div>
+		    					</li>
+		    					<?php 
+									 }
+								 }
+		    					
+		    					?>
+		    				</ul>
+		    			</td>
+		    		</tr>
+		    		<tr>
+		    			<td></td>
+		    			<td width="800">
+		    				<div class="uploader-list-container">
+			                    <div class="queueList">
+			                        <div id="dndArea" class="placeholder">
+			                            <div id="filePicker-3"></div>
+			                            <p>*单次最多10张 规格800*800 单张大小1M </p>
+			                        </div>
+			                    </div>
+			                    <div class="statusBar" style="display:none;">
+			                        <div class="progress"> <span class="text">0%</span> <span class="percentage"></span> </div>
+			                        <div class="info"></div>
+			                        <div class="btns">
+			                            <div id="filePicker2"></div>
+			                            <div class="uploadBtn">上传开始</div>
+			                        </div>
+			                    </div>
+			                </div>
+		    			</td>
+		    		</tr>
+		    		<!-- <tr> 
+		    			<td>商品视频</td>
+		    			<td>
+		    				<div class="uploader-thum-container">
+		    					<div id="videourl" <?php if (!$detail['video_url']) {?> style="display: none" <?php }?>>
+									<video width="300" height="200" controls >
+                                        <source src="<?php echo HOST_FILE.$detail['video_url'];?>" type="video/mp4">
+                                    </video><br><br>
+                                </div>
+								<div id="filePicker3">选择视频文件</div>
+		    					<a href="Javascript:;" onclick="delvideo()" style="margin-left:15px" class="easyui-linkbutton" >删除视频</a><br>
+								<span class="li27 ml15" style="color:#ccc">不可上传超过100M视频，时长超过1分钟的视频（只支持mp4格式）</span>
+							</div>
+							<input id="video_url" type="hidden" class="input-text" placeholder="" name="info[video_url]" />
+		    			</td>
+		    		</tr>  -->
+		    		<tr>
+		    			<td><span class="red">*</span> 商品属性</td>
+		    			<td>
+		    				<table style="width:800px" id="erpAttributeList" class=" table table-border table-bordered table-bg table-hover table-sort ">
+        					<tr>
+        						<th width="30%">属性</th>
+        						<th width="50%">属性明细</th>
+        						<th width="20%">操作</th>
+        					</tr>
+        					<?php if (isset($detail['attribute']) && is_array($detail['attribute']) && count($detail['attribute']) > 0) { ?>
+        					<?php foreach ($detail['attribute'] as $key => $value): ?>
+        						<tr class="attribute_class" data-id="<?php echo $value['attribute_id'];?>" id="values_<?php echo $value['attribute_id'];?>">
+        							<th class="w9">
+        								
+        								<?php echo $value['attribute_name'];?>
+        							</th>
+        							<th>
+        								<?php
+        								 /*单选*/
+        								 if($value['input_type'] == 1){?>
+        								 	
+        									<select name="select[]"   style="width:300px;height:35px;line-height:35px;">
+        									<?php foreach ($value['values'] as $k => $val): ?>
+        										<option <?php if($val['selectd']){?> selected="selected" <?php }?>
+        											value='<?php 
+        										$select = [];
+        										$select['attribute_id'] = $value['attribute_id'];
+        										$select['attribute_name'] = $value['attribute_name'];
+        										$select['attribute_value_id'] = $val['id'];
+        										$select['attribute_value_name'] = $val['value'];
+        										echo json_encode($select);?>' ><?php echo $val['value']?></option>
+        									<?php endforeach ?>
+        									</select>
+        									
+        								<?php }?>
+        								<?php 
+        									/*多选*/
+        									if($value['input_type'] == 2){?>
+        									<?php foreach ($value['values'] as $k => $val): ?>
+        										
+        											<input 
+        											<?php if($val['selectd']){?> checked="checked" <?php }?> name="checkbox[]" 
+        										value='<?php 
+        										$checkbox = [];
+        										$checkbox['attribute_id'] = $value['attribute_id'];
+        										$checkbox['attribute_name'] = $value['attribute_name'];
+        										$checkbox['attribute_value_id'] = $val['id'];
+        										$checkbox['attribute_value_name'] = $val['value'];
+        										echo json_encode($checkbox);?>' type="checkbox" id="checkbox-<?php echo $val['id']?>">
+        											<label for="checkbox-<?php echo $val['id']?>"><?php echo $val['value']?>&nbsp;</label>
+        										
+        									<?php endforeach ?>
+        								<?php }?>
+        								
+        								<?php if($value['input_type'] == 3){?>
+        									<input type="text" class="easyui-textbox"  style="width:300px;height:35px;line-height:35px;"
+        									 value="<?php echo $value['attribute_value_name'];?>" 
+        									 name="input[<?php echo $value['attribute_id']?>]" class="input-text" placeholder="" />
+        								<?php }?>
+        							</th>
+        							<th class="w9">
+        								<a href="javascript:void(0);" onclick='$("#values_<?php echo $value['attribute_id'];?>").remove();'>删除</a>
+        							</th>
+        						</tr>
+        					<?php endforeach ?>
+    					<?php } ?>
+        				</table>
+                    	<input type="button" onclick="$('#passw').window('open')"  class="easyui-linkbutton" data-options="selected:true" value="添加属性" >
+		    			</td>
+		    		</tr>
+		    		<tr>
+		    			<td><span class="red">*</span> 商品详情</td>
+		    			<td width="800">
+		    				<textarea id="myEditor" name="info[introduction]" style="width:100%;height:240px;">
+							    <?php echo $detail['introduction'];?>
+							</textarea>
+		    			</td>
+		    		</tr>
+	    		</tbody>
+	    	</table>
+	    	<div style="padding:25px;position: fixed;bottom: 0px;width: 100%;background: #f1f1f1;text-align: center;margin-left: -70px;z-index: 400">
+		    	<input type="button" onclick="onstatus(1)" class="easyui-linkbutton" data-options="selected:true" value="保存" >
+		    	<input type="hidden" name="info[on_status]" value="2" id="on_status">
+		    	<input type="button" onclick="onstatus(2)" class="easyui-linkbutton" style="margin-left:15px" data-options="selected:true" value="保存并上架" >
+		    	<?php if ($_GET['origin'] == 'recovery') { ?>
+                    <a href="/index.php?m=Recovery&c=Recovery&a=list" style="margin-left:15px" class="easyui-linkbutton" >返回</a>
+                <?php } else { ?>
+                    <a href="/index.php?m=Product&c=Product&a=list" style="margin-left:15px" class="easyui-linkbutton" >返回</a>
+                <?php } ?>
+		    </div>
+	    </form>
+	    
+	</div>
+	<div id="passw"  class="easyui-dialog" title="选择属性" style="width:900px;height:400px;position:fiexd !important;"
+        data-options="iconCls:'icon-save',modal:true,collapsible:false,closed:true">
+       <div class="container" >
+        	 <div id="tb" class="easyui-panel"   style="background-color:#f1f1f1">
+        	 <form id="attr">
+                <div class="conditions" style="margin:20px 20px 20px ;">
+                    <span class="con-span">属性名称 </span>
+                    <input class="easyui-textbox" type="text" name="name" id="name" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+                    <span class="con-span">属性别称 </span>
+                    <input class="easyui-textbox" type="text" name="alias" id="alias" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+
+                    <a href="javascript:;" class="easyui-linkbutton query" style="margin-left:10px;" iconCls="icon-search" data-options="selected:true">查询</a>
+                    <a href="javascript:;" class="easyui-linkbutton reset" style="margin-left:10px;" iconCls="icon-reload">重置</a>
+                    <a href="javascript:;" class="easyui-linkbutton more"  style="margin-left:10px;" iconCls="icon-more">更多</a>
+                </div>
+                <div class="conditions hide" style="margin:20px 20px 20px ">
+                	<span class="con-span">属性明细 </span>
+                    <input class="easyui-textbox" type="text" name="value" id="value" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+                    <span class="con-span">添加时间 </span>
+                	<input class="easyui-datebox" style="width:166px;height:35px;line-height:35px;" name="start_time" id="start_time" />
+                	<span class="con-span"> —— </span>
+                	<input class="easyui-datebox" style="width:166px;height:35px;line-height:35px;" name="end_time" id="end_time" />
+                </div>
+                <div class="conditions hide" style="margin:20px 20px 20px ">
+                	<span class="con-span">明细别称 </span>
+                    <input class="easyui-textbox" type="text" name="value_alias" id="value_alias" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+                </div>
+                </form>
+              </div>
+              <table id="dg"   class="easyui-datagrid" ></table>
+         </div> 
+         <div style="padding:25px">
+	    	<input type="button" onclick="shopSetadd()" class="easyui-linkbutton" data-options="selected:true" value="保存" >
+	    	<a href="javascript:;" onclick="$('#passw').window('close')" style="margin-left:15px" class="easyui-linkbutton" >返回</a>
+	    </div>  	
+    </div>
+    <input hidden id="selected_category_id" value="<?php echo $detail['category_id'];?>">
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/common/qdd.list.js"></script>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/common/qdd.grid.js"></script>
+<script type="text/javascript">
+    var origin = "<?php echo $_GET['origin'];?>";
+	function is_return() {
+		if ($("#is_return_select").val() == '1') {
+			$("#return_note").show();
+		} else {
+			$("#return_note").hide();
+		}
+	}
+
+	
+	var editor = null;
+	$(function(){
+		 
+		  var qddUpload = Object.create(QddUpload);		
+		  //上传地址			
+	      qddUpload.urlUpload = '<?php echo HOST_FILE;?>/img.php?classify=product';
+	      qddUpload.callBack = function(response) {
+	      		$("#logo_show_info").attr("src",'<?php echo HOST_FILE;?>'+response.data);
+	      }
+	      qddUpload.run();
+
+	      /* 视频 */
+	      var qddUploadvideo = Object.create(QddUpload);		
+		  //上传地址			
+	      qddUploadvideo.urlUpload = '<?php echo HOST_FILE;?>/video.php?classify=productVideo';
+	      qddUploadvideo.filePicker = 'filePicker3';
+	      qddUploadvideo.fileSingleSizeLimit = 100485760;
+	      qddUploadvideo.accept =  {
+			      title: 'video',
+			      extensions : "mp4",
+			      mimeTypes : '*/*'
+			  };
+	      qddUploadvideo.list = 'fileList2';
+	      qddUploadvideo.callBack = function(response) {
+		      if (response.code == '200') {
+    	    	  var index=response.data.lastIndexOf("\.");
+    	    	  var videotype=response.data.substring(index+1,response.data.length);
+    	    	  var html = '<video width="300" height="200" controls id="video_content"><source src="<?php echo HOST_FILE;?>'+response.data+'" type="video/'+videotype+'"></video><br><br>';
+    	    	  $("#videourl").html(html);
+    	    	  $("#video_url").val(response.data);
+    	    	  window.setTimeout("gettime()", 100); 
+		      } else {
+		    	  $.messager.alert('提示', '上传失败');
+			  }
+	      }
+	      qddUploadvideo.run();
+	      
+		  var uploader = Object.create(QddMulitipleUpload);
+		  uploader.urlUpload = '<?php echo HOST_FILE;?>/img.php?classify=product';//请求方式
+		  uploader.filePicker =  'filePicker-3';	//焦点按钮id
+		  uploader.filePicker2 =  'filePicker2';
+		  uploader.accept =  {
+		      title: 'Images',
+		      extensions : 'gif,jpg,jpeg,bmp,png',
+		      mimeTypes : '*/*'
+		  };
+		  uploader.run();
+		  
+		  
+		  
+		  KindEditor.ready(function(K) {
+			  editor = K.create('#myEditor', {
+			      items:[
+                      'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'code', 'cut', 'copy', 'paste',
+                      'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                      'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                      'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+                      'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                      'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
+                      'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+                      'anchor', 'link', 'unlink', '|', 'about'
+                  ],
+				allowFileManager : true,
+				uploadJson : '<?php echo HOST_FILE;?>/upload_json.php',  
+       			fileManagerJson : '<?php echo HOST_FILE;?>/file_manager_json.php'
+			});
+		});
+	})
+	
+	
+	function delvideo() {
+		$("#videourl").html("");
+    	$("#video_url").val("");
+      	$("#videourl").hide();
+	}
+
+    function gettime() {
+    	var pl=document.getElementById("video_content").duration; 
+    	if (pl >= 60) {
+    		$.messager.alert('提示', '请上传小于一分钟的视频');
+    		$("#videourl").html("");
+	    	$("#video_url").val("");
+	    	$("#videourl").hide();
+    		return;
+        }
+    	$("#videourl").show();
+    }
+</script>
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>qdds/js/page/product/onstatus.js"></script>
+<?php include APPLICATION_PATH.'/application/views/index/layout/_footer.phtml'; ?>

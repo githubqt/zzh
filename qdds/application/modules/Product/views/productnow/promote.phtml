@@ -1,0 +1,53 @@
+<?php include APPLICATION_PATH.'/application/views/index/layout/_header.phtml'; ?>
+<style>
+	#container .container{
+		width: 600px;
+		height: 300px;
+		overflow: auto;
+	}
+	#tuiguang .con{
+		top:20px;
+		margin: 0 auto; 
+		text-align: center;
+		margin: 5px;
+	}	
+	#tuiguang .img{
+		margin: 0 auto; 
+		text-align: center;
+	}
+	#tuiguang .copy{
+		margin: 0 auto; 
+		text-align: center;
+	}
+</style>
+	<div class="container" >
+				<hr>
+				<div class="img">
+
+					<img  id="img_copy" style="width:250px; " src="<?php echo "/?m=Product&c=Productnow&a=promote&id=".$_GET['id']."&format=img";?>" />
+					
+				</div>
+				<div class="copy" style="margin-left: 1px;">
+					<input  type="button" style="margin-left: 255px; margin-top:19px;" class="easyui-linkbutton" onclick="imgCopy()" data-options="selected:true" value="下载推广图"  >
+				</div>
+				
+	</div>
+	
+
+<script type="text/javascript">
+	$('.easyui-tabs1').tabs({
+      tabHeight: 36
+    });
+    $(window).resize(function(){
+    	$('.easyui-tabs1').tabs("resize");
+    }).resize();
+    
+    
+	function imgCopy(){	
+		location.href = "/?m=Product&c=Productnow&a=promote&id=<?php echo $_GET['id']?>&format=download";
+	}
+	
+
+	
+</script>	
+<?php include APPLICATION_PATH.'/application/views/index/layout/_footer.phtml'; ?>

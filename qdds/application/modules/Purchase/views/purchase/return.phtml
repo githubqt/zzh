@@ -1,0 +1,154 @@
+<?php include APPLICATION_PATH . '/application/views/index/layout/_header.phtml'; ?>
+    <link href="<?php echo HOST_STATIC; ?>common/css/basic_info.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo HOST_STATIC; ?>common/js/webuploader/0.1.5/webuploader.css">
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/webuploader/0.1.5/webuploader.js"></script>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/upload.js"></script>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/sprintf.js"></script>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/multiple_upload.js"></script>
+    <style>
+        @font-face {
+            font-family: 'iconfont';  /* project id 836233 */
+            src: url('//at.alicdn.com/t/font_836233_i6tllo4htf.eot');
+            src: url('//at.alicdn.com/t/font_836233_i6tllo4htf.eot?#iefix') format('embedded-opentype'),
+            url('//at.alicdn.com/t/font_836233_i6tllo4htf.woff') format('woff'),
+            url('//at.alicdn.com/t/font_836233_i6tllo4htf.ttf') format('truetype'),
+            url('//at.alicdn.com/t/font_836233_i6tllo4htf.svg#iconfont') format('svg');
+        }
+
+        .i-icon {
+            font-size: 32px;
+            cursor: pointer;
+            vertical-align: bottom;
+            color: #8a8a8a;
+        }
+    </style>
+
+    <div style="margin:20px 0;"></div>
+    <div style="padding:10px 60px 20px 60px">
+        <form id="ff2" method="post" action='/index.php?m=Purchase&c=Purchase&a=return&order=<?php echo $order; ?>&format=add' autocomplete="off">
+            <div class="column"><span class="current" style="font-size: 16px">订单信息</span></div>
+            <hr>
+            <table class="kv-table">
+                <tbody>
+                <tr>
+                    <td class="kv-label">订单号</td>
+                    <td class="kv-label">商品名称</td>
+                    <td class="kv-label">采购数量</td>
+                    <td class="kv-label">已退数量</td>
+                    <td class="kv-label" style="min-width: 150px">退货数量</td>
+                    <td class="kv-label">实付金额</td>
+                    <td class="kv-label" style="min-width: 90px">退款金额</td>
+                    <td class="kv-label">发货时间</td>
+                </tr>
+                <?php foreach ((array)$list['products'] as $k => $v) { ?>
+
+                    <input type="hidden" name="info[child_order_no]" value="<?php echo $list['child_order_no']; ?>"/>
+                    <tr>
+                        <td class="kv-label"><?php echo $list['child_order_no']; ?></td>
+                        <td class="kv-label"><?php echo $v['product_name']; ?> </td>
+                        <td class="kv-label"><?php echo $v['num']; ?></td>
+                        <td class="kv-label"><?php echo $v['return_num']; ?></td>
+                        <td class="kv-label">
+							<?php if ($v['is_return'] == '2') {?>
+                                <!-- 数字减少 -->
+                                <i class="iconfont i-icon return-minus" data-purchase-product-id="<?php echo $v['purchase_product_id']; ?>">&#xe713;</i>
+    
+                                <input class="return_num"
+                                       id="return_num_<?php echo $v['purchase_product_id']; ?>"
+                                       data-options="validType:['number']"
+                                       data-purchase-product-id="<?php echo $v['purchase_product_id']; ?>"
+                                       data-num="<?php echo $v['can_return_num']; ?>"
+                                       data-price="<?php echo $v['channel_price']; ?>"
+                                       name="info[return_num][<?php echo $v['purchase_product_id']; ?>]"
+                                       value="0"
+                                       type="number"
+                                       style="text-align:center;width: 60px;height: 30px;">
+    
+                                <!-- 数字增加 -->
+                                <i class="iconfont i-icon return-plus" data-purchase-product-id="<?php echo $v['purchase_product_id']; ?>">&#xe712;</i>
+							<?php } else {?>
+								<span style="color: red">该商品不允许退货</span>
+							<?php }?>
+                        </td>
+                        <td class="kv-label"><?php echo $v['price']; ?></td>
+                        <td class="kv-label">
+                            <p id="return_price_<?php echo $v['purchase_product_id']; ?>" style="color: red;">0.00</p>
+                        </td>
+                        <td class="kv-label"><?php echo $list['delivery_time']; ?></td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+
+            </table>
+
+            <div style="height: 60px"></div>
+            <div class="column"><span class="current" style="font-size: 16px">退货原因</span></div>
+            <hr>
+
+            <div style="margin-left: 6px;margin-bottom: 39px;margin-top: 40px;">
+                <span style="margin-left: -8px;">退货类型：</span>
+                <select class="easyui-combobox" id="role_id" name="info[role_id]" style="height:35px;width:180px;">
+                    <?php foreach ($returnReasons as $key => $reason) { ?>
+                        <option value="<?php echo $key; ?>"><?php echo $reason; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div>
+                <span class="con-span">退货描述：</span>
+                <input class="easyui-textbox" name="info[note]" style="width:400px;height:35px;line-height:35px; "></input>
+            </div>
+
+            <div style="display: flex;padding-top: 25px;margin-bottom: 100px;">
+                <span style="margin-top: 10px;padding-right: 15px;">上传图片: </span>
+                <div>
+                    <div class="uploader-list-container" style="width:450px;height:450px">
+                        <div class="queueList">
+                            <div id="dndArea" class="placeholder">
+                                <div id="filePicker-3"></div>
+                                <p class="red">*单次最多9张 规格800*800 单张大小1M </p>
+                            </div>
+                        </div>
+
+                        <div class="statusBar" style="display:none;">
+                            <div class="progress"><span class="text">0%</span> <span class="percentage"></span></div>
+                            <div class="info"></div>
+                            <div class="btns">
+                                <div id="filePicker2"></div>
+                                <div class="uploadBtn">上传开始</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="padding:25px;position: fixed;bottom: 0px;width: 100%;background: #f1f1f1;text-align: center;margin-left: -70px;">
+                <input type="submit" class="easyui-linkbutton" data-options="selected:true" value="保存"/>
+                <a href="/index.php?m=Purchase&c=Purchase&a=list" style="margin-left:15px" class="easyui-linkbutton">返回</a>
+            </div>
+        </form>
+
+    </div>
+
+    <script type="text/javascript">
+
+        var qddUpload = Object.create(QddUpload);
+        //上传地址
+        qddUpload.urlUpload = '<?php echo HOST_FILE;?>/img.php?classify=salesreturn';
+        qddUpload.run();
+
+        var uploader = Object.create(QddMulitipleUpload);
+
+        uploader.urlSwf = '/webuploader/0.1.5/Uploader.swf';
+        uploader.urlUpload = '<?php echo HOST_FILE;?>/img.php?classify=salesreturn';//请求方式
+        uploader.filePicker = 'filePicker-3';	//焦点按钮id
+        uploader.filePicker2 = 'filePicker2';
+        uploader.accept = {
+            title: 'Images',
+            extensions: 'gif,jpg,jpeg,bmp,png',
+            mimeTypes: '*/*'
+        };
+        uploader.run();
+
+    </script>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>qdds/js/page/purchase/return.js"></script>
+
+<?php include APPLICATION_PATH . '/application/views/index/layout/_footer.phtml'; ?>

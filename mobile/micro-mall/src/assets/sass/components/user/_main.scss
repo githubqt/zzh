@@ -1,0 +1,328 @@
+.user-container {
+    padding-bottom: 1.1rem;
+    .navbar-bottom-line-color {
+        &::after {
+            border-color: #fff !important;
+        }
+    }
+    .user-cell-item {
+        padding: .24rem 0 .24rem .24rem;
+    }
+    .user-head-name,
+    .user-head-portrait {
+        display: block;
+        float: left;
+        color: #fff;
+    }
+    .user-info-box {
+        padding-top: .88rem;
+        .yd-cell {
+            &::after {
+                border: none;
+            }
+            .yd-cell-right::after,
+            .yd-cell-item::after {
+                border: none;
+            }
+        }
+    }
+    .user-info-box .yd-cell-arrow:after {
+        color: #fff !important;
+    }
+    .user-head-portrait {
+        width: 1.2rem;
+        height: 1.2rem;
+        border-radius: 50%;
+        // border: 2px solid rgba($color: $primary, $alpha: .75);
+    }
+    .user-head-name {
+        width: auto;
+        height: 1.2rem;
+        line-height: 1.2rem;
+        padding-left: .2rem;
+    }
+    .user-content-box {
+        background-color: #fff;
+    }
+    .m-0 {
+        margin: 0;
+    }
+    .user-info-box .yd-cell {
+        background-color: rgba($color: $primary, $alpha: .75);
+        padding: .24rem 0 .36rem 0;
+    }
+    .user-info-bar {
+        position: relative;
+        z-index: 5;
+        border-radius: 5px;
+        margin: -.36rem .48rem .12rem .48rem;
+        background-color: #ffffff;
+        box-shadow: 0 0 4px #cccccc;
+    }
+    .user-info-bar .yd-flexbox-item {
+        position: relative;
+        padding: .36rem .12rem;
+    }
+    .user-info-bar .yd-flexbox-item:after {
+        position: absolute;
+        content: '';
+        top: .36rem;
+        right: 0;
+        bottom: .36rem;
+        width: 1px;
+        background-color: #cccccc;
+        transform: scale3d(.5, 1, 1);
+    }
+    .user-info-bar .yd-flexbox-item:last-child:after {
+        display: none;
+    }
+    .user-info-bar-title {
+        display: block;
+        font-size: 16px;
+        text-align: center;
+    }
+    .user-info-bar-title em {
+        color: rgba($color: $primary, $alpha: .75);
+        font-size: 24px;
+        padding: 0 3px;
+    }
+    .user-info-bar-content {
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .yd-grids-5 .yd-grids-item .yd-grids-txt {
+        padding: 0;
+    }
+    .user-menu-box {
+        margin-top: .12rem;
+    }
+    .yd-grids-5 .yd-grids-item:before,
+    .user-menu-box .yd-grids-4 .yd-grids-item:before {
+        display: none;
+    }
+    .switchover-user-box {
+        // padding: .24rem 0 0.48rem 0;
+        height: 1rem;
+        display: block;
+        line-height: 1rem;
+        text-align: center;
+    }
+    .switchover-user-btn {
+        color: $primary;
+        font-size: .3rem;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: 100% 1px;
+        background-image: -webkit-gradient(linear, left top, right top, color-stop(100%, currentColor), to(transparent));
+        background-image: linear-gradient(90deg, currentColor 100%, transparent 100%);
+    }
+    .yd-cell a.yd-cell-item {
+        background-color: transparent;
+    }
+    .yd-cell-box {
+        margin-bottom: 0 !important;
+    }
+    .showIf {
+        list-style: none;
+        display: inline-block;
+        white-space: nowrap;
+        float: right;
+        height: .36rem;
+        width: .35rem;
+        color: #f1f1f1;
+        text-align: center;
+        background-color: #F64D32;
+        border-radius: 50%;
+        [v-cloak] {
+            display: none !important;
+        }
+    }
+    .num {
+        line-height: .4rem;
+        color: #ffffff;
+        text-align: center;
+    }
+    .showIf2 {
+        /* list-style: none; */
+        /* display: inline-block; */
+        /* white-space: nowrap; */
+        float: right;
+        height: .36rem;
+        width: .35rem;
+        color: #f1f1f1;
+        text-align: center;
+        background-color: #F64D32;
+        border-radius: 50%;
+        position: absolute;
+        /* right: 0px; */
+        /* left: 0; */
+        top: .24rem;
+        margin-left: -.65rem;
+    }
+    .user-sign-modal {
+        background-color: #fff;
+        padding: 0.2rem 0.3rem;
+        border-radius: 0.2rem;
+        .close {
+            text-align: right;
+        }
+        .title {
+            text-align: center;
+            font-size: 0.3rem;
+            font-weight: bold;
+            color: #999;
+        }
+        .sign-date {
+            ul {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.5rem 0;
+                li {
+                    &:first-child {
+                        .line {
+                            border: none;
+                        }
+                        width: 0.5rem;
+                    }
+                    display: block;
+                    width: calc((100% - 0.5rem)/6);
+                    position: relative;
+                    height: 0.5rem;
+                    .line {
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        display: block;
+                        width: 100%;
+                        border: 1px solid #ccc;
+                    }
+                    .circle {
+                        z-index: 1;
+                        position: absolute;
+                        display: block;
+                        right: 0;
+                        top: 0;
+                        width: 0.5rem;
+                        height: 0.5rem;
+                        border-radius: 0.5rem;
+                        border: 2px solid #ccc;
+                        line-height: 0.5rem;
+                        text-align: center;
+                        background: #fff;
+                        color: #ccc;
+                    }
+                }
+                .signed {
+                    .line {
+                        border: 1px solid #ffcc00;
+                    }
+                    .circle {
+                        border: 2px solid#ffcc00;
+                        color: #ffcc00;
+                    }
+                }
+                .unsigned {
+                    .line {
+                        border: 1px solid #FF6600;
+                    }
+                    .circle {
+                        border: 2px solid #FF6600;
+                        color: #FF6600;
+                    }
+                }
+            }
+        }
+        .sign-month-date {
+            margin: 0.3rem 0;
+            .sign-week {
+                display: flex;
+                // justify-content: space-between;
+                width: 100%;
+                li {
+                    width: calc(100%/7);
+                    font-size: 0.4rem;
+                    color: #666;
+                    text-align: center;
+                }
+            }
+            .sign-month {
+                margin-top: 0.5rem;
+                display: flex;
+                // justify-content: space-between;
+                flex-wrap: wrap;
+                width: 100%;
+                li {
+                    margin-top: 0.1rem;
+                    width: calc(100%/7);
+                    font-size: 0.4rem;
+                    color: #666;
+                    text-align: center;
+                    span {
+                        display: block;
+                        height: 0.6rem;
+                        width: 0.6rem;
+                        line-height: 0.6rem;
+                        margin: auto;
+                        // border-radius: 0.6rem;
+                        border: 2px solid #fff;
+                        // color: #ccc;
+                        // font-size: 0.3rem;
+                        text-align: center;
+                    }
+                }
+                .signed {
+                    border: 2px solid#ffcc00;
+                    border-radius: 0.6rem;
+                    font-size: 0.3rem;
+                    color: #ffcc00;
+                }
+                .unsigned {
+                    border: 2px solid #FF6600;
+                    border-radius: 0.6rem;
+                    font-size: 0.3rem;
+                    color: #FF6600;
+                }
+            }
+        }
+        .sign-points {
+            border-radius: 0.15rem;
+            padding: 0.1rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px dashed #666;
+            .points-name {
+                color: #999;
+                font-size: 0.3rem;
+                padding: 0.2rem;
+            }
+            .points {
+                color: #ffcc00;
+                font-size: 0.8rem;
+                padding: 0.2rem;
+            }
+        }
+        .sign-desc {
+            margin: 0.3rem;
+            text-align: center;
+            color: #ccc;
+            .link {
+                color: #0000FF;
+            }
+        }
+        .sign-btn {
+            height: 0.8rem;
+            margin-bottom: 0.3rem;
+        }
+        .sign-button {
+            .signed {
+                background: #ccc !important;
+                color: #f0f0f0 !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+.bidding {
+    .search-box {
+        padding: .2rem;
+        background: #fff;
+        position: relative;
+        width: 100%;
+        border-bottom: 1px solid $gray-100;
+        .status,
+        .order {
+            width: 50%;
+            float: left;
+            height: .6rem;
+            line-height: .6rem;
+            text-align: center;
+            font-size: 0.3rem;
+            .txt {
+                margin-right: 0.2rem;
+            }
+        }
+        .active {
+            color: $primary;
+        }
+        .order {
+            border-left: 1px solid $gray-400;
+        }
+    }
+    .tab-mask {
+        height: 100%;
+        position: fixed;
+        left: 0;
+        width: 100%;
+        background-color: #ccc;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 99;
+        .tab-box {
+            background-color: #fff;
+            .tab-item {
+                display: block;
+                height: .8rem;
+                line-height: .8rem;
+                font-size: 0.3rem;
+                padding: 0 0.3rem;
+                margin: 0;
+            }
+            .active {
+                color: $primary;
+            }
+        }
+    }
+    .product-img {
+        position: relative;
+        .status-txt {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #fff;
+        }
+    }
+}

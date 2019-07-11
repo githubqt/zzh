@@ -1,0 +1,51 @@
+<!--添加采购选择商品弹出窗 选中的商品列表-->
+<script id="purchase_add_selected" type="text/html">
+    {{each list item index}}
+    <tr>
+        <td>{{item.id}}</td>
+        <td>
+            <div class="imgbox">
+                <img src="{{item.full_logo_url}}" class="smallimg">
+            </div>
+        </td>
+        <td>{{item.self_code}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.category_name}}</td>
+        <td>{{item.brand_name}}</td>
+        <td>{{item.market_price}}</td>
+        <td>{{item.channel_price}}</td>
+        <td>
+            <input type="number" class="easyui-textbox update-item easyui-tooltip" style="width: 80px;text-align: center"
+                   required="required"
+                   title="输入的采购数量不能超过库存数 {{item.stock}} "
+                   onkeyup="checkValue(this)"
+                   onafterpaste="checkValue(this)"
+                   value="{{item.num}}"
+                   data-item-id="{{item.id}}"
+                   data-input="{{item.id}}"
+                   data-stock="{{item.stock}}"
+                   data-index-id="{{index}}">
+        </td>
+        <td>
+            <span class="stock" id="stock_{{item.id}}">{{item.stock}}</span>
+        </td>
+        <td>
+            <span class="price" data-item-id="{{item.id}}">0.00</span>
+        </td>
+        <td>
+            <input class="easyui-linkbutton delete-item" tabindex="-1"
+                   data-item-id="{{item.id}}"
+                   data-index-id="{{index}}"
+                   value="删除" type="button">
+        </td>
+    </tr>
+    {{/each}}
+</script>
+
+<script>
+    function checkValue(o) {
+        var $o = $(o);
+        var stock = $o.data('stock');
+        o.value=o.value.replace(/\D/g,'')
+    }
+</script>

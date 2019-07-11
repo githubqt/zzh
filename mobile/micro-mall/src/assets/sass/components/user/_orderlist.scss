@@ -1,0 +1,33 @@
+.orderlist-container {
+    width: 100%;
+    height: 100%;
+}
+.orderlist-container .yd-tab-panel {
+    background-color: transparent;
+}
+.orderlist-container .yd-tab {
+    margin-top: 1rem;
+}
+
+.orderlist-container .num {
+    line-height: .4rem;
+    color: #ffffff;
+    text-align: center;
+}
+.showIf3 {
+    /* list-style: none; */
+    /* display: inline-block; */
+    /* white-space: nowrap; */
+    float: right;
+    height: .36rem;
+    width: .35rem;
+    color: #f1f1f1;
+    text-align: center;
+    background-color: #F64D32;
+    border-radius: 50%;
+    position: absolute;
+    /* right: 0px; */
+    /* left: 0; */
+    top: .24rem;
+    margin-left: -.65rem;
+}

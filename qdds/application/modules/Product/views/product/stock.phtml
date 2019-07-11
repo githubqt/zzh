@@ -1,0 +1,96 @@
+<?php include APPLICATION_PATH.'/application/views/index/layout/_header_v2.phtml'; ?>
+<link href="<?php echo HOST_STATIC;?>common/css/basic_info.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="<?php echo HOST_STATIC;?>qdds/css/page/product/detail.css">
+ <style>
+
+</style>   
+	<div style="margin:20px 0;"></div>
+		<div style="padding:10px 60px 20px 60px">
+	    <form id="ff" method="post" action="/index.php?m=Product&c=Product&a=stock&format=edit&id=<?php echo $detail['id']?>">
+	    	<div class="content">		
+	    	<div class="easyui-tabs1" style="width:100%;">
+		      <div title="查看商户" data-options="closable:false" class="basic-info">
+		      	<div class="column"><span class="current">基本信息</span></div>
+		      	<table class="kv-table">
+					<tbody>
+						<tr>
+							<td class="kv-label">商品ID</td>
+							<td class="kv-content"><?php echo $detail['id']?></td>
+							<td class="kv-label">商品名称</td>
+							<td class="kv-content"><?php echo $detail['name']?></td>
+							<td class="kv-label">商品编号</td>
+							<td class="kv-content"><?php echo $detail['self_code']?></td>
+						</tr>
+						<tr>
+							<td class="kv-label">商品分类</td>
+							<td class="kv-content"><?php echo $detail['category_name']?></td>
+							<td class="kv-label">网点名称</td>
+							<td class="kv-content"><?php echo $detail['multi_point']['0']['multi_point_name']?></td>
+							<td class="kv-label">自定义码</td>
+							<td class="kv-content"><?php echo $detail['custom_code']?></td>
+						</tr>
+						<tr>
+							<td class="kv-label">商品品牌</td>
+							<td colspan="5" class="kv-content"><?php echo $detail['brand_name']?></td>
+						</tr>
+						<tr>
+							<td class="kv-label">公价</td>
+							<td class="kv-content"><?php echo $detail['market_price']?></td>
+							<td class="kv-label">销售价</td>
+                            <td class="kv-content"><?php echo $detail['sale_price'];?></td>
+							<td class="kv-label">渠道价</td>
+                            <td class="kv-content"><?php echo $detail['channel_price'];?>
+                            </td>
+						</tr><tr>
+							<td class="kv-label">建档人</td>
+							<td class="kv-content"><?php echo $detail['admin_name']?></td>
+							<td class="kv-label">添加时间</td>
+							<td colspan="3" class="kv-content"><?php echo $detail['created_at']?></td>			
+						</tr>
+						<tr>
+						</tr>	
+					</tbody>
+				</table>
+	    	</div>
+	    	</div></div>
+	    	
+	    	<table cellpadding="5" style="margin:20px 0;" style="margin-bottom: 100px;">
+	    		<tbody>
+		    		
+		    		<tr>
+		    			<td>当前库存</td>
+		    			<td><?php echo $detail['stock'];?></td>
+		    		</tr>
+	    		<tr>
+	    			<td>库存操作</td>
+	    			<td>
+	    				<input name="info[type]"  type="radio" id="status_radio-1" value="add" checked />
+						<label for="status_radio-1">添加</label>
+						<input name="info[type]"  type="radio" style="margin-left:30px" id="status_radio-2" value="del"/>
+						<label for="status_radio-2">减少</label>
+					</td>
+	    		</tr>
+	    		<tr>
+	    			<td>操作数量</td>
+	    			<td><input class="easyui-numberbox" value="" type="text" name="info[num]" style="width:300px;height:35px;line-height:35px;"></input></td>
+	    		</tr>
+	    		</tbody>
+	    	</table>
+	    	<div style="padding:25px;position: fixed;bottom: 0px;width: 100%;background: #f1f1f1;text-align: center;margin-left: -70px;">
+	    		<input type="submit" class="easyui-linkbutton" data-options="selected:true" value="保存" >
+		    	<a href="/index.php?m=Product&c=Product&a=list" style="margin-left:15px" class="easyui-linkbutton" >返回</a>
+		    </div>
+	    </form>
+	    
+	</div>
+	
+     <div style="display: none">   	
+        <span class="con-span"></span>
+    	<input class="easyui-datebox" type="hidden" id="start_time" />
+    	<span class="con-span"></span>
+    	<input class="easyui-datebox" type="hidden" id="end_time" />
+    </div>           
+        
+   
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>qdds/js/page/product/stock.js"></script> 
+<?php include APPLICATION_PATH.'/application/views/index/layout/_footer.phtml'; ?>

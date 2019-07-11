@@ -1,0 +1,47 @@
+<!--添加采购选择商品弹出窗 选中的商品列表-->
+<div id="purchase_add_select_dialog" class="easyui-dialog" title="选择商品" style="width:90%;"
+     data-options="iconCls:'icon-save',modal:true,collapsible:false,closed:true">
+    <div class="container">
+        <form id="ff">
+            <div id="tb" class="easyui-panel" style="background-color:#f1f1f1">
+                <div class="conditions" style="margin:20px 20px 20px ;">
+                    <span class="con-span">商品编码 </span>
+                    <input class="easyui-textbox" type="text" name="info[self_code]" id="self_code"
+                           style="margin-left:10px;width:166px;height:35px;line-height:35px;">
+
+                    <span class="con-span">商品名称</span>
+                    <input class="easyui-textbox" type="text" name="info[product_name]" id="product_name"
+                           style="margin-left:10px;width:166px;height:35px;line-height:35px;">
+
+                    <a href="javascript:;" class="easyui-linkbutton query" style="margin-left:10px;"
+                       iconCls="icon-search" data-options="selected:true">查询</a>
+
+                    <a href="javascript:;" class="easyui-linkbutton reset" style="margin-left:10px;"
+                       iconCls="icon-reload">重置</a>
+
+                    <a href="javascript:;" class="easyui-linkbutton more" style="margin-left:10px;"
+                       iconCls="icon-more">更多</a>
+
+                </div>
+                <div class="conditions hide" style="margin:20px 20px 20px ">
+
+                    <span class="con-span">品牌 </span>
+                    <input class="easyui-textbox" type="text" name="info[brand_name]" id="brand_name"
+                           style="margin-left:10px;width:166px;height:35px;line-height:35px;">
+
+                    <span class="con-span">分类 </span>
+                    <input class="easyui-textbox" type="text" name="info[category_name]" id="category_name"
+                           style="margin-left:10px;width:166px;height:35px;line-height:35px;">
+
+                </div>
+            </div>
+        </form>
+        <table id="dg" class="easyui-datagrid"></table>
+    </div>
+    <div style="padding:25px">
+        <input type="button" id="save" class="easyui-linkbutton" data-options="selected:true"
+               value="保存">
+        <a href="javascript:;" id="close_purchase_add_select_dialog" style="margin-left:15px"
+           class="easyui-linkbutton">返回</a>
+    </div>
+</div>

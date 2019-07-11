@@ -1,0 +1,295 @@
+.container {
+	position: relative;
+}
+
+.container .left-tree {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	padding: 10px;
+	width: 146px;
+	border: 1px solid #bfbfbf;
+	overflow: auto;
+}
+
+.container .content {
+	padding-left: 10px;
+	min-height: 200px
+}
+
+.container .content .basic-info {
+	padding: 30px
+}
+
+.container .content .tabs-header {
+	background-color: #fff;
+	border-width: 0
+}
+
+.container .content .tabs li {
+	border-top: 1px solid #bfbfbf;
+	border-radius: 3px 3px 0 0
+}
+
+.container .content .tabs li.tabs-selected {
+	border-top: 2px solid #1da02b
+}
+
+.container .content .tabs li.tabs-selected a.tabs-inner {
+	color: #000;
+	background-color: #fff
+}
+
+.container .content .tabs li a.tabs-inner {
+	color: #000;
+	background-color: #e3e3e3
+}
+
+.container .content .tabs li a.tabs-inner .tabs-title {
+	font-size: 14px
+}
+
+.container .content .column {
+	position: relative;
+	height: 31px;
+	border-bottom: 1px solid #d4d4d4;
+	margin-bottom: 10px
+}
+
+.container .content .column span.current {
+	position: relative;
+	top: 0px;
+	display: inline-block;
+	color: #1da02b;
+	font-size: 22px;
+	font-weight: bold;
+	height: 30px;
+	line-height: 30px;
+	border-bottom: 2px solid #ff9d02
+}
+
+.container .content .column span.sub {
+	color: #bcbcbc;
+	padding: 10px;
+}
+
+.container .content table.yes-not.kv-table td.kv-label {
+	width: 130px
+}
+
+.container .content table.kv-table {
+	margin-bottom: 20px
+}
+
+.container .content table.kv-table td.kv-label {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 center;
+    border: 0 none;	
+	height: 80px;
+	font-size: 12px
+}
+
+.container .content .kv-div {
+    background: #f2f2f2 none repeat scroll 0 0;
+    font-size: 12px;
+    height: 50px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.container .content table.kv-table td.kv-content {
+	height: 26px;
+	font-size: 12px
+}
+
+.container .content table.kv-table td.kv-label a {
+	text-decoration: none
+}
+
+.container .content table.kv-table td.kv-label a:hover {
+	text-decoration: underline
+}
+.container .content div.coupan {
+	background-image: url(../../../img/coupan.png);
+	background-size: 100% 100%;  
+	-moz-background-size: 100% 100%;  
+	-webkit-background-size: 100% 100%; 
+    float: left;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    border-radius:5px;		
+}
+.container .content div.seckill {
+	background-image: url(../../../img/seckill2.png);
+	background-size: 100% 100%;  
+	-moz-background-size: 100% 100%;  
+	-webkit-background-size: 100% 100%; 
+    float: left;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    border-radius:5px;	
+}
+.container .content div.shake {
+	background-image: url(../../../img/shake.png);
+	background-size: 100% 100%;  
+	-moz-background-size: 100% 100%;  
+	-webkit-background-size: 100% 100%; 
+    float: left;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    border-radius:5px;	
+}
+.container .content div.bidding {
+	background-image: url(../../../img/bidding.png);
+	background-size: 100% 100%;  
+	-moz-background-size: 100% 100%;  
+	-webkit-background-size: 100% 100%; 
+    float: left;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    border-radius:5px;	
+}
+.container .content div.home {
+	background-image: url(../../../img/home.png);
+	background-size: 100% 100%;  
+	-moz-background-size: 100% 100%;  
+	-webkit-background-size: 100% 100%; 
+    float: left;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    border-radius:5px;	
+}
+.container .content div.msg {
+	background-image: url(../../../img/msg.png);
+	background-size: 100% 100%;  
+	-moz-background-size: 100% 100%;  
+	-webkit-background-size: 100% 100%; 
+    float: left;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    border-radius:5px;	
+}
+.container .content div.freight {
+	background-image: url(../../../img/freight.png);
+	background-size: 100% 100%;  
+	-moz-background-size: 100% 100%;  
+	-webkit-background-size: 100% 100%; 
+    float: left;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    border-radius:5px;	
+}
+.container .content div.xiaochengxu {
+	background-image: url(../../../img/xiaochengxu.png);
+	background-size: 100% 100%;  
+	-moz-background-size: 100% 100%;  
+	-webkit-background-size: 100% 100%; 
+    float: left;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    border-radius:5px;	
+}
+.container .content div.gift {
+	background-image: url(../../../img/gift.png);
+	background-size: 100% 100%;  
+	-moz-background-size: 100% 100%;  
+	-webkit-background-size: 100% 100%; 
+    float: left;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    border-radius:5px;	
+}
+.container .content div.print {
+	background-image: url(../../../img/print.png);
+	background-size: 100% 100%;  
+	-moz-background-size: 100% 100%;  
+	-webkit-background-size: 100% 100%; 
+    float: left;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    border-radius:5px;	
+}
+.container .content div.con {
+	margin-left: 60px;
+}
+.container .content div.con span.con-title {
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    height: 25px;
+    line-height: 24px;
+    color: black;
+}
+.container .content div.con span.con-sub {
+    font-size: 12px;
+    line-height: 24px;
+    color: #335033;		
+}
+.container .content div.multi_point {
+	background-image: url(../../../img/multi_point.png);
+	background-size: 100% 100%;  
+	-moz-background-size: 100% 100%;  
+	-webkit-background-size: 100% 100%; 
+    float: left;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    border-radius:5px;	
+}
+
+.container .content div.express {
+	background-image: url(../../../img/express.png);
+	background-size: 100% 100%;  
+	-moz-background-size: 100% 100%;  
+	-webkit-background-size: 100% 100%; 
+    float: left;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    border-radius:5px;	
+}
+
+.container .content div.subtraction {
+	background-image: url(../../../img/subtraction.png);
+	background-size: 100% 100%;  
+	-moz-background-size: 100% 100%;  
+	-webkit-background-size: 100% 100%; 
+    float: left;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    border-radius:5px;	
+}
+.container .content div.weixin {
+	background-image: url(../../../img/weixin2.png);
+	background-size: 100% 100%;  
+	-moz-background-size: 100% 100%;  
+	-webkit-background-size: 100% 100%; 
+    float: left;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    border-radius:5px;	
+}
+.container .content div.group {
+	background-image: url(../../../img/group.png);
+	background-size: 100% 100%;  
+	-moz-background-size: 100% 100%;  
+	-webkit-background-size: 100% 100%; 
+    float: left;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    border-radius:5px;	
+}

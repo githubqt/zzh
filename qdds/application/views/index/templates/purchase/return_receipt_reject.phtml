@@ -1,0 +1,52 @@
+<!-- 审核退货弹出窗 start -->
+<link rel="stylesheet" type="text/css" href="<?php echo HOST_STATIC; ?>common/css/table.css">
+<div id="return-receipt-reject-dialog" class="easyui-dialog" title="拒收" style="width:540px;"
+     data-options="iconCls:'icon-save',modal:true,collapsible:false,closed:true">
+
+    <form action="index.php?m=Channel&c=SalesReturn&a=list" id="receipt_reject_form" method="post">
+        <input type="hidden" name="format" value="reject">
+        <input type="hidden" name="id" id="id" value="">
+        <div style="padding:25px;text-align: center">
+            <p style="padding-bottom: 20px">请填写拒收原因</p>
+            <textarea name="fd[supplier_reject_reason]" id="note" cols="30" rows="10" style="width: 100%;resize: none"></textarea>
+        </div>
+        <div style="padding:15px;text-align: center">
+            <input type="submit" class="easyui-linkbutton" data-options="selected:true" value="确定">
+            <a href="javascript:$('#return-receipt-reject-dialog').window('close');" style="margin-left:50px" class="easyui-linkbutton">取消</a>
+        </div>
+    </form>
+
+</div>
+<!-- 审核退货弹出窗 end -->
+<script>
+    $(function () {
+        /**
+         * 提交表单
+         */
+        $('#receipt_reject_form').form({
+            onSubmit: function () {
+                var isValid = $(this).form('validate');
+                if (!isValid) {
+                    $.messager.progress('close');
+                    return false;
+                }
+                $("input[type='submit']").attr('disabled', true);
+                return true;
+            },
+            success: function (response) {
+                try {
+                    var data = JSON.parse(response);
+                    if (parseInt(data.code) === 200) {
+                        location.href = 'index.php?m=Product&c=SalesReturn&a=list';
+                    } else {
+                        throw data.msg;
+                    }
+                } catch (e) {
+                    $.messager.alert('提示', e.msg);
+                    $("input[type='submit']").attr('disabled', false);
+                }
+            }
+        });
+    });
+</script>
+

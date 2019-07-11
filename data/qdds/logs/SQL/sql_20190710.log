@@ -1,0 +1,6 @@
+# LogFrom:d:/zzh/qdds/public/index.php LogSetPath:SQL/sql #
+
+2019-07-10 16:17:29 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Index AND `method` = Index AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-10 16:18:12 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = AND `method` = AND `action` = AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-10 16:18:25 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = AND `method` = AND `action` = AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-10 16:19:54 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = AND `method` = AND `action` = AND `type` = 5 AND `is_del` = 2 LIMIT 1

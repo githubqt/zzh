@@ -1,0 +1,204 @@
+<!-- 选择商品弹出窗 start -->
+<style>
+    .td-title {
+        vertical-align: middle !important;
+        text-align: right;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="<?php echo HOST_STATIC; ?>common/css/table.css">
+<div id="return-refund-dialog" class="easyui-dialog" title="选择商品" style="width:850px;height:500px;top: 10px;"
+     data-options="iconCls:'icon-save',modal:true,collapsible:false,closed:true">
+	<div class="container" >
+
+	 <div id="select_appraisal_product_tb" class="easyui-panel"   style="background-color:#f1f1f1">
+        <div class="conditions" style="margin:20px 20px 20px ;">
+            <span class="con-span">商品编码 </span>
+            <input class="easyui-textbox" type="text" name="code" id="pcode" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+            <span class="con-span">商品名称 </span>
+            <input class="easyui-textbox" type="text" name="name" id="pname" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+            
+            <a href="javascript:;" onClick="searchAppraisalProductInfo()" class="easyui-linkbutton" style="margin-left:10px;" iconCls="icon-search" data-options="selected:true">查询</a>
+            <a href="javascript:;" class="easyui-linkbutton" onclick="$('#select_appraisal_product_tb').form('clear');searchAppraisalProductInfo()" style="margin-left:10px;" iconCls="icon-reload">重置</a>
+            <a href="javascript:;" class="easyui-linkbutton more2"  style="margin-left:10px;" iconCls="icon-more">更多</a>
+        </div>
+        <div class="conditions hide" style="margin:20px 20px 20px ">
+            <span class="con-span">品牌名称 </span>
+            <input class="easyui-combobox"  style="height:35px;width:166px;line-height:35px;"
+			name="info[pbrand_id][]" id="pbrand"
+			data-options="
+					url:'/?c=Public&a=channelBrand&type=13',
+					method:'get',
+					valueField:'id',
+					textField:'name',
+					multiple:true,
+					panelHeight:'190'
+			">
+			<span class="con-span">分类名称 </span>
+            <select class="easyui-combotree"  id="pcategory" name="info[pcategory_id][]"
+        		data-options="
+        		url:'/?c=Public&a=channelCategory&type=13',
+        		method:'get',
+    			lines:true, 	   
+    			animate:true, 
+    			editable:true,                    		" 
+        		multiple 
+				style="margin-left:10px;width:166px;height:35px;line-height:35px;"
+			></select>
+		</div>
+      </div>
+      <table id="select_product"   class="easyui-datagrid" ></table>
+      <div style="padding:25px;text-align: center;">
+		    <input type="button" class="easyui-linkbutton" onclick="add_appraisal_product()" data-options="selected:true" value="保存" >
+        	<a href="javascript:;" onclick="$('#return-refund-dialog').window('close');" style="margin-left:25px" class="easyui-linkbutton" >返回</a>
+      </div>
+ </div> 
+</div>
+<!-- 选择商品弹出窗 end -->
+<script>
+/***
+ * 商品列表js
+ * @version v0.01
+ * @author zhaoyu
+ * @time 2018-05-09
+ */
+var pfileds = [[{
+    field: 'id',
+    width: 35,
+    title: '选择',
+    formatter:function(value, row, index){     	
+		return '<input type="radio" name="selectProduct" value="'+row.id+'" data-name="'+row.name+'" data-cname="'+row.c3_name+'" data-brandname="'+row.brand_name+'" data-cid="'+row.category_id+'" data-brandid="'+row.brand_id+'" data-code="'+row.self_code+'">'
+    }
+}, {
+    field: 'self_code',
+    width: 110,
+    title: '商品编号'
+}, {
+    field: 'name',
+    width: 180,
+    title: '商品名称'
+}, {
+    field: 'brand_name',
+    width: 130,
+    title: '品牌'
+}, {
+    field: 'category_name',
+    width: 120,
+    title: '分类'
+}, {
+    field: 'sale_price',
+    width: 90,
+    title: '销售价'
+}, {
+    field: 'channel_price',
+    width: 90,
+    title: '渠道价'
+}, {
+    field: 'appraisal_status_txt',
+    width: 90,
+    title: '含有鉴定证书'
+}
+]];
+
+
+function getAppraisalProductQueryData() {
+    var queryData = new Object();
+    queryData['info[just_bag]'] = '1';
+    queryData['info[is_supplement_info]'] = '1';
+    queryData['info[name]'] = $('#pname').val();
+    queryData['info[self_code]'] = $('#pcode').val();
+	var $input = $('input[name="info[pbrand_id][]"]');
+    if ($input.length >1){
+        var inputVal = [];
+        $input.each(function () {
+            if ($(this).val()) {
+                inputVal.push($(this).val()) ;
+            }
+        });
+        queryData['info[brand_id][]'] = inputVal;
+    }else{
+    	queryData['info[brand_id][]'] = $input.val();
+    }
+    var $input = $('input[name="info[pcategory_id][]"]');
+    if ($input.length >1){
+        var inputVal = [];
+        $input.each(function () {
+            if ($(this).val()) {
+                inputVal.push($(this).val()) ;
+            }
+        });
+        queryData['info[category_id][]'] = inputVal;
+    }else{
+    	queryData['info[category_id][]'] = $input.val();
+    }
+    return queryData;
+}
+
+function searchAppraisalProductInfo() {
+    $('#select_product').datagrid({
+        title: '',
+        width: '100%',
+        height: 'auto',
+        nowrap: true,
+        autoRowHeight: true,
+        striped: true,
+        url: "/index.php?m=Product&c=Product&a=list&format=list",
+        idField: 'id',
+        loadMsg: '数据加载中......',
+        pageList: [10, 20, 50],
+        columns: pfileds,
+        pagination: true,
+        rownumbers: false,
+        singleSelect:false,
+        queryParams: getAppraisalProductQueryData()
+    });
+
+}
+
+
+//选择
+function add_appraisal_product() {
+	var id = $("input[name='selectProduct']:checked").val();
+	var name = $("input[name='selectProduct']:checked").data("name");
+	var product_code = $("input[name='selectProduct']:checked").data("code");
+	if (!id) {
+		$.messager.alert('提示', '请选择后保存');
+		return;
+	}
+
+	var c_id = $("input[name='selectProduct']:checked").data("cid");
+	var c_name = $("input[name='selectProduct']:checked").data("cname");
+	console.log(c_id);
+	console.log(c_name);
+	$("#product_category_id").val(c_id);
+    var tree = $('#category_id').combotree('tree');
+    var selected = tree.tree('getSelected');
+    $('#category_id').combotree('setValue', c_id).combotree('readonly');
+	//$('#category_id');
+    var selected = tree.tree('getSelected');
+    
+	var brand_id = $("input[name='selectProduct']:checked").data("brandid");
+	if (brand_id > 0) {
+    	var brand_name = $("input[name='selectProduct']:checked").data("brandname");
+    	$('#brand_id').combobox('setValue', brand_id).combobox('readonly');
+	} else {
+    	$('#brand_id').combobox('setValue', '').combobox('readonly',false);
+	}
+	 
+	$("#show").show();
+	$("#product_id").val(id);
+	$("#pn").html(name);
+	$("#product_code").val(product_code);
+	$('#return-refund-dialog').window('close');
+	
+}
+
+
+$(function () {
+	searchAppraisalProductInfo();
+});
+
+$(".more2").click(function () {
+    $(this).closest(".conditions").siblings().toggleClass("hide");
+});
+
+</script>

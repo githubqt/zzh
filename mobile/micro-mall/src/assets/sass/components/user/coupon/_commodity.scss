@@ -1,0 +1,64 @@
+.coupon-commodity {
+    .card-sawtooth {
+        background-image: url('../img/sawtooth.png');
+        background-repeat: repeat-x;
+        background-position: center;
+        background-size: 20px;
+        height: 10px;
+        margin-top: 0.2rem;
+        margin-bottom: -1px;
+        opacity: 0.75;
+    }
+    .coupon-card {
+        background-color: rgba(220, 40, 33, 0.7);
+        padding: 0.2rem 0;
+        h3 {
+            padding: 0.3rem;
+            font-size: 0.4rem;
+            text-align: center;
+            color: $white;
+        }
+        .coupon-time {
+            .t-line {
+                display: block;
+                border-top: 1px solid $white;
+                border-bottom: 1px solid $white;
+                height: 0.2rem;
+                width: 80%;
+                text-align: center;
+                margin: auto;
+            }
+            .valid-time {
+                flex: 3;
+                color: $white;
+                text-align: center;
+            }
+        }
+        .coupon-desc {
+            margin-top: 0.5rem;
+            text-align: center;
+            color: $white;
+            font-size: 1rem;
+            padding: 1rem 0;
+            .coupon-price {}
+            .coupon-price-range {
+                font-size: 0.3rem;
+                margin-top: 0.2rem;
+            }
+        }
+    }
+    .network-list {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        .network-name {
+            font-size: 0.2rem;
+        }
+    }
+    .yd-tabbar {
+        .use-btn {
+            margin-top: 0;
+            border-radius: 0;
+        }
+        padding: 0;
+    }
+}

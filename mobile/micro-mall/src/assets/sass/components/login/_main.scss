@@ -1,0 +1,66 @@
+.login-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #ffffff;
+}
+
+.login-container .navbar-bottom-line-color:after {
+    border-color: $primary !important;
+}
+
+.login-default-avatar {
+    display: block;
+    margin: 0.24rem auto;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    border: 2px solid $primary;
+}
+
+.login-tab-box {
+    margin-top: -1px;
+}
+
+.login-tab-box .yd-tab-box {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 100%;
+}
+
+.active_01 .yd-tab-box {
+    background-image: url("../img/login_01.png");
+}
+
+.active_02 .yd-tab-box {
+    background-image: url("../img/login_02.png");
+}
+
+.login-tab-box .yd-tab-nav:after,
+.login-tab-box .yd-tab-nav .yd-tab-active:before,
+.login-tab-box .yd-tab-nav-item:not(:last-child):after {
+    display: none;
+}
+
+.login-tab-box .yd-tab-nav-item,
+.login-tab-box .yd-tab-active {
+    background-color: transparent !important;
+}
+
+.login-tab-box .yd-tab-nav-item {
+    color: #ffffff;
+}
+
+.login-tab-box .yd-tab-active {
+    color: $primary !important;
+}
+
+.login-tab-box .yd-tab-nav .yd-tab-active:active {
+    background-color: transparent;
+}
+
+.login-tab-box .yd-tab-nav-item>a {
+    line-height: 1.5rem;
+}

@@ -1,0 +1,116 @@
+.enter-cell-item-label {
+  display: block;
+  padding-right: .35rem;
+}
+
+.enter-cell-item-label span {
+  display: inline-block;
+  width: .5rem;
+  height: .5rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: .42rem;
+  color: #666666;
+}
+
+.enter-cell-item-code .yd-cell-left {
+  position: relative;
+}
+
+.enter-cell-item-code .yd-cell-left:after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid #d9d9d9;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+.enter-cell-item-code .yd-cell-left input {
+  width: 1%;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 1rem;
+  border: none;
+  font-size: .3rem;
+  background: transparent;
+  color: #555;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: left;
+}
+
+.enter-cell-item-code .yd-cell-right {
+  padding: 0;
+  text-align: right;
+  justify-content: flex-end !important;
+}
+
+.auth-code {
+  width: 2.2rem;
+  height: .6rem;
+  margin: .12rem 0 0 .24rem;
+}
+
+.enter-btn-box {
+  padding: .35rem;
+  text-align: center;
+}
+
+.enter-to-celerity {
+  display: inline-block;
+  margin-top: .5rem;
+  font-size: .3rem;
+  background-image: linear-gradient(90deg, currentColor 100%, transparent 100%);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+}
+
+.selector-shortcut {
+  display: flex;
+  margin-top: .24rem;
+  font-size: .3rem;
+}
+
+.selector-shortcut li {
+  display: inline-block;
+  list-style-type: none;
+  width: 50%;
+}
+
+.selector-shortcut li:not(:last-child) {
+  text-align: left;
+}
+
+.selector-shortcut li:not(:first-child) {
+  color: #333333;
+  text-align: right;
+}
+
+.enter-container .yd-cell:after {
+  display: none !important;
+}
+
+.enter-container .yd-cell-item {
+  padding-right: .24rem;
+}
+
+.enter-container .yd-cell-item:not(:last-child):after {
+  right: 0;
+  margin-right: .24rem;
+  width: auto !important;
+}

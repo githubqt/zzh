@@ -1,0 +1,162 @@
+<?php include 'layout/_header.phtml'; ?>
+<link href="<?php echo HOST_STATIC;?>common/css/platform.css" rel="stylesheet">
+    <div class="container">
+        <div id="pf-hd">
+            <div class="pf-logo">
+                <img src="<?php echo HOST_STATIC;?>common/images/main/main_logo.png" alt="logo">
+            </div>                
+            <div class="pf-user">
+                <div class="pf-user-photo">
+                    <img src="<?php echo HOST_STATIC;?>common/images/main/user.png" alt="">
+                </div>
+                <h4 class="pf-user-name ellipsis"><?php echo $admin['fullname']?$admin['fullname']:$admin['name']?></h4>
+                <i class="iconfont xiala">&#xe607;</i>
+                <div class="pf-user-panel">
+                    <ul class="pf-user-opt">
+                        <li>
+                            <a href="javascript:;" onclick="showWin()">
+                                <i class="iconfont">&#xe60d;</i>
+                                <span class="pf-opt-name">用户信息</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="pf-modify-pwd"  onclick="passw()" href="javascript:;">
+                                <i class="iconfont">&#xe634;</i>
+                                <span class="pf-opt-name">修改密码</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/index.php?m=Auth&c=Login&a=login">
+                                <i class="iconfont">&#xe60e;</i>
+                                <span class="pf-opt-name">退出</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="pf-bd">
+			<!--右侧菜单-->
+            <div id="pf-sider"></div>
+			<!--iframe-->
+            <div id="pf-page">
+			    <div id="tt" class="easyui-tabs easyui-tabs1" style="width:100%;height:100%;">
+                    <div title="首页" style="padding:10px 5px 5px 10px;">
+                        <iframe class="page-iframe" src="/index.php?m=Auth&c=Auth&a=index" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
+                    </div>
+			    </div>                 
+            </div>
+        </div>
+        <div id="pf-ft">
+            <div class="system-name">
+              <i class="iconfont">&#xe6fe;</i>
+              <span>信息管理系统&nbsp;v1.0</span>
+            </div>
+            <div class="copyright-name">
+              <span>CopyRight&nbsp;2019&nbsp;&nbsp;zhahehe.com&nbsp;版权所有</span>
+              <i class="iconfont" >&#xe6ff;</i>
+            </div>
+        </div> 
+    <div id="win" style="display: none" class="easyui-dialog" title="用户信息" style="width:800px;height:600px"
+        data-options="iconCls:'icon-save',modal:true,collapsible:false,closed:true">
+       <table cellpadding="5" style="width:450px;height:250px;margin:20px 20px 20px 20px">
+    		<tr>
+    			<td><span class="red">*</span> 账号</td>
+    			<td><?php echo $admin['name']?></td>
+    		</tr>
+    		<tr>
+    			<td>姓名</td>
+    			<td><?php echo $admin['fullname']?></td>
+    		</tr>
+    		<tr>
+    			<td>手机号</td>
+    			<td><?php echo $admin['mobile']?></td>
+    		</tr> 
+    		<tr>
+    			<td>邮箱</td>
+    			<td><?php echo $admin['email']?></td>
+    		</tr>
+    		<tr>
+    			<td><span class="red">*</span> 岗位</td>
+    			<td>
+    				<select disabled="disabled" style="width:300px;height:35px;line-height:35px;" name="info[role_id]">
+    					<?php if ($admin['role_id'] > '0') {?>
+	    					<?php if ($parent) {?>
+    	    					<?php foreach ($parent as $k=>$val) {?>
+    	    						<option <?php if ($admin['role_id'] == $val['id']) {?>selected="selected"<?php }?>value="<?php echo $val['id']?>"><?php echo $val['name']?></option>
+    	    					<?php }?>
+	    					<?php }
+                        } else {?>
+                        	<option>超级管理员</option>
+                        <?php }?>
+    				</select>
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>状态</td>
+    			<td>
+    				<input name="info[status]"  type="radio" disabled="disabled" id="status_radio-1" value="2" <?php if ($admin['status']=='2') {?>checked<?php }?>/>
+					<label for="status_radio-1">正常</label>
+					<input name="info[status]"  type="radio" disabled="disabled" style="margin-left:30px" id="status_radio-2" value="1" <?php if ($admin['status']=='1') {?>checked<?php }?>/>
+					<label for="status_radio-2">禁用</label>
+				</td>
+    		</tr>
+    	</table>
+    </div>
+    <div id="passw" style="display: none" class="easyui-dialog" title="修改密码" style="width:800px;height:600px"
+        data-options="iconCls:'icon-save',modal:true,collapsible:false,closed:true">
+       
+           <table cellpadding="5" style="width:450px;height:250px;margin:20px 20px 20px 20px">
+        		<tr>
+        			<td> 账号</td>
+        			<td><?php echo $admin['name']?></td>
+        		</tr>
+        		<tr>
+        			<td>姓名</td>
+        			<td><?php echo $admin['fullname']?></td>
+        		</tr>
+        		<tr>
+        			<td>手机号</td>
+        			<td><?php echo $admin['mobile']?></td>
+        		</tr> 
+        		<tr>
+        			<td>邮箱</td>
+        			<td><?php echo $admin['email']?></td>
+        		</tr>
+        		<tr>
+        			<td><span class="red">*</span> 新密码</td>
+        			<td><input class="easyui-textbox" data-options="validType:['engnumber']" type="text" name="info[password]" id="password" style="width:300px;height:35px;line-height:35px;"></input></td>
+        		</tr>
+        		<tr>
+        			<td><span class="red">*</span> 确认密码</td>
+        			<td><input class="easyui-textbox" data-options="validType:['engnumber']" type="text" name="info[repassword]" id="repassword" style="width:300px;height:35px;line-height:35px;"></input></td>
+        		</tr>
+        	</table>
+        	<div style="padding:25px">
+		    	<input type="button" onclick="shopSetadd()" class="easyui-linkbutton" data-options="selected:true" value="保存" >
+		    	<a href="/index.php?m=Index&c=Index&a=index" style="margin-left:15px" class="easyui-linkbutton" >返回</a>
+		    </div>
+    	</div>
+    </div>
+    <input type="hidden" value="<?php echo $admin['id'];?>" id="hide_user_id">
+    <script type="text/javascript" src="<?php echo HOST_STATIC;?>common/js/main.js"></script>
+    <!--[if IE 7]>
+      <script type="text/javascript">
+        $(window).resize(function(){
+          $('#pf-bd').height($(window).height()-76);
+        }).resize();
+      </script>
+    <![endif]-->  
+    <script type="text/javascript">
+    $('.easyui-tabs1').tabs({
+      tabHeight: 44,
+      onSelect:function(title,index){
+        var currentTab = $('.easyui-tabs1').tabs("getSelected");
+        if(currentTab.find("iframe") && currentTab.find("iframe").size()){
+            currentTab.find("iframe").attr("src",currentTab.find("iframe").attr("src"));
+        }
+      }
+    });
+    </script>         
+<?php include 'layout/_footer.phtml'; ?>

@@ -1,0 +1,17 @@
+.suggest .yd-cell-left {
+  padding-right: 0.1rem;
+}
+
+.suggest .yd-cell-box {
+  margin-top: 0.2rem;
+}
+
+.suggest .title {
+  display: block;
+  padding: 0.2rem 0.24rem 0 0.24rem;
+  color: #333;
+  font-weight: normal;
+  font-size: .3rem;
+  white-space: nowrap;
+  text-align: left;
+}

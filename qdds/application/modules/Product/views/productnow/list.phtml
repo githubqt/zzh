@@ -1,0 +1,65 @@
+<?php include APPLICATION_PATH.'/application/views/index/layout/_header.phtml'; ?>
+
+<style>
+
+#rot270{-moz-transform:rotate(270deg); -webkit-transform:rotate(270deg); transform:rotate(270deg); filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);}
+#rot90{-moz-transform:rotate(90deg); -webkit-transform:rotate(90deg); transform:rotate(90deg); filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);}
+        
+</style>
+	<div class="container" >
+
+	 <div id="tb" class="easyui-panel"   style="background-color:#f1f1f1">
+        <div class="conditions" style="margin:20px 20px 20px ;">
+            <span class="con-span">商品编码 </span>
+            <input class="easyui-textbox" type="text" name="self_code" id="self_code" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+            <span class="con-span">商品名称 </span>
+            <input class="easyui-textbox" type="text" name="name" id="name" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+
+            <a href="javascript:;" class="easyui-linkbutton query" style="margin-left:10px;" iconCls="icon-search" data-options="selected:true">查询</a>
+            <a href="javascript:;" class="easyui-linkbutton reset" style="margin-left:10px;" iconCls="icon-reload">重置</a>
+            <a href="javascript:;" class="easyui-linkbutton more"  style="margin-left:10px;" iconCls="icon-more">更多</a>
+        </div>
+        <div class="conditions hide" style="margin:20px 20px 20px ">
+            <span class="con-span">品牌名称 </span>
+            <input class="easyui-combobox"  style="height:35px;width:166px;line-height:35px;" id="brand_id"
+    			name="info[brand_id][]"
+    			data-options="
+    					url:'/?c=Public&a=channelBrand&type=4',
+    					method:'get',
+    					valueField:'id',
+    					textField:'name',
+    					multiple:true,
+    					panelHeight:'190'
+    			">
+        	<span class="con-span">操作人 </span>
+            <input class="easyui-textbox" type="text" name="admin_name" id="admin_name" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+        	
+        	<span class="con-span">添加时间 </span>
+        	<input class="easyui-datebox" style="width:166px;height:35px;line-height:35px;" name="start_time" id="start_time" />
+        	<span class="con-span"> —— </span>
+        	<input class="easyui-datebox" style="width:166px;height:35px;line-height:35px;" name="end_time" id="end_time" />
+        </div>
+        <div class="conditions hide" style="margin:20px 20px 20px ">
+           <span class="con-span">自定义码 </span>
+            <input class="easyui-textbox" type="text" name="custom_code" id="custom_code" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+        </div>
+      </div>
+      <table id="dg"   class="easyui-datagrid" ></table>
+ </div>   	
+ <div id="tuiguang" style="display:none"></div>
+ <div id="preview" hidden></div>
+ <div id="previewCode" hidden></div>
+ <div id="all" hidden></div>
+ <div id="selectCode" hidden></div>
+ 
+ <script type="text/javascript">
+	var m_url = '<?php echo $suppplier['m_url'];?>';
+	var phone = '<?php echo $suppplier['phone'];?>';
+	var company = '<?php echo $suppplier['company'];?>';
+</script>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/common/qdd.list.js"></script>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/common/qdd.grid.js"></script>
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>qdds/js/page/productnow/list.js"></script> 
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>common/js/calendar.js"></script> 
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>common/js/LodopFuncs.js"></script> 
+<?php include APPLICATION_PATH.'/application/views/index/layout/_footer.phtml'; ?>

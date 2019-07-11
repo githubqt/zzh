@@ -1,0 +1,77 @@
+.home-newest {
+    .products {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+        padding: 0 0.1rem;
+        background: $secondary-bg-color;
+        .item {
+            background: $primary-bg-color;
+            display: inline-block;
+            // border: 1px solid $border-color;
+            padding: 0.1rem;
+            width: 5.4rem;
+            margin-left: 0.1rem;
+            &:first-child {
+                margin-left: 0;
+            }
+            img {
+                float: left;
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+            .right {
+                float: left;
+                margin-left: 0.2rem;
+                width: 3.4rem;
+                height: 1.5rem;
+                overflow: hidden;
+                .title {
+                    width: 3.4rem;
+                    white-space: pre-wrap;
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    word-break: break-all;
+                    text-overflow: ellipsis;
+                    text-align: justify;
+                    font-size: 0.3rem;
+                    line-height: 0.48rem;
+                    // max-height: 0.4 * 2 + .2rem;
+                }
+                .price {
+                    width: 3.4rem;
+                    display: block;
+                    word-break: break-all;
+                    text-overflow: ellipsis;
+                    white-space: pre-wrap;
+                    overflow: hidden;
+                    margin-top: 0.12rem;
+                    .new {
+                        color: $primary;
+                        font-size: 0.3rem;
+                        width: 2rem;
+                        word-break: break-all;
+                        text-overflow: ellipsis;
+                        text-align: justify;
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
+                    .old {
+                        text-decoration: line-through;
+                        display: inline-block;
+                        color: $secondary;
+                        width: 1.4rem;
+                        word-break: break-all;
+                        text-overflow: ellipsis;
+                        text-align: justify;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        vertical-align: bottom;
+                    }
+                }
+            }
+        }
+    }
+}

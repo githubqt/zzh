@@ -1,0 +1,7 @@
+$customiconfont:"customiconfont";
+@import './icons/fontface';
+@import './icons/customicons';
+[class^="icon-custom-"]:before,
+[class*=" icon-custom-"]:before {
+    font-family: 'customiconfont';
+}

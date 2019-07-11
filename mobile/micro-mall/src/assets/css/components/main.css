@@ -1,0 +1,13 @@
+.active {
+  color: #dab461 !important;
+}
+
+.main-tabbar-box {
+  width: 100%;
+  height: 1rem;
+}
+
+.main-tabbar-box .yd-tabbar {
+  padding: 0;
+  height: 1rem;
+}

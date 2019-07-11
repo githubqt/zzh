@@ -1,0 +1,67 @@
+<?php include APPLICATION_PATH.'/application/views/index/layout/_header_v2.phtml'; ?>
+<link rel="stylesheet" type="text/css" href="<?php echo HOST_STATIC;?>common/js/webuploader/0.1.5/webuploader.css">
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>common/js/webuploader/0.1.5/webuploader.js"></script>
+    <style>
+        table tr td:first-child {
+            text-align: right;
+        }
+        table tr td:last-child {
+            text-align: left;
+        }
+    </style>
+<link rel="stylesheet" type="text/css" href="<?php echo HOST_STATIC; ?>common/css/table.css">
+    <link href="<?php echo HOST_STATIC; ?>common/css/process.css" rel="stylesheet">
+
+	<div style="margin:20px 0;"></div>
+		<div style="padding:10px 60px 20px 60px">
+	    <form id="ff" method="post" action="/index.php?m=Auth&c=Admin&a=edit&format=edit&id=<?php echo $data['id'];?>">
+	    	<table class="table table-bordered" style="margin-bottom: 100px;">
+	    		<tr>
+	    			<td><span class="red">*</span> 账号</td>
+	    			<td><?php echo $data['name']?></td>
+	    		</tr>
+	    		<tr>
+	    			<td>姓名</td>
+	    			<td><input class="easyui-textbox" value="<?php echo $data['fullname']?>" type="text" name="info[fullname]"  style="width:300px;height:35px;line-height:35px;"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>手机号</td>
+	    			<td><input class="easyui-numberbox" data-options="validType:['engnumber']" value="<?php echo $data['mobile']?>" validtype="mobile" type="text" name="info[mobile]"  style="width:300px;height:35px;line-height:35px;"></input></td>
+	    		</tr> 
+	    		<tr>
+	    			<td>邮箱</td>
+	    			<td><input class="easyui-textbox" value="<?php echo $data['email']?>" validtype="email" type="text" name="info[email]"  style="width:300px;height:35px;line-height:35px;"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td><span class="red">*</span> 岗位</td>
+	    			<td>
+	    				<select style="width:300px;height:35px;line-height:35px;" name="info[role_id]">
+	    					<?php if ($parent) {?>
+    	    					<?php foreach ($parent as $k=>$val) {?>
+    	    						<option <?php if ($data['role_id'] == $val['id']) {?>selected="selected"<?php }?>value="<?php echo $val['id']?>"><?php echo $val['name']?></option>
+    	    					<?php }?>
+	    					<?php }?>
+	    				</select>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>状态</td>
+	    			<td>
+	    				<input name="info[status]"  type="radio" id="status_radio-1" value="2" <?php if ($data['status']=='2') {?>checked<?php }?>/>
+						<label for="status_radio-1">正常</label>
+						<input name="info[status]"  type="radio" style="margin-left:30px" id="status_radio-2" value="1" <?php if ($data['status']=='1') {?>checked<?php }?>/>
+						<label for="status_radio-2">禁用</label>
+					</td>
+	    		</tr>
+	    		</table>
+	    		
+	    	<div style="padding:25px;position: fixed;bottom: 0px;width: 100%;background: #f1f1f1;text-align: center;margin-left: -70px;">
+		    	<input type="submit" class="easyui-linkbutton" data-options="selected:true" value="保存" >
+		    	<a href="/index.php?m=Auth&c=Admin&a=list" style="margin-left:15px" class="easyui-linkbutton" >返回</a>
+		    </div>
+	    </form>
+	    
+	</div>
+
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>qdds/js/page/admin/edit.js"></script> 
+<?php include APPLICATION_PATH.'/application/views/index/layout/_footer.phtml'; ?>

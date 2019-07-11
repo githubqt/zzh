@@ -1,0 +1,58 @@
+.bidding .search-box {
+  padding: .2rem;
+  background: #fff;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #f8f9fa;
+}
+.bidding .search-box .status,
+.bidding .search-box .order {
+  width: 50%;
+  float: left;
+  height: .6rem;
+  line-height: .6rem;
+  text-align: center;
+  font-size: 0.3rem;
+}
+.bidding .search-box .status .txt,
+.bidding .search-box .order .txt {
+  margin-right: 0.2rem;
+}
+.bidding .search-box .active {
+  color: #dc2821;
+}
+.bidding .search-box .order {
+  border-left: 1px solid #ced4da;
+}
+.bidding .tab-mask {
+  height: 100%;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  background-color: #ccc;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 99;
+}
+.bidding .tab-mask .tab-box {
+  background-color: #fff;
+}
+.bidding .tab-mask .tab-box .tab-item {
+  display: block;
+  height: .8rem;
+  line-height: .8rem;
+  font-size: 0.3rem;
+  padding: 0 0.3rem;
+  margin: 0;
+}
+.bidding .tab-mask .tab-box .active {
+  color: #dc2821;
+}
+.bidding .product-img {
+  position: relative;
+}
+.bidding .product-img .status-txt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+}

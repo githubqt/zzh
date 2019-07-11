@@ -1,0 +1,65 @@
+# LogFrom:d:/zzh/qdds/public/index.php LogSetPath:SQL/sql #
+
+2019-07-05 13:52:11 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Index AND `method` = Index AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:52:11 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:52:12 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:52:12 OUTPUT:SELECT * FROM `qdd_auth_permission` WHERE `parent` = 0 AND `is_del` = 2 AND `type` = 5 ORDER BY order_num asc 
+2019-07-05 13:52:12 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Auth AND `method` = Auth AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:52:12 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:52:12 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Index AND `method` = Index AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:52:12 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:52:12 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:52:12 OUTPUT:SELECT * FROM `qdd_auth_permission` WHERE `parent` = 0 AND `is_del` = 2 AND `type` = 5 ORDER BY order_num asc 
+2019-07-05 13:52:12 OUTPUT:select a.* from qdd_auth_permission as a,qdd_auth_role_permission as b where b.role_id = 1 and b.permission_id = a.id and a.is_del = 2 and b.is_del = 2
+2019-07-05 13:52:12 OUTPUT:SELECT * FROM `qdd_auth_permission` WHERE `parent` = 511 AND `is_del` = 2 AND `type` = 5 ORDER BY order_num asc 
+2019-07-05 13:52:12 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Auth AND `method` = Auth AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:52:12 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:52:12 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Auth AND `method` = Auth AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:52:12 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:52:12 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Auth AND `method` = Auth AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:52:12 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:52:12 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Auth AND `method` = Auth AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:52:12 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:38 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = AND `method` = AND `action` = AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:56:39 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:39 OUTPUT:select a.* from qdd_auth_permission as a,qdd_auth_role_permission as b where b.role_id = 1 and b.permission_id = a.id and a.is_del = 2 and b.is_del = 2
+2019-07-05 13:56:39 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:39 OUTPUT:SELECT * FROM `qdd_auth_permission` WHERE `parent` = 0 AND `is_del` = 2 AND `type` = 5 ORDER BY order_num asc 
+2019-07-05 13:56:40 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Auth AND `method` = Auth AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:56:40 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:40 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Index AND `method` = Index AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:56:40 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:40 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:40 OUTPUT:SELECT * FROM `qdd_auth_permission` WHERE `parent` = 0 AND `is_del` = 2 AND `type` = 5 ORDER BY order_num asc 
+2019-07-05 13:56:40 OUTPUT:select a.* from qdd_auth_permission as a,qdd_auth_role_permission as b where b.role_id = 1 and b.permission_id = a.id and a.is_del = 2 and b.is_del = 2
+2019-07-05 13:56:40 OUTPUT:SELECT * FROM `qdd_auth_permission` WHERE `parent` = 511 AND `is_del` = 2 AND `type` = 5 ORDER BY order_num asc 
+2019-07-05 13:56:40 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Auth AND `method` = Auth AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:56:40 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:40 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Auth AND `method` = Auth AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:56:40 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:40 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Auth AND `method` = Auth AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:56:40 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:40 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Auth AND `method` = Auth AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:56:40 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:53 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = AND `method` = AND `action` = AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:56:53 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:54 OUTPUT:select a.* from qdd_auth_permission as a,qdd_auth_role_permission as b where b.role_id = 1 and b.permission_id = a.id and a.is_del = 2 and b.is_del = 2
+2019-07-05 13:56:55 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:55 OUTPUT:SELECT * FROM `qdd_auth_permission` WHERE `parent` = 0 AND `is_del` = 2 AND `type` = 5 ORDER BY order_num asc 
+2019-07-05 13:56:55 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Auth AND `method` = Auth AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:56:55 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:55 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Index AND `method` = Index AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:56:55 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:55 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:55 OUTPUT:SELECT * FROM `qdd_auth_permission` WHERE `parent` = 0 AND `is_del` = 2 AND `type` = 5 ORDER BY order_num asc 
+2019-07-05 13:56:55 OUTPUT:select a.* from qdd_auth_permission as a,qdd_auth_role_permission as b where b.role_id = 1 and b.permission_id = a.id and a.is_del = 2 and b.is_del = 2
+2019-07-05 13:56:55 OUTPUT:SELECT * FROM `qdd_auth_permission` WHERE `parent` = 511 AND `is_del` = 2 AND `type` = 5 ORDER BY order_num asc 
+2019-07-05 13:56:55 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Auth AND `method` = Auth AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:56:55 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:57 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = AND `method` = AND `action` = AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:56:57 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:57 OUTPUT:select a.* from qdd_auth_permission as a,qdd_auth_role_permission as b where b.role_id = 1 and b.permission_id = a.id and a.is_del = 2 and b.is_del = 2
+2019-07-05 13:56:57 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1
+2019-07-05 13:56:57 OUTPUT:SELECT * FROM `qdd_auth_permission` WHERE `parent` = 0 AND `is_del` = 2 AND `type` = 5 ORDER BY order_num asc 
+2019-07-05 13:56:58 OUTPUT:SELECT `id`,`parent`,`action`,`method`,`modules`,`name` FROM `qdd_auth_permission` WHERE `modules` = Auth AND `method` = Auth AND `action` = index AND `type` = 5 AND `is_del` = 2 LIMIT 1
+2019-07-05 13:56:58 OUTPUT:SELECT * FROM `qdd_admin` WHERE `id` = 3 LIMIT 1

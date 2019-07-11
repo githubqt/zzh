@@ -1,0 +1,233 @@
+<?php include APPLICATION_PATH.'/application/views/index/layout/_header_v2.phtml'; ?>
+<link rel="stylesheet" type="text/css" href="<?php echo HOST_STATIC;?>common/js/webuploader/0.1.5/webuploader.css">
+
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>common/js/webuploader/0.1.5/webuploader.js"></script> 
+
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>common/js/upload.js"></script> 
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>common/js/sprintf.js"></script> 
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>common/js/multiple_upload.js"></script> 
+<style>
+.img-position-desc {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: rgba(166,156,146,.4);
+    padding: .1rem 0;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    width: 200px;
+    margin-top: -25px;
+    height: 22px;
+    line-height: 20px;
+}
+.webuploader-pick {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    text-align: center;
+}
+
+.icon-file {
+	background-image:url(<?php echo HOST_STATIC;?>/common/images/file_icon.png);
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ccc;
+    float: left;
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+	margin: 5px;
+}
+.wrong {
+     position: relative;
+    left: 175px;
+    border: 1px solid;
+    width: 20px;
+    text-align: center;
+    border-radius: 15px;
+    margin-top: 5px;
+    color: #a7a3a3;
+    margin-bottom: -28px;
+	cursor:pointer;
+}
+</style>
+	<div style="margin:20px 0;"></div>
+		<div style="padding:10px 60px 20px 60px">
+	    <form id="ff" method="post" action="/index.php?m=Product&c=Product&a=openappraisal&format=add" autocomplete="off">
+	    	<table cellpadding="5" style="margin-bottom: 100px;">
+	    		<tbody>
+		    		<tr>
+		    			<td> 选择现有商品</td>
+		    			<td>
+		    				<a href="javascript:;" onclick="$('#return-refund-dialog').window('open');" class="easyui-linkbutton" style="margin-left:10px;" data-options="selected:true">选择现有商品</a>
+		    				&nbsp;&nbsp;<span id="show" style="display:none">已选择商品：&nbsp;<b id="pn" style="font-size: 15px"></b></span>
+    						<input type="hidden" name="info[product_id]" id="product_id"/>
+    						<input type="hidden" name="info[product_code]" id="product_code"/>
+		    			</td>
+		    		</tr>
+		    		<tr>
+		    			<td><span class="red">*</span> 商品分类</td>
+		    			<td>
+		    				<select id="category_id" class="easyui-combotree" name="info[category_id]"  style="width:300px;height:35px;line-height:35px;">		
+		    				</select> （输入关键词匹配要选择的分类）
+		    				<input type="hidden" value="" name="product_category_id" id="product_category_id">
+		    			</td>
+		    		</tr>
+		    		<tr>
+		    			<td><span class="red">*</span> 商品品牌</td>
+		    			<td>
+		    					<input class="easyui-combobox" name="info[brand_id]" id="brand_id" style="width:300px;height:35px;line-height:35px;"
+									data-options="
+										url:'/?c=Public&a=brand',
+										method:'get',
+										valueField:'id',
+										textField:'name',
+										panelHeight:'200',
+										required: true
+									">
+		    				（输入关键词匹配要选择的品牌）
+		    				<input type="hidden" value="" name="product_brand_id" id="product_brand_id">
+		    			</td>
+		    		</tr>
+                    <!-- <tr>
+                        <td> 鉴定编号</td>
+                        <td><input class="easyui-textbox" type="text" name="info[appraisal_code]" style="width:300px;height:35px;line-height:35px;" /></td>
+                    </tr> -->
+                    <tr>
+                        <td> 材质</td>
+                        <td><input class="easyui-textbox" type="text" name="info[appraisal_material]"  style="width:300px;height:35px;line-height:35px;" /></td>
+                    </tr>
+                    <tr>
+                        <td><span class="red">*</span> 使用时间</td>
+                        <td><input class="easyui-textbox" data-options="required: true" type="text" name="info[use_time_note]"  style="width:300px;height:35px;line-height:35px;" /></td>
+                    </tr>
+		    		<tr>
+		    			<td> 包体瑕疵</td>
+		    			<td>
+                            <div style="border: 1px solid #ccc;width:350px;float:left">
+                            	<?php foreach (\Services\Appraisal\AppraisalBaseService::APPRAISAL_FLAW_STATUS as $value=>$name){?>
+                        			<div style="float:left;width:100px;margin:6px">
+                        				<input value="<?php echo $value?>" name="appraisal_flaw[]" type="checkbox"><?php echo $name?>
+                        			</div>
+                            	<?php }?>
+                            </div>
+                        </td>
+		    		</tr>
+		    		<tr>
+		    			<td> 附件</td>
+		    			<td>
+                            <div style="border: 1px solid #ccc;width:350px;float:left">
+                            	<?php foreach (\Services\Appraisal\AppraisalBaseService::APPRAISAL_ENCLOSURE_STATUS as $value=>$name){?>
+                        			<div style="float:left;width:100px;margin:6px">
+                        				<input value="<?php echo $value?>" name="appraisal_enclosure[]" type="checkbox"><?php echo $name?>
+                        			</div>
+                            	<?php }?>
+                            </div>
+                        </td>
+		    		</tr>
+                    <tr>
+                        <td><span class="red">*</span> 尺寸</td>
+                        <td width="800">
+                            <textarea name="info[appraisal_size]" style="width:350px; height:100px;"></textarea><br>
+                            <span class="red">* 包：底部长度，表：表盘直径，首饰：圈号或长度</span><br><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 描述内容</td>
+                        <td width="637">
+                            <textarea maxlength="60" placeholder="请描述商品信息，如有破损请特别说明，以免影响估价的准确性（60字以内）" name="info[appraisal_note]" style="width:640px; height:80px;"></textarea>
+                        </td>
+                    </tr>                
+		    		<tr>
+		    			<td><span class="red">*</span> 上传照片</td>
+		    			<td>
+		    				<div style="border: 1px solid #ccc;width:640px;display: table;margin-bottom: 20px;">
+		    					<span style="float:left;width: 100%;margin-left: 6px;color: #797979;height: 30px;line-height: 30px;">请尽量上传清晰详细的照片，估价将更精准</span>
+		    					<?php foreach (\Services\Appraisal\AppraisalBaseService::APPRAISAL_IMAGE_VALUE as $key=>$value){?>
+    								<div style="margin: 5px;border:1px solid #ccc;width:200px;float:left" id="filePicker<?php echo $value['id']?>">
+    									<img id="logo_show_info_<?php echo $value['id']?>"  width="200" height="200"  src="<?php echo $value['cover'];?>"  />
+    									<div class="img-position-desc"><?php echo $value['name']?></div>
+    									<input id="img_url_<?php echo $value['id']?>" type="hidden" name="logo_url[<?php echo $value['id']?>]" />
+									</div>
+								<?php }?>
+								<span style="float:left;width: 100%;margin-left: 6px;height: 30px;line-height: 30px;">添加更多照片</span>
+								<span style="float:left;width: 100%;margin-left: 6px;color: #797979;height: 30px;line-height: 30px;">更多磨损部位请补充图片内上传</span>
+								
+								<div style="margin: 5px;border:1px solid #ccc;width:200px;height:200px;float:left"  id="filePicker">
+									<img width="100" height="100" style="margin-top: 50px;margin-bottom: 50px;" src="<?php echo HOST_STATIC;?>/common/images/file_icon.png"  />
+									<div class="img-position-desc" >补充图片</div>
+								</div>
+							</div>
+		    			</td>
+		    		</tr>
+	    		</tbody>
+	    	</table>
+	    	<div style="padding:25px;position: fixed;bottom: 0px;width: 100%;background: #f1f1f1;text-align: center;margin-left: -70px;">
+		    	<input type="submit" class="easyui-linkbutton" data-options="selected:true" value="保存" >
+		    	<a href="/index.php?m=Product&c=Product&a=list" style="margin-left:15px" class="easyui-linkbutton" >返回</a>
+		    </div>
+	    </form>
+	    
+	</div>
+
+
+<script type="text/javascript">
+$(function(){
+	var qddUpload = Object.create(QddUpload);
+	qddUpload.urlUpload = '<?php echo HOST_FILE;?>/img.php?classify=appraisal';
+	qddUpload.filePicker = 'filePicker'
+	qddUpload.callBack = function(response) {
+        if (response.code == '200') {
+			var num = $(".other_num").length+1;
+            
+        	var html = '<div style="margin: 5px;border:1px solid #ccc;width:200px;float:left" class="other_num" id="other_'+num+'">'+
+        					'<div class="wrong" onclick="delother('+num+')">X</div>'+
+        					'<img width="200" height="200"  src="<?php echo HOST_FILE;?>'+response.data+'"  />'+
+        					'<input type="hidden" value="'+response.data+'" name="other_url[]">'+
+        				'</div>';
+			$('#filePicker').before(html);
+        } else {
+          	$.messager.alert('提示', '上传失败');
+        }
+	  }
+
+	qddUpload.run();
+	<?php foreach (\Services\Appraisal\AppraisalBaseService::APPRAISAL_IMAGE_VALUE as $key=>$value){?>
+    	var qddUpload<?php echo $value['id']?> = Object.create(QddUpload);
+    	qddUpload<?php echo $value['id']?>.urlUpload = '<?php echo HOST_FILE;?>/img.php?classify=appraisal';
+		qddUpload<?php echo $value['id']?>.filePicker = 'filePicker<?php echo $value['id']?>'
+		qddUpload<?php echo $value['id']?>.callBack = function(response) {
+		      if (response.code == '200') {
+	    	  	$('#logo_show_info_<?php echo $value['id']?>').attr('src','<?php echo HOST_FILE;?>'+response.data); 
+	    	  	$('#img_url_<?php echo $value['id']?>').val(response.data); 
+		      } else {
+		    	  $.messager.alert('提示', '上传失败');
+			  }
+	      }
+		qddUpload<?php echo $value['id']?>.run();
+    <?php }?>
+})
+
+function delother(id) {
+	$.messager.confirm('温馨提示', '您确定要删除吗?',function(res){
+		if (res == true) {
+			$("#other_"+id).remove();
+		}
+	})
+}
+
+</script>	    
+
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>qdds/js/page/product/openappraisal.js"></script> 
+
+<?php include APPLICATION_PATH . '/application/views/index/templates/product/select_product.phtml'; ?>
+<?php include APPLICATION_PATH.'/application/views/index/layout/_footer.phtml'; ?>

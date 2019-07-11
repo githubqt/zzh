@@ -1,0 +1,100 @@
+.coupons {
+    background-color: $primary-bg-color;
+    .coupon-center {
+        height: 0.696rem;
+        background-color: $primary-bg-color;
+        width: 100%;
+        text-align: center;
+        line-height: 0.696rem;
+        font-size: 0.3rem;
+        color: $primary;
+    }
+    .coupon-panel {
+        padding: 0.24rem;
+        background-color: $primary-bg-color;
+        .coupon-item {
+            .coupon-yd-flexbox {
+                border-left: 1px solid $primary;
+                border-right: 1px solid $primary;
+                border-top: 1px solid $primary;
+                border-bottom: none;
+                border-radius: 0.2rem;
+                background-color: rgba(220, 40, 33, 0.05);
+                .coupon-item-left {
+                    text-align: center;
+                    border-right: 1px dashed $primary;
+                    padding: 0.4rem 0;
+                    .coupon-price {
+                        font-size: 0.6rem;
+                        font-weight: bold;
+                        // color: $primary;
+                        .price-type {
+                            font-size: 0.2rem;
+                        }
+                    }
+                }
+                .coupon-item-right {
+                    flex: 2;
+                    .coupon-type {
+                        margin-left: 0.2rem;
+                        margin-right: 0.1rem;
+                        padding: 0.2rem 0;
+                    }
+                    .coupon-expire {
+                        margin-left: 0.2rem;
+                    }
+                }
+            }
+            .coupon-product {
+                margin-bottom: 0.2rem;
+                border: none;
+                background-color: rgba(220, 40, 33, 0.05);
+                .coupon-product-list {
+                    border-left: 1px solid $primary;
+                    border-right: 1px solid $primary;
+                    border-bottom: 1px solid $primary;
+                    border-top: 1px dashed $primary;
+                    border-radius: 0.2rem;
+                    .product-list-title {
+                        position: relative;
+                        .be-suitable {
+                            padding: 0.2rem 0 0.2rem 0.2rem;
+                            display: block;
+                        }
+                        .bottom-img {
+                            position: absolute;
+                            width: 0.5rem;
+                            margin-right: .15rem;
+                            right: 0;
+                            top: .1rem;
+                        }
+                    }
+                    .show-border-bottom {
+                        border-bottom: 1px dashed $primary;
+                    }
+                    .product-list-item {
+                        .yd-flexbox {
+                            .yd-flexbox-item:first-child {
+                                flex: 2;
+                            }
+                        }
+                        .item-name {
+                            padding-top: .2rem;
+                            padding-left: .1rem;
+                            display: block;
+                        }
+                        &:last-child {
+                            padding-bottom: 0.2rem;
+                        }
+                        .click-use {
+                            color: $primary;
+                            margin-left: .3rem;
+                            text-align: right;
+                            margin-right: 0.3rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

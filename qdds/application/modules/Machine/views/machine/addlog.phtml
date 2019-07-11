@@ -1,0 +1,20 @@
+<?php include APPLICATION_PATH.'/application/views/index/layout/_header_v2.phtml'; ?>
+    <div style="margin:20px 0;"></div>
+    <div style="padding:10px 60px 20px 60px">
+        <form id="ff" method="post" action="/index.php?m=Machine&c=Machine&a=addlog&format=add&id=<?=$id?>" autocomplete="off">
+	    	<table cellpadding="5" style="margin-bottom: 100px;">
+	    		<tbody>
+                    <tr>
+                        <td> 维护备注</td>
+                        <td width="800"><textarea  name="info[note]" style="width:800px; height:80px;"></textarea></td>
+                    </tr>
+	    		</tbody>
+	    	</table>
+	    	<div style="padding:25px;position: fixed;bottom: 0px;width: 100%;background: #f1f1f1;text-align: center;margin-left: -70px;z-index: 400">
+		    	<input type="submit" class="easyui-linkbutton" data-options="selected:true" value="保存" >
+		    	<a href="/index.php?m=Machine&c=Machine&a=list" style="margin-left:15px" class="easyui-linkbutton" >返回</a>
+		    </div>
+	    </form>
+	</div>
+    <script type="text/javascript" src="<?php echo HOST_STATIC;?>qdds/js/page/machine/addlog.js"></script>
+<?php include APPLICATION_PATH.'/application/views/index/layout/_footer.phtml'; ?>

@@ -1,0 +1,11 @@
+# LogFrom:d:/zzh/api/public/index.php LogSetPath:Debug/E_USER_ERROR #
+
+URL: /v1/Machine/logview
+REF: 
+DATE: 2019-07-11 11:40:15
+INFO: 错误级别: E_USER_ERROR(256), 文件: D:\zzh\api\application\Bootstrap.php, 行号: 105
+MSG: syntax error, unexpected '$log' (T_VARIABLE), expecting ',' or ';' (0)in D:\zzh\api\application\modules\V1\views\machine\logview.phtml on line 57
+TRACE: #0  Bootstrap->{closure}()
+#1  trigger_error() called at [D:\zzh\api\application\Bootstrap.php:105]
+#2  Bootstrap->{closure}()
+

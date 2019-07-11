@@ -1,0 +1,51 @@
+.home-newest .products {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 0 0.1rem;
+  background: #F5F5F5;
+}
+.home-newest .products .item {
+  background: #fff;
+  display: inline-block;
+  padding: 0.1rem;
+  width: 4.8rem;
+  margin-left: 0.1rem;
+}
+.home-newest .products .item:first-child {
+  margin-left: 0;
+}
+.home-newest .products .item img {
+  float: left;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.home-newest .products .item .right {
+  float: left;
+  margin-left: 0.2rem;
+  height: 1.5rem;
+}
+.home-newest .products .item .right .title {
+  width: 2.8rem;
+  white-space: pre-wrap;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  text-align: justify;
+}
+.home-newest .products .item .right .price {
+  display: table-cell;
+  vertical-align: bottom;
+  padding-top: 0.15rem;
+}
+.home-newest .products .item .right .price .new {
+  color: #dc2821;
+  font-size: 0.3rem;
+}
+.home-newest .products .item .right .price .old {
+  text-decoration: line-through;
+  color: #adb5bd;
+}

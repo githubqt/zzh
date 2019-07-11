@@ -1,0 +1,127 @@
+.order-container {
+    padding-bottom: 1.24rem;
+}
+
+.order-container .yd-btn-order-coupan {
+    height: 1rem;
+    width: 44.6%;
+    font-size: .36rem;
+    float: left;
+    background-color: #ccc;
+    display: block;
+    text-align: center;
+    margin: 0;
+    line-height: 1rem;
+}
+
+.m-t-1 {
+    margin-top: 1rem;
+}
+
+.order-delivery-site,
+.order-delivery-site span {
+    display: block;
+}
+
+.order-container .yd-preview-header {
+    height: auto !important;
+}
+
+.order-container .yd-preview-header {
+    height: 1.6rem;
+    justify-content: flex-start
+}
+
+.order-product-detail-box {
+    flex: 0 1 auto !important;
+    width: 2rem;
+    height: 2rem;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.order-product-detail-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.order-product-detail-title {
+    flex: 1 !important;
+    padding: .12rem .24rem !important;
+    font-size: 14px !important;
+    text-align: left !important;
+}
+
+.order-container .yd-preview-item {
+    padding-bottom: 0;
+}
+
+.order-product-detail-price {
+    padding: .12rem .12rem 0 0;
+}
+
+.m-b-_24 {
+    margin-bottom: .24rem;
+}
+
+.order-submit-btn {
+    position: fixed;
+    z-index: 10;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: flex-end;
+    background-color: #ffffff;
+}
+
+.order-submit-btn .cart-button-right {
+    max-width: 3.4rem;
+}
+
+.order-submit-btn button {
+    margin: 0 !important;
+}
+
+.order-container .yd-cell-radio-icon:after {
+    color: #dab461 !important;
+}
+
+.order-popup-box .yd-popup {
+    background-color: #efeff4;
+}
+
+.order-popup-box .yd-cell-box {
+    margin-bottom: .12rem;
+}
+
+.order-btn-box {
+    display: block;
+    text-align: center;
+    font-size: .36rem;
+    margin: 0;
+    height: 1rem;
+    line-height: 1rem;
+    background-color: #fff;
+}
+
+.cell-group-padding {
+    white-space: normal;
+    padding: 0 .24rem .12rem 0;
+}
+
+.emphasis {
+    display: inline-block;
+    width: 50%;
+    padding: 0;
+    font-size: 15px;
+    color: #E93B3A;
+}
+
+.emphasis-right {
+    display: inline-block;
+    width: 50%;
+    text-align: right;
+    letter-spacing: .2em;
+}

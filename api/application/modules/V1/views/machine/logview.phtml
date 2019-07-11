@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>设备管理</title>
+<link rel="stylesheet"
+	href="<?php echo HOST_STATIC;?>mobile/css/weui.min.css" />
+<style type="text/css">
+.button-sp-area {
+	margin: 0 auto;
+	padding: 15px 0;
+	width: 60%
+}
+</style>
+<script type="text/javascript"
+	src="<?php echo HOST_STATIC;?>common/custom/jquery.min.js"></script>
+</head>
+<body>
+	<div class="page">
+		<div class="page__hd" style="text-align: center;">
+			<h1 class="page__title">设备管理</h1>
+		</div>
+        <div class="page__bd">
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <p>设备名称</p>
+                    </div>
+                    <div class="weui-cell__ft"><?=$data['machine_name']?></div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <p>设备编码</p>
+                    </div>
+                    <div class="weui-cell__ft"><?=$data['machine_self_code']?></div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <p>自定义码</p>
+                    </div>
+                    <div class="weui-cell__ft"><?=$data['machine_custom_code']?></div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <p>备注</p>
+                    </div>
+                    <div class="weui-cell__ft"><?=$data['machine_note']?></div>
+                </div>
+            </div>
+            <div class="weui-panel weui-panel_access">
+                <div class="weui-panel__hd">维护信息</div>
+                <div class="weui-panel__bd">
+                    <?php foreach ($data['log'] as $log) { ?>
+                        <div class="weui-media-box weui-media-box_text">
+                            <h4 class="weui-media-box__title"><?=$log['created_at']?></h4>
+                            <p class="weui-media-box__desc"><?=$log['admin_name'].'：'.$log['note']?></p>
+                        </div>
+                    <?php } ?>
+                </div>
+<!--                <div class="weui-panel__ft">-->
+<!--                    <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">-->
+<!--                        <div class="weui-cell__bd">查看更多</div>-->
+<!--                        <span class="weui-cell__ft"></span>-->
+<!--                    </a>-->
+<!--                </div>-->
+            </div>
+        </div>
+	</div>
+</body>
+
+</html>
+
+
+
+
+
+

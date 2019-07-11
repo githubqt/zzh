@@ -1,0 +1,120 @@
+.cart-container .yd-cell-box {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.cart-container .yd-cell:after {
+  display: none !important;
+}
+
+.cart-checkbox-box .yd-cell-left {
+  flex: 1 !important;
+}
+
+.cart-checkbox-left {
+  width: 100%;
+  padding: 0.12rem 0;
+}
+
+.cart-preview-img {
+  width: 2.6rem;
+}
+
+.cart-preview-img img {
+  width: 100%;
+}
+
+.price-right-box {
+  padding-left: 0.24rem;
+}
+
+.cart-status-txt {
+  padding-bottom: 0.12rem;
+  font-size: 14px;
+  color: #e93b3a;
+}
+
+.price-right-box .yd-spinner {
+  border: none !important;
+}
+
+.spinner-container > a {
+  position: relative;
+  width: 0.5rem;
+  height: 0.5rem;
+  line-height: 0.5rem;
+  background-color: #f5f5f5;
+}
+
+.spinner-container > a:first-child:after {
+  font-family: YDUI-INLAY;
+  content: "\E60B";
+  color: #777;
+  font-size: 0.18rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.spinner-container > a:last-child:after {
+  font-family: YDUI-INLAY;
+  content: "\E602";
+  color: #777;
+  font-size: 0.18rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.spinner-container > input {
+  border: none;
+  outline: none;
+  width: 1rem;
+  text-align: center;
+  background-color: #fff;
+}
+
+.cart-pay-box {
+  width: 100%;
+  text-align: right;
+  background-color: #fff;
+  padding: 0 0.24rem 0.24rem 0.24rem;
+}
+
+.cart-container .yd-cell-right input[type="checkbox"]:not(.yd-switch):checked + .yd-cell-checkbox-icon:after,
+.yd-cell-right input[type="radio"]:checked + .yd-cell-checkbox-icon:after {
+  color: #dab461 !important;
+}
+
+.cart-container .yd-cell a.yd-cell-item:active,
+.yd-cell label.yd-cell-item:active {
+  background-color: transparent !important;
+}
+
+.cart-button {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  justify-content: flex-end;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+.cart-button .cart-button-left {
+  font-size: 0.24rem;
+  padding: 0.12rem 0.24rem;
+}
+
+.cart-button .cart-button-right {
+  margin: 0 !important;
+  max-width: 3.4rem;
+}
+
+.cart-button-right button {
+  margin: 0 !important;
+}

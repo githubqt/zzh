@@ -1,0 +1,41 @@
+<?php include APPLICATION_PATH.'/application/views/index/layout/_header.phtml'; ?>
+	<div class="container" >
+
+	 <div id="tb" class="easyui-panel"   style="background-color:#f1f1f1">
+        <div class="conditions" style="margin:20px 20px 20px ;">
+            <span class="con-span">名称 </span>
+            <input class="easyui-textbox" type="text" name="name" id="name" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+            <span class="con-span">添加人</span>
+            <input class="easyui-textbox" type="text" name="note" id="note" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+
+            <a href="javascript:;" class="easyui-linkbutton query" style="margin-left:10px;" iconCls="icon-search" data-options="selected:true">查询</a>
+            <a href="javascript:;" class="easyui-linkbutton reset" style="margin-left:10px;" iconCls="icon-reload">重置</a>
+            <a href="javascript:;" class="easyui-linkbutton more"  style="margin-left:10px;" iconCls="icon-more">更多</a>
+        </div>
+        <div class="conditions hide" style="margin:20px 20px 20px ">
+            <span class="con-span">状态 </span>
+            <select id="status" name="status" class="easyui-combobox" style="height:35px;width:166px;">
+            	<option value="">-- 请选择状态 --</option>
+            	<option value="2">正常</option>
+            	<option value="1">禁用</option>
+            </select>
+            <span class="con-span">ID </span>
+            <input class="easyui-numberbox" type="text" name="id" id="id" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+        	<span class="con-span">添加时间 </span>
+        	<input class="easyui-datebox" style="width:166px;height:35px;line-height:35px;" name="start_time" id="start_time" />
+        	<span class="con-span"> —— </span>
+        	<input class="easyui-datebox" style="width:166px;height:35px;line-height:35px;" name="end_time" id="end_time" />
+        </div>
+     
+        <div class="opt-buttons" style="margin:20px 20px 20px ">
+            <a href="/index.php?m=Auth&c=Role&a=add" class="easyui-linkbutton" data-options="selected:true">新增</a>
+        </div>
+      </div>
+      <table id="dg"   class="easyui-datagrid" ></table>
+ </div>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/common/qdd.list.js"></script>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/common/qdd.grid.js"></script>
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>qdds/js/page/role/list.js"></script> 
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>common/js/calendar.js"></script> 
+
+<?php include APPLICATION_PATH.'/application/views/index/layout/_footer.phtml'; ?>

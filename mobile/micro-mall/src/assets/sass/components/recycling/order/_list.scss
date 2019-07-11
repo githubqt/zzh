@@ -1,0 +1,74 @@
+.recycling-order-container {
+    .scroll-container {
+        .order-list {
+            padding: 0.2rem;
+            .order-item {
+                box-shadow: 0 .125rem .25rem rgba($black, .075);
+                border-radius: 0.2rem;
+                border: 1px solid rgba($black, .03);
+                margin-bottom: 0.2rem;
+                padding: 0.2rem;
+                .order-item-number {
+                    padding-bottom: 0.2rem;
+                    display: -webkit-flex;
+                    -webkit-flex-direction: row;
+                    display: flex;
+                    flex-direction: row;
+                    font-size: 0.2rem;
+                    .order-no,
+                    .order-status {
+                        -webkit-flex: 1 1 auto;
+                        flex: 1 1 auto;
+                    }
+                    .order-status {
+                        text-align: right;
+                        color: $primary;
+                    }
+                }
+                .order-item-product {
+                    display: -webkit-flex;
+                    -webkit-flex-direction: row;
+                    display: flex;
+                    flex-direction: row;
+                    font-size: 0.25rem;
+                    img {
+                        width: 2rem;
+                        object-fit: cover;
+                        height: 2rem;
+                        min-width: 2rem;
+                        min-height: 2rem;
+                        margin-right: 0.25rem;
+                    }
+                    .product-title {
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                        overflow: hidden;
+                        word-break: break-all;
+                        font-size: 0.3rem;
+                    }
+                    .processing-desc {
+                        padding: 0.1rem 0;
+                        font-size: 0.2rem;
+                        color: $primary;
+                    }
+                    .processing-desc1 {
+                        color: $yellow;
+                    }
+                    .auction-price,
+                    .final-price {
+                        color: rgba( $primary, 0.9);
+                        padding: 0.1rem 0;
+                    }
+                }
+                .offer-leave {
+                    padding: 0.1rem;
+                    margin-top: 0.24rem;
+                    background-color: rgba( $primary, 0.65);
+                    color: #fff;
+                    font-size: 0.3rem;
+                }
+            }
+        }
+    }
+}

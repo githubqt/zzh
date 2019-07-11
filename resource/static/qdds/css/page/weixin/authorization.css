@@ -1,0 +1,82 @@
+@CHARSET "UTF-8";
+
+#app {
+	margin:30px;
+	margin-top: 10px;
+	margin-bottom: -10px;
+}
+.wxsettled-main-title {
+    color: #4b0;
+    font-size: 18px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 15px;
+}
+.wxsettled-sub-title {
+    font-size: 14px;
+    color: #666;
+    margin-top: 15px;	
+}
+.cert-setting-btn {
+    font-size: 14px;
+    height: 50px;
+    padding-left: 60px;
+    padding-right: 25px;
+    background-image: url(../../../img/weixin_icon.png);
+    background-repeat: no-repeat;
+    background-size: 39px 30px;
+    background-position: 10px;
+    line-height: 47px;
+    color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.btn {
+    border-radius: 2px;
+	display: inline-block;
+}
+.btn-success {
+    background-color: #4b0;
+    border-color: #3da900;
+}
+a {
+    text-decoration: none;	
+    
+}
+.wxsettled-prompt {
+    float: right;
+    width: 327px;
+    font-size: 14px;
+    color: #666;
+    margin-top: 15px;
+    padding: 5px 0 0 20px;
+    list-style: disc inside;
+}
+.wxsettled-prompt p {
+    line-height: 28px;
+}
+.wxsettled-prompt li {
+    margin: 0 0 10px 5px;
+}
+hr {
+    margin-top: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #fff;
+    width:92%;
+    margin-left:0px;
+}
+ .wxsettled-feature-line {
+    font-size: 14px;
+    margin: 30px 0 20px;
+    font-weight: normal;
+    color: #333;
+}
+.table_center {
+	text-align: center;
+    
+}
+.panel-tool {
+    display:none;
+}

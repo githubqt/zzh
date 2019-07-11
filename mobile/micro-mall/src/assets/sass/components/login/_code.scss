@@ -1,0 +1,80 @@
+.code-cell-item-label {
+    display: block;
+    padding-right: .35rem;
+}
+
+.code-cell-item-label~input {
+    width: 1%;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    height: 1rem;
+    border: none;
+    font-size: .3rem;
+    background: transparent;
+    color: #555;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: left;
+}
+
+.code-info-box .yd-cell {
+    padding-right: .24rem;
+}
+
+.code-cell-item-code .yd-cell-left {
+    position: relative;
+}
+
+.code-cell-item-code .yd-cell-left:after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid #d9d9d9;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+.code-cell-item-code .yd-cell-right {
+    padding: 0;
+    text-align: right;
+    justify-content: flex-end !important;
+}
+
+.code-cell-item-code .yd-cell-right button {
+    padding: 0;
+    width: 2.2rem;
+    margin: .12rem 0 0 .24rem;
+}
+
+.code-btn-box {
+    margin-top: 1rem;
+    padding: .35rem;
+    text-align: center;
+}
+
+.code-to-celerity {
+    display: inline-block;
+    margin-top: .5rem;
+    font-size: .3rem;
+    background-image: linear-gradient(90deg, currentColor 100%, transparent 100%);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
+}
+
+.code-container .yd-cell:after {
+    display: none;
+}

@@ -1,0 +1,39 @@
+.myCoupon {
+  padding-bottom: 0.5rem;
+}
+
+.myCoupon .yhq-navbar {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.yhq-tab {
+  padding-top: 1rem !important;
+}
+
+.yd-tab-box {
+  position: fixed !important;
+  top: 1rem !important;
+  z-index: 9999 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+/*.yhq-tab-panel{
+    padding-top:1rem !important;
+}*/
+.tab-footer {
+  position: fixed;
+  height: 0.8rem;
+  background-color: #fff;
+  border-top: 1px solid #eee;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+  line-height: 0.8rem;
+  font-size: 0.3rem;
+  color: #dab461;
+}

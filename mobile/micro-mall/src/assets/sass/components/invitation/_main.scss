@@ -1,0 +1,72 @@
+.invitation-main {
+    background: $primary-bg-color;
+    .mini-img-box {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        img {
+            padding: 1rem;
+            width: 100%;
+        }
+        .img-box-text {
+            text-align: center;
+            font-size: 0.3rem;
+            font-weight: bold;
+            p {
+                padding: 0.1rem;
+            }
+        }
+    }
+    .img-box-btn {
+        margin-top: 0.5rem;
+        padding: 0 0.24rem;
+    }
+    .dialog {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1;
+        .dialog-container {
+            position: relative;
+            top: 20%;
+            z-index: 2;
+            width: auto;
+            height: auto;
+            .default-btn {
+                margin-right: 0.36rem;
+                position: absolute;
+                right: 0;
+                img {
+                    display: inline-block;
+                    height: 0.8rem !important;
+                    float: none !important;
+                    margin: 0 !important;
+                }
+            }
+        }
+        .content {
+            position: relative;
+            top: 20%;
+            background: $primary-bg-color;
+            margin: 0 0.36rem;
+            padding-top: 0.48rem;
+            .invitation-qrcode-item {
+                #invitation-qrcode {
+                    img {
+                        display: block;
+                        padding: 0.36rem;
+                        margin: auto;
+                    }
+                }
+                h3 {
+                    padding: 0.48rem;
+                    font-size: 0.4rem;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

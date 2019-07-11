@@ -1,0 +1,99 @@
+<?php include APPLICATION_PATH.'/application/views/index/layout/_header.phtml'; ?>
+	<div class="container" >
+
+	 <div id="tb" class="easyui-panel"   style="background-color:#f1f1f1">
+        <div class="conditions" style="margin:20px 20px 20px ;">
+            <span class="con-span">商品编码 </span>
+            <input class="easyui-textbox" type="text" name="self_code" id="self_code" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+            <span class="con-span">商品名称 </span>
+            <input class="easyui-textbox" type="text" name="name" id="name" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+
+            <a href="javascript:;" class="easyui-linkbutton query" style="margin-left:10px;" iconCls="icon-search" data-options="selected:true">查询</a>
+            <a href="javascript:;" class="easyui-linkbutton reset" style="margin-left:10px;" iconCls="icon-reload">重置</a>
+            <a href="javascript:;" class="easyui-linkbutton more"  style="margin-left:10px;" iconCls="icon-more">更多</a>
+        </div>
+        <div class="conditions hide" style="margin:20px 20px 20px ">
+            <span class="con-span">品牌名称 </span>
+            <input class="easyui-combobox"  style="height:35px;width:166px;line-height:35px;"
+    			name="info[brand_id][]" id="brand_id"
+    			data-options="
+    					url:'/?c=Public&a=channelBrand&type=8',
+    					method:'get',
+    					valueField:'id',
+    					textField:'name',
+    					multiple:true,
+    					panelHeight:'190'
+    			">
+        	<span class="con-span">操作人 </span>
+            <input class="easyui-textbox" type="text" name="admin_name" id="admin_name" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+        	
+        	<span class="con-span">添加时间 </span>
+        	<input class="easyui-datebox" style="width:166px;height:35px;line-height:35px;" name="start_time" id="start_time" />
+        	<span class="con-span"> —— </span>
+        	<input class="easyui-datebox" style="width:166px;height:35px;line-height:35px;" name="end_time" id="end_time" />
+        </div>
+     	<div class="conditions hide" style="margin:20px 20px 20px ">
+            <span class="con-span">商城状态 </span>
+       		<select name="on_status" id="on_status" class="easyui-combobox" style="margin-left:10px;width:166px;height:35px;line-height:35px;">
+       			<option value="">-是否上架-</option>
+       			<option value="2">已上架</option>
+       			<option value="1">未上架</option>
+       		</select>
+            <span class="con-span">渠道状态 </span>
+            <select name="channel_status" id="channel_status" class="easyui-combobox" style="margin-left:10px;width:166px;height:35px;line-height:35px;">
+                <option value="">-渠道状态-</option>
+                <?php foreach (\Product\ProductModel::CHANNEL_STATUS_VALUE as $key=>$val) {?>
+                    <option value="<?php echo $key?>"><?php echo $val?></option>
+                <?php }?>
+            </select>
+	    	<span class="con-span">网点</span>
+       		<select name="multi_point_id" id="multi_point_id" class="easyui-combobox" style="width:166px;height:35px;line-height:35px;">
+       			<option value="">-选择网点-</option>
+       			<?php foreach ($multipoint as $key=>$val) {?>
+       				<option value="<?php echo $val['id']?>"><?php echo $val['name']?></option>
+       			<?php }?>
+       		</select>
+       		<span class="con-span">自定义码 </span>
+            <input class="easyui-textbox" type="text" name="custom_code" id="custom_code" style="width:166px;height:35px;line-height:35px;"></input>
+        </div>
+     	<div class="conditions hide" style="margin:20px 20px 20px ">
+            <span class="con-span">分类名称 </span>
+                <select id="category_id" class="easyui-combotree" name="info[category_id][]"
+            		data-options="
+            		url:'/?c=Public&a=channelCategory&type=8',
+            		method:'get',
+        			lines:true, 	   
+        			animate:true, 
+        			editable:true,"
+            		multiple 
+					style="margin-left:10px;width:166px;height:35px;line-height:35px;"
+			></select>
+	    	<span class="con-span">补全信息 </span>
+       		<select name="is_supplement_info" id="is_supplement_info" class="easyui-combobox" style="margin-left:10px;width:166px;height:35px;line-height:35px;">
+       			<option value="">-请选择是否补全信息-</option>
+       			<option value="1">否</option>
+       			<option value="2">是</option>
+       		</select>
+	    	<span class="con-span">鉴定证书 </span>
+       		<select name="appraisal_status" id="appraisal_status" class="easyui-combobox" style="margin-left:10px;width:166px;height:35px;line-height:35px;">
+       			<option value="">-请选择是否含有鉴定证书-</option>
+       			<option value="1">否</option>
+       			<option value="2">是</option>
+       		</select>
+        </div>
+        <div class="opt-buttons" style="margin:20px 20px 20px ">
+            <a href="/index.php?m=Product&c=Product&a=add" class="easyui-linkbutton" data-options="selected:true">新增</a>
+            <a href="javascript:;" onclick="$('#return-refund-dialog').window('open');" class="easyui-linkbutton" style="margin-left:10px;" data-options="selected:true">设置含有鉴定商品</a>
+            <a href="/index.php?m=Product&c=Product&a=openappraisal" class="easyui-linkbutton"  style="margin-left:10px;" data-options="selected:true">开具鉴定证书</a>
+            <a href="javascript:;" class="easyui-linkbutton" onclick="download_data()" style="margin-left:10px;">导出</a>            
+        </div>
+      </div>
+      <table id="dg"   class="easyui-datagrid" ></table>
+ </div>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/common/qdd.list.js"></script>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/common/qdd.grid.js"></script>
+ <?php include APPLICATION_PATH . '/application/views/index/templates/product/select_appraisal_product.phtml'; ?>
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>qdds/js/page/product/list.js"></script> 
+<script type="text/javascript" src="<?php echo HOST_STATIC;?>common/js/calendar.js"></script> 
+
+<?php include APPLICATION_PATH.'/application/views/index/layout/_footer.phtml'; ?>

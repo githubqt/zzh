@@ -1,0 +1,373 @@
+.product-container {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  padding-bottom: 1.24rem;
+}
+
+.product-container .yd-slider {
+  margin-top: 1rem;
+}
+
+.product-header {
+  position: relative;
+  width: 100%;
+  padding: 0.3rem;
+  background-color: #f1f1f1;
+  margin-top: 3px;
+}
+
+.product-header-title {
+  font-size: 18px;
+  font-weight: normal;
+  padding: 0 0 0.12rem 0;
+}
+
+.product-header-price {
+  display: block;
+  font-size: 14px;
+  padding: 5px 15px 0.12rem 0;
+}
+
+.product-header-price em {
+  font-size: 0.1rem;
+}
+
+.product-header-bazaar {
+  font-size: 0.25rem;
+  color: #827f7c;
+  text-decoration: line-through;
+}
+
+.product-header-price.margin {
+  padding: 0;
+  font-size: 14px;
+  color: #fb4b4b;
+}
+
+.product-header-price.current {
+  padding: 0 !important;
+  font-size: 14px !important;
+  float: right !important;
+  color: #333333 !important;
+}
+
+.product-button {
+  list-style-type: none;
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #f1f1f1;
+}
+
+.product-btn-icon {
+  display: inline-block;
+  position: relative;
+  font-size: 0.6rem !important;
+  padding: 0 0.12rem;
+}
+
+.yd-btn-block {
+  margin: 0;
+  margin-top: 0.2rem !important;
+}
+
+.info-left-img {
+  width: 1.8rem;
+}
+
+.info-left-img img {
+  width: 100%;
+}
+
+.product-container .yd-slider-item {
+  width: 100%;
+  height: 375px;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.product-container .yd-slider-item img {
+  margin: auto;
+  height: 375px;
+  display: block;
+  background-color: #f1f1f1;
+  width: auto;
+}
+
+.product-bittorrent {
+  position: relative;
+  margin-top: 0.24rem;
+  background-color: #fff;
+}
+
+.product-container .order {
+  position: relative !important;
+  width: max-content !important;
+  padding: 0.12rem 0.24rem !important;
+  text-align: center !important;
+}
+
+.product-container .order .line {
+  display: inline-block;
+  width: 0.4rem;
+  border-top: 1px solid #1a191e;
+}
+
+.product-container .order .txt {
+  font-size: 18px;
+  vertical-align: -0.1rem;
+}
+
+.corner-mark {
+  position: absolute;
+  top: 0;
+  right: -0.06rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 50%;
+  line-height: 0.4rem;
+  background-color: #dab461;
+}
+
+.details-parameter-content {
+  padding-left: 0;
+}
+
+.details-parameter-content div[class^="yd-cell"] {
+  min-height: 0.8rem;
+  text-align: left;
+  padding-left: 0.24rem;
+  justify-content: flex-start;
+}
+
+.product-bittorrent .yd-cell {
+  background-color: #fff !important;
+  z-index: 5 !important;
+  position: inherit !important;
+}
+
+.details-parameter-content .yd-cell-left {
+  color: #525252;
+}
+
+.details-parameter-content .yd-cell-left .label {
+  letter-spacing: 1em;
+}
+
+.details-parameter-content .yd-cell-left .label:after {
+  position: absolute;
+  content: ":";
+  top: 0;
+  right: -0.6em;
+}
+
+.details-parameter-content .yd-cell-right {
+  color: #1a191e;
+}
+
+.details-parameter-content:after {
+  border-bottom: 1px dotted #d9d9d9 !important;
+}
+
+.product-container .details-seckill-txt {
+  color: #525252;
+  font-size: 0.3rem;
+  padding: 0.12rem 0.24rem;
+  overflow: hidden;
+}
+
+.product-container .details-seckill-txt img {
+  width: 100%;
+}
+
+.product-container .details-seckill-txt img[src*="emoticons"] {
+  width: auto;
+}
+
+.yd-btn-hollow {
+  list-style-type: none;
+  background-color: #f1f1f1;
+  color: #454545;
+  border: 1px solid #eaeaea;
+}
+
+.yd-confirm-hd {
+  text-align: center !important;
+  padding: 15px 25px 5px;
+}
+
+.product-cart-box {
+  position: fixed;
+  right: 0.29rem;
+  bottom: 1.9rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background-color: #dab461;
+  box-shadow: 0 0 6px #dab461;
+  z-index: 999;
+}
+
+.product-btn-icon {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 0.5rem !important;
+  text-align: center;
+  line-height: 0.9rem;
+  z-index: 666;
+}
+
+.btn-status-box {
+  position: fixed;
+  right: 0.16rem;
+  bottom: 1.9rem;
+  width: 1.12rem;
+  border-top-left-radius: 18%;
+  border-top-right-radius: 18%;
+  border-bottom-left-radius: 40%;
+  border-bottom-right-radius: 40%;
+  filter: alpha(opacity=90);
+  -moz-opacity: 0.9;
+  opacity: 0.9;
+  background-color: #c9c9c9;
+  z-index: 555;
+  padding-bottom: 1rem;
+  padding-top: 0.1rem;
+}
+
+.hairline .yd-btn-hollow {
+  border: 0.5px solid #dedede !important;
+  background-color: #f1f1f1 !important;
+}
+
+.product-header-price.emphasis {
+  padding: 0 !important;
+  font-size: 14px !important;
+  color: #fb4b4b !important;
+  width: 100%;
+}
+
+.btn-status-box img {
+  margin-left: 0.1rem;
+  border: 0;
+  width: 80%;
+}
+
+.product-trailer-title {
+  position: absolute;
+  bottom: 0;
+  padding: 0.24rem;
+  line-height: 0.35rem;
+  width: 100%;
+  color: #fff;
+  text-align: left;
+  font-size: 0.28rem;
+  background-color: #66cc00;
+}
+
+.product-proceed-title {
+  position: absolute;
+  bottom: 0;
+  padding: 0.24rem;
+  line-height: 0.35rem;
+  width: 100%;
+  color: #fff;
+  font-size: 0.28rem;
+  text-align: left;
+  background-color: #ff0000;
+}
+
+.yd-cell-box {
+  margin-bottom: 0.1rem !important;
+}
+
+.auction-cell-record {
+  margin: 0;
+  line-height: 0px !important;
+}
+
+.bid-box {
+  border: 1px solid #d0d0d0;
+  padding: 0.1rem;
+  margin-top: 0.1rem;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+}
+
+.bid-box .bid-box-item {
+  border: 1px solid #d0d0d0;
+  width: 96%;
+}
+
+.bid-box .bid-box-item .bid-box-title {
+  color: #fff !important;
+}
+
+.bid-box .bid-box-item .bid-box-tag {
+  background: #ddd;
+  display: block;
+  width: 28%;
+  text-align: center;
+  height: 20px;
+  line-height: 20px;
+  float: left;
+}
+
+.bid-box .bid-box-item .bid-box-name {
+  height: 20px;
+  line-height: 20px;
+  color: #666;
+  text-align: center;
+  display: block;
+  width: 72%;
+  overflow: hidden;
+  float: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bid-box .bid-box-item .active {
+  background: #f00;
+  color: #fff !important;
+}
+
+.bid-box .bid-box-item .bid-box-content {
+  clear: both;
+  text-align: center;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  color: #f00;
+  font-weight: bold;
+  font-size: 0.3rem;
+}
+
+.yd-flexbox-item:nth-child(2) .bid-box-item {
+  margin: auto;
+}
+
+.yd-flexbox-item:nth-child(3) .bid-box-item {
+  float: right;
+}
+
+.bid-box .yd-cell-right {
+  min-height: 0px;
+  padding-right: 0;
+}
+
+.bid-record {
+  padding-left: 0;
+  padding-bottom: 0.1rem;
+  color: #333;
+}
+.bid-record .bid-num {
+  color: red;
+}

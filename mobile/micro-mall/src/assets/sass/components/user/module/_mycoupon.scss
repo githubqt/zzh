@@ -1,0 +1,120 @@
+.coupon {
+    padding: 0.24rem;
+    background-color: #f5f5f5;
+    .hide {
+        display: none;
+    }
+    .bottom-img {
+        width: 0.5rem;
+        margin-right: .15rem;
+        position: absolute;
+        top: 0.2rem;
+        right: 0.1rem;
+    }
+    .product-list,
+    .product-list-two {
+        width: 100%;
+        background-color: #fff;
+        position: relative;
+    }
+    .coupon-product {
+        background-color: #fff;
+        border-top: 1px #ccc solid;
+        border-radius: 0rem 0rem 0.1rem 0.1rem;
+    }
+    .product-list .title,
+    .product-list-two .title {
+        padding: 0.1rem 0;
+    }
+    .coupons-item {
+        margin-bottom: 0.2rem;
+    }
+    .item {
+        display: flex;
+        background-color: #fff;
+        border-radius: 0.1rem 0.1rem 0rem 0rem;
+        overflow: hidden;
+        >.type {
+            box-sizing: border-box;
+            width: 1rem;
+            font-size: 0.3rem;
+            color: #fff;
+            padding: 0rem 0.35rem;
+            display: flex;
+            align-items: center;
+            background-color: #dab461
+        }
+        .disabled>.type {
+            background-color: #ccc
+        }
+        .reduce {
+            text-align: center;
+            display: flex;
+            width: 2rem;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.39rem;
+            color: #e5b262;
+            .num {
+                display: inline-block;
+                padding: 0 0.06rem;
+            }
+            .pre_type {
+                display: inline-block;
+                font-size: 0.4rem;
+            }
+        }
+        .content {
+            flex: 1;
+            padding: 0.3rem 0.1rem 0.3rem 0.1rem;
+            h3 {
+                display: block;
+                font-size: 0.3rem;
+                color: #333;
+                font-weight: normal;
+            }
+            .user-conditions {
+                font-size: 0.26rem;
+                color: #e5b262;
+                margin-top: 0.16rem;
+            }
+            .date {
+                font-size: 0.26rem;
+                color: #666;
+                margin-top: 0.16rem;
+                line-height: 1.6;
+            }
+            .btn {
+                display: block;
+                width: 1.4rem;
+                height: 0.42rem;
+                margin-top: 0.2rem;
+                text-align: center;
+                line-height: 0.42rem;
+                color: #fff;
+                font-size: 0.24rem;
+                background-color: #e6b052;
+                border-radius: 0.2rem
+            }
+            .status {
+                display: block;
+                margin-top: 0.2rem;
+                color: #999;
+                font-size: 0.26rem;
+            }
+        }
+    }
+    .disabled {
+        .reduce {
+            color: #ccc !important;
+        }
+        .user-conditions {
+            color: #ccc !important;
+        }
+    }
+    >span {
+        display: block;
+        text-align: center;
+        color: #999
+    }
+}

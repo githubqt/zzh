@@ -1,0 +1,53 @@
+.group-up .search-box {
+  padding: .2rem;
+  background: #fff;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #f8f9fa;
+}
+.group-up .search-box .order {
+  width: 100%;
+  float: left;
+  height: .6rem;
+  line-height: .6rem;
+  text-align: center;
+  font-size: 0.3rem;
+}
+.group-up .search-box .order .txt {
+  margin-right: 0.2rem;
+}
+.group-up .search-box .active {
+  color: #dc2821;
+}
+.group-up .tab-mask {
+  height: 100%;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  background-color: #ccc;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 99;
+}
+.group-up .tab-mask .tab-box {
+  background-color: #fff;
+}
+.group-up .tab-mask .tab-box .tab-item {
+  display: block;
+  height: .8rem;
+  line-height: .8rem;
+  font-size: 0.3rem;
+  padding: 0 0.3rem;
+  margin: 0;
+}
+.group-up .tab-mask .tab-box .active {
+  color: #dc2821;
+}
+.group-up .product-img {
+  position: relative;
+}
+.group-up .product-img .status-txt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+}

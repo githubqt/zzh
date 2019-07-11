@@ -1,0 +1,106 @@
+<!-- 审核退货弹出窗 start -->
+<style>
+    .td-title {
+        vertical-align: middle !important;
+        text-align: right;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="<?php echo HOST_STATIC; ?>common/css/table.css">
+<div id="return-express-dialog" class="easyui-dialog" title="商品寄回" style="width:640px;"
+     data-options="iconCls:'icon-save',modal:true,collapsible:false,closed:true">
+
+    <form action="/index.php?m=Channel&c=SalesReturn&a=list" id="express_form" method="post" autocomplete="off">
+        <input type="hidden" name="format" value="express">
+        <input type="hidden" name="id" id="id" value="">
+        <table class="table table table-bordered">
+
+            <tr>
+                <td class="td-title"><span class="red">*</span>姓名</td>
+                <td>
+                    <input class="easyui-validatebox" type="text" name="fd[name]" disabled="disabled" data-options="required:true"
+                           style="width:300px;height:35px;line-height:35px;"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="td-title"><span class="red">*</span>手机</td>
+                <td>
+                    <input class="easyui-validatebox" type="text" name="fd[mobile]" disabled="disabled" data-options="required:true,validType:['phone']"
+                           style="width:300px;height:35px;line-height:35px;"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td-title"><span class="red">*</span>选择省市区</td>
+                <td id="psa1"></td>
+            </tr>
+
+            <tr>
+                <td class="td-title"><span class="red">*</span>详细地址</td>
+                <td>
+                    <input class="easyui-validatebox" data-options="required:true" disabled="disabled" type="text" name="fd[address]"
+                           style="width:300px;height:35px;line-height:35px;"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td-title"><span class="red">*</span>物流公司</td>
+                <td>
+                    <select name="fd[express_id]" style="width:300px;height:35px;line-height:35px;">
+                        <?php foreach ($data['expressCompany'] as $key => $val) { ?>
+                            <option value="<?php echo $val['id'] ?>"><?php echo $val['name'] ?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="td-title"><span class="red">*</span>物流单号</td>
+                <td>
+                    <input class="easyui-validatebox" name="fd[express_no]"
+                           id="platform_reject_content_express_no"
+                           data-options="required:true"
+                           style="width:400px;height:35px;line-height:35px; " value="">
+                </td>
+            </tr>
+
+        </table>
+
+        <div style="padding:15px;text-align: center">
+            <input type="submit" class="easyui-linkbutton" data-options="selected:true" value="确定">
+            <a href="javascript:$('#return-express-dialog').window('close');" style="margin-left:50px" class="easyui-linkbutton">取消</a>
+        </div>
+    </form>
+
+</div>
+<!-- 审核退货弹出窗 end -->
+<script>
+    $(function () {
+
+        /**
+         * 提交表单
+         */
+        $('#express_form').form({
+            onSubmit: function () {
+                var isValid = $(this).form('validate');
+                if (!isValid) {
+                    $.messager.progress('close');
+                    return false;
+                }
+                $("input[type='submit']").attr('disabled', true);
+                return true;
+            },
+            success: function (response) {
+                try {
+                    var data = JSON.parse(response);
+                    if (parseInt(data.code) === 200) {
+                        location.href = 'index.php?m=Product&c=SalesReturn&a=list';
+                    } else {
+                        throw data.msg;
+                    }
+                } catch (e) {
+                    $.messager.alert('提示', e.msg);
+                    $("input[type='submit']").attr('disabled', false);
+                }
+            }
+        });
+    });
+</script>

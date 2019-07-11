@@ -1,0 +1,202 @@
+<!-- 选择鉴定证书商品弹出窗 start -->
+<style>
+    .td-title {
+        vertical-align: middle !important;
+        text-align: right;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="<?php echo HOST_STATIC; ?>common/css/table.css">
+<div id="return-refund-dialog" class="easyui-dialog" title="选择鉴定证书商品" style="width:850px;height:500px;top: 10px;"
+     data-options="iconCls:'icon-save',modal:true,collapsible:false,closed:true">
+	<div class="container" >
+
+	 <div id="select_appraisal_product_tb" class="easyui-panel"   style="background-color:#f1f1f1">
+        <div class="conditions" style="margin:20px 20px 20px ;">
+            <span class="con-span">商品编码 </span>
+            <input class="easyui-textbox" type="text" name="code" id="pcode" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+            <span class="con-span">商品名称 </span>
+            <input class="easyui-textbox" type="text" name="name" id="pname" style="margin-left:10px;width:166px;height:35px;line-height:35px;"></input>
+            
+            <a href="javascript:;" onClick="searchAppraisalProductInfo()" class="easyui-linkbutton" style="margin-left:10px;" iconCls="icon-search" data-options="selected:true">查询</a>
+            <a href="javascript:;" class="easyui-linkbutton" onclick="$('#select_appraisal_product_tb').form('clear');searchAppraisalProductInfo()" iconCls="icon-reload">重置</a>
+            <a href="javascript:;" class="easyui-linkbutton more2"  style="margin-left:10px;" iconCls="icon-more">更多</a>
+        </div>
+        <div class="conditions hide" style="margin:20px 20px 20px ">
+            <span class="con-span">品牌名称 </span>
+            <input class="easyui-combobox"  style="height:35px;width:166px;line-height:35px;"
+			name="info[pbrand_id][]" id="pbrand"
+			data-options="
+					url:'/?c=Public&a=channelBrand&type=14',
+					method:'get',
+					valueField:'id',
+					textField:'name',
+					multiple:true,
+					panelHeight:'190'
+			">
+			<span class="con-span">分类名称 </span>
+            <select class="easyui-combotree"  id="pcategory" name="info[pcategory_id][]"
+        		data-options="
+        		url:'/?c=Public&a=channelCategory&type=14',
+        		method:'get',
+    			lines:true, 	   
+    			animate:true, 
+    			editable:true,"
+        		multiple 
+				style="margin-left:10px;width:166px;height:35px;line-height:35px;"
+			></select>
+		</div>
+      </div>
+      <table id="select_appraisal_product"   class="easyui-datagrid" ></table>
+      <div style="padding:25px;text-align: center;">
+		    <input type="button" class="easyui-linkbutton" onclick="add_appraisal_product()" data-options="selected:true" value="保存" >
+        	<a href="javascript:;" onclick="$('.query').trigger('click');$('#return-refund-dialog').window('close');" style="margin-left:25px" class="easyui-linkbutton" >返回</a>
+      </div>
+ </div> 
+</div>
+<!-- 选择鉴定证书商品弹出窗 end -->
+<script>
+/***
+ * 商品列表js
+ * @version v0.01
+ * @author zhaoyu
+ * @time 2018-05-09
+ */
+var pfileds = [[{
+    field: 'id',
+    width: 100,
+    checkbox : true,  
+    title: 'ID'
+}, {
+    field: 'self_code',
+    width: 110,
+    title: '商品编号'
+}, {
+    field: 'name',
+    width: 180,
+    title: '商品名称'
+}, {
+    field: 'brand_name',
+    width: 130,
+    title: '品牌'
+}, {
+    field: 'category_name',
+    width: 120,
+    title: '分类'
+}, {
+    field: 'sale_price',
+    width: 90,
+    title: '销售价'
+}, {
+    field: 'channel_price',
+    width: 90,
+    title: '渠道价'
+}, {
+    field: 'is_supplement_info_txt',
+    width: 90,
+    title: '是否补全信息'
+}
+]];
+
+
+function getAppraisalProductQueryData() {
+    var queryData = new Object();
+    queryData['info[just_bag]'] = '1';
+    queryData['info[AppraisalProduct]'] = '1';
+    queryData['info[name]'] = $('#pname').val();
+    queryData['info[self_code]'] = $('#pcode').val();
+	var $input = $('input[name="info[pbrand_id][]"]');
+    if ($input.length >1){
+        var inputVal = [];
+        $input.each(function () {
+            if ($(this).val()) {
+                inputVal.push($(this).val()) ;
+            }
+        });
+        queryData['info[brand_id][]'] = inputVal;
+    }else{
+    	queryData['info[brand_id][]'] = $input.val();
+    }
+    var $input = $('input[name="info[pcategory_id][]"]');
+    if ($input.length >1){
+        var inputVal = [];
+        $input.each(function () {
+            if ($(this).val()) {
+                inputVal.push($(this).val()) ;
+            }
+        });
+        queryData['info[category_id][]'] = inputVal;
+    }else{
+    	queryData['info[category_id][]'] = $input.val();
+    }
+    return queryData;
+}
+
+function searchAppraisalProductInfo() {
+    $('#select_appraisal_product').datagrid({
+        title: '',
+        width: '100%',
+        height: 'auto',
+        nowrap: true,
+        autoRowHeight: true,
+        striped: true,
+        url: location.href + "&format=list",
+        idField: 'id',
+        loadMsg: '数据加载中......',
+        pageList: [10, 20, 50],
+        columns: pfileds,
+        pagination: true,
+        rownumbers: false,
+        singleSelect:false,
+        queryParams: getAppraisalProductQueryData()
+    });
+
+}
+
+
+//选择
+function add_appraisal_product() {
+	var selectrow = $("#select_appraisal_product").datagrid("getChecked");//获取的是数组，多行数据
+
+	if (selectrow.length == 0) {
+		$.messager.alert('提示', '请选择商品！');
+		return;
+	}
+	$.messager.confirm('温馨提示', '您确定要保存吗?',function(res){
+		if (res == true) {
+        	var product_id = [];
+        	for(var i=0;i<selectrow.length;i++){
+        		var val = selectrow[i];
+        		product_id.push(val.id);
+        
+        	}
+        
+        	$.ajax({
+                type: "POST",
+                async:true,
+                url: location.href+'&format=add_appraisal&status=2',
+                dateType: "json",
+                data: 'product_id='+product_id, 
+                success:function(data){
+                	$.messager.alert('提示', data.msg);
+                    if (data.code == '200') {
+                    	$('.query').trigger('click');
+                    	searchAppraisalProductInfo();
+                    	$("#return-refund-dialog").window('close');
+                    }
+                }
+            });
+		}
+	});
+	
+}
+
+
+$(function () {
+	searchAppraisalProductInfo();
+});
+
+$(".more2").click(function () {
+    $(this).closest(".conditions").siblings().toggleClass("hide");
+});
+
+</script>

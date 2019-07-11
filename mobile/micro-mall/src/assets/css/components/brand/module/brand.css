@@ -1,0 +1,112 @@
+.mbrand-flex-box {
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mbrand-flex-box:after {
+  content: "";
+  position: relative;
+  z-index: 3;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #b2b2b2;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+.mbrand-grids-box {
+  width: 88% !important;
+  height: 100%;
+}
+
+.mbrand-image-box {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+  padding: .12rem .48rem;
+}
+
+.mbrand-content-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.mbrand-flex-box .yd-grids-3:before,
+.mbrand-flex-box .yd-grids-3 .yd-grids-item:after,
+.mbrand-flex-box .yd-grids-3 .yd-grids-item:before,
+.mbrand-flex-box .yd-cell:after,
+.mbrand-flex-box .yd-cell-item:after {
+  display: none;
+}
+
+.mbrand-brand-title {
+  width: 112%;
+  height: .8rem;
+  margin: .24rem 0;
+  line-height: .8rem;
+  text-align: center;
+}
+
+.mbrand-brand-title .line {
+  display: inline-block;
+  width: 1.2rem;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.mbrand-brand-title .txt {
+  font-size: .26rem;
+  color: #1c2438;
+  padding: .12rem;
+  vertical-align: -.05rem;
+}
+
+.mbrand-cell-header {
+  line-height: .7rem;
+  padding-left: .34rem;
+  background-color: #f2f2f2;
+}
+
+.mbrand-cell-group {
+  margin: 0;
+}
+
+.mbrand-flex-menu {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  position: fixed;
+  top: 5%;
+  right: .2rem;
+  padding: .3rem 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid #cccccc;
+  background-color: #f2f2f2;
+  border-radius: .5rem .5rem .5rem .5rem;
+}
+
+.mbrand-flex-menu li {
+  flex-grow: 1;
+  padding: 0 .12rem;
+  text-align: center;
+}
+
+.mbrand-flex-menu li a {
+  display: block;
+}
+
+.mbrand-flex-box .yd-cell-item {
+  height: .6rem;
+}

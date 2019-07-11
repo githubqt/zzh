@@ -1,0 +1,70 @@
+// home 主页
+@import './components/home/main';
+@import './components/home/bidding';
+@import './components/home/groupup';
+@import './components/home/product';
+@import './components/home/record';
+@import './components/home/snapup';
+@import './components/home/module/countnavbar';
+@import './components/home/module/guesslike';
+@import './components/home/module/middlenav';
+@import './components/home/module/newarrival';
+@import './components/home/module/newest';
+@import './components/home/module/notice';
+// brand 品牌
+@import './components/brand/main';
+@import './components/brand/module/brand';
+@import './components/brand/module/category';
+// delivery 发货
+@import './components/delivery/main';
+// user 用户
+@import './components/user/main';
+@import './components/user/about';
+@import './components/user/addmobile';
+@import './components/user/auctionlist';
+@import './components/user/contact';
+@import './components/user/couponscenter';
+@import './components/user/info';
+@import './components/user/mycoupons';
+@import './components/user/coupons';
+@import './components/user/coupon/commodity';
+@import './components/user/coupon/shop';
+@import './components/user/orderlist';
+@import './components/user/suggestions';
+@import './components/user/module/aftersale';
+@import './components/user/module/auctionload';
+@import './components/user/module/collect';
+@import './components/user/module/couponcenter';
+@import './components/user/module/courierinfo';
+@import './components/user/module/create';
+@import './components/user/module/mycoupon';
+@import './components/user/module/orderinfo';
+@import './components/user/module/orderload';
+@import './components/user/module/site';
+// invite 邀请列表
+@import './components/user/invite/list';
+@import './components/user/invite/detail';
+// store 商城
+@import './components/store/details';
+@import './components/store/newdetail';
+@import './components/store/main';
+@import './components/store/grouporder';
+@import './components/store/order';
+@import './components/store/module/cart';
+@import './components/store/module/orderinfo';
+@import './components/store/module/screen';
+// pawn
+@import './components/pawn/main';
+@import './components/pawn/module/imgupload';
+@import './components/pawn/module/screen';
+// invitation 邀请
+@import './components/invitation/dialog';
+@import './components/invitation/helpregister';
+@import './components/invitation/main';
+//login 登录
+@import './components/login/login';
+@import './components/login/code';
+@import './components/login/enter';
+@import './components/login/find';
+@import './components/login/main';
+@import './components/login/register';

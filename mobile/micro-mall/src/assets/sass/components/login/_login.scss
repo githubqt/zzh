@@ -1,0 +1,76 @@
+.login-box {
+    .yd-scrollview {
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+    }
+    background-color: #ffffff;
+    height: 100%;
+    overflow: hidden;
+    .login-logo {
+        width: 100%;
+        background-color: rgba($color: $primary, $alpha: .75);
+        padding-bottom: 0.5rem;
+        .title {
+            font-size: .6rem;
+            padding: .5rem;
+            text-align: center;
+            color: #ffffff;
+        }
+        img {
+            height: 1.5rem;
+            width: 1.5rem;
+            display: block;
+            margin: auto;
+            border-radius: .75rem;
+            border: 1px solid rgba($color: $primary, $alpha: .8);
+        }
+    }
+    .login-form {
+        margin: 0.5rem .4rem;
+        .yd-cell {
+            &::after {
+                border: none;
+            }
+            .yd-cell-item,
+            .yd-cell-item::after {
+                margin-left: 0;
+                padding-left: 0;
+                &::after {
+                    margin-left: 0;
+                }
+            }
+            .yd-cell-item:not(:last-child):after {
+                padding-left: 0;
+            }
+        }
+        .yd-btn-warning {
+            background-color: rgba($color: $primary, $alpha: .8);
+        }
+        .login-agreement {
+            margin-top: .5rem;
+            text-align: center;
+            font-size: 0.25rem;
+        }
+    }
+    .fast-login {
+        margin-top: 0.5rem;
+        .yd-flexbox-item {
+            height: 0.6rem;
+        }
+        .item-left {
+            text-align: left;
+        }
+        .item-right {
+            text-align: right;
+        }
+        .auth-logo {
+            display: block;
+            margin: auto;
+        }
+        .other-login {
+            margin: 0.2rem auto;
+            color: #999;
+        }
+    }
+}

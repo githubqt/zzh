@@ -1,0 +1,195 @@
+<?php include APPLICATION_PATH . '/application/views/index/layout/_header_v2.phtml'; ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo HOST_STATIC; ?>common/js/webuploader/0.1.5/webuploader.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo HOST_STATIC; ?>common/css/table.css">
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/webuploader/0.1.5/webuploader.js"></script>
+
+
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/upload.js"></script>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/sprintf.js"></script>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/multiple_upload.js"></script>
+
+    <div style="margin:20px 0;"></div>
+    <div style="padding:10px 60px 20px 60px">
+        <form id="ff" method="post" action="/index.php?m=Purchase&c=Purchase&a=pay" autocomplete="off">
+            <input type="hidden" value="<?php echo $assigns['id']; ?>" name="purchase_id">
+            <table class="table table-bordered" style="margin-bottom: 100px;">
+                <tbody>
+                <tr>
+                    <th style="min-width: 100px;width: 100px">采购名称</th>
+                    <td><?php echo $assigns['purchase']['title'] ?></td>
+                </tr>
+                <tr>
+                    <th>姓名</th>
+                    <td><?php echo $assigns['purchase']['name'] ?></td>
+                </tr>
+                <tr>
+                    <th>手机号</th>
+                    <td><?php echo $assigns['purchase']['mobile'] ?></td>
+                </tr>
+                <tr>
+                    <th>收货地址</th>
+                    <td><?php echo $assigns['purchase']['district_text'] ?></td>
+                </tr>
+                <tr>
+                    <th>详细地址</th>
+                    <td><?php echo $assigns['purchase']['address'] ?></td>
+                </tr>
+                <tr>
+                    <th>支付方式</th>
+                    <td>
+                        <p><?php echo $assigns['purchase']['pay_type_text'] ?></p>
+                        <div>打款账户：<?php echo BANK_ACCOUNT; ?></div>
+                        <div>银行名称：<?php echo BANK_BRANCH_NAME; ?></div>
+                        <div>账号名称：<?php echo BANK_ACCOUNT_NAME; ?></div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>状态</th>
+                    <td><?php echo $assigns['purchase']['order_status_text'] ?></td>
+                </tr>
+                <!--选择商品 start -->
+                <tr>
+                    <th>选择商品</th>
+                    <td>
+                        <?php foreach ((array)$assigns['purchase']['child_order'] as $key => $order) { ?>
+                            <div>
+                                <div style="margin: 15px 0">
+                                    子订单号：<?php echo $order['child_order_no']; ?>
+                                    <span style="margin-left: 20px;">
+                                    下单时间：<?php echo $order['created_at']; ?>
+                                </span>
+                                    <span style="margin-left: 20px;">
+                                    订单状态：<?php echo $order['order_status_text']; ?>
+                                </span>
+                                </div>
+                                <div style="overflow: auto; width: 800px;">
+                                    <table class="table table-bordered" style="text-align: center">
+                                        <tr class="info">
+                                            <th style="min-width: 80px">序号</th>
+                                            <th style="min-width: 100px">商品图片</th>
+                                            <th style="min-width: 200px">商品名称</th>
+                                            <th style="min-width: 150px">分类</th>
+                                            <th style="min-width: 150px">品牌</th>
+                                            <th style="min-width: 120px">市场价</th>
+                                            <th style="min-width: 120px">供应价</th>
+                                            <th style="min-width: 80px">数量</th>
+                                            <th style="min-width: 80px">小计</th>
+                                        </tr>
+                                        <?php foreach ((array)$order['products'] as $k => $product) { ?>
+                                            <tr>
+                                                <td><?php echo $k + 1; ?></td>
+                                                <td>
+                                                    <div class="imgbox">
+                                                        <img src="<?php echo $product['img_url']; ?>" class="smallimg">
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    title="<?php echo $product['product_name']; ?>"><?php echo mb_strimwidth($product['product_name'], 0, 40, '...'); ?></td>
+                                                <td><?php echo $product['category_name']; ?></td>
+                                                <td><?php echo $product['brand_name']; ?></td>
+                                                <td><?php echo $product['market_price']; ?></td>
+                                                <td><?php echo $product['channel_price']; ?></td>
+                                                <td><?php echo $product['num']; ?></td>
+                                                <td><?php echo $product['price']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td>总计</td>
+                                            <td colspan="7"></td>
+                                            <td><?php echo $order['child_order_original_amount'] ?></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </td>
+                </tr>
+                <!-- 选择商品 end -->
+
+
+                <tr>
+                    <th>购买总数</th>
+                    <td><?php echo $assigns['purchase']['amount'] ?></td>
+                </tr>
+                <tr>
+                    <th>购买总额</th>
+                    <td><?php echo $assigns['purchase']['price'] ?></td>
+                </tr>
+
+
+                <tr>
+                    <th><span class="red">*</span> 汇款编号</th>
+                    <td><input class="easyui-textbox" data-options="required: true,validType:['numDash']" type="text" name="remittance_account"
+                               style="width:300px;height:35px;line-height:35px;"/>
+
+                        <div style="font-size: 14px;color: gray; padding: 10px;margin-top: 15px; border: 1px dashed gray">
+                            <p>付款提示：</p>
+                            <p>
+                                1.当您一次采购多个商品时，可能会涉及到多供应商，系统会将订单自动拆分并传递给不同供应商；
+                            </p>
+                            <p>
+                                2.若您发起采购订单并付款后，由于供应商原因不能发货时(可能是同时线下门店售出等原因)，趣典当平台会在三个工作日之内将您的采购款退回至您的付款账户；
+                            </p>
+                            <p>
+                                3.若您一次采购多个商品时，其中部分商品由于供应商原因不能发货时(可能是同时线下门店售出等原因)，趣典当平台会在三个工作日之内将未能发货商品的采购款退回至您的付款账户。
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><span class="red">*</span> 汇款图片</th>
+                    <td width="800">
+
+                        <div class="uploader-list-container">
+                            <div class="queueList">
+                                <div id="dndArea" class="placeholder">
+                                    <div id="filePicker-3"></div>
+                                    <p>*单次最多10张 规格800*800 单张大小1M </p>
+                                </div>
+                            </div>
+                            <div class="statusBar" style="display:none;">
+                                <div class="progress"><span class="text">0%</span> <span class="percentage"></span></div>
+                                <div class="info"></div>
+                                <div class="btns">
+                                    <div id="filePicker2"></div>
+                                    <div class="uploadBtn">上传开始</div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+			<div style="padding:25px;position: fixed;bottom: 0px;width: 100%;background: #f1f1f1;text-align: center;margin-left: -70px;z-index: 400">
+                <input type="submit" class="easyui-linkbutton" data-options="selected:true" value="保存">
+                <a href="/index.php?m=Purchase&c=Purchase&a=list" style="margin-left:15px"
+                   class="easyui-linkbutton">返回</a>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/area.js"></script>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/common/qdd.edit.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            area_child(0, 1);
+
+            var uploader = Object.create(QddMulitipleUpload);
+            uploader.urlSwf = '<?php echo HOST_STATIC;?>common/js/webuploader/0.1.5/Uploader.swf';
+            uploader.urlUpload = '<?php echo HOST_FILE;?>/img.php?classify=purchase';//请求方式
+            uploader.filePicker = 'filePicker-3';	//焦点按钮id
+            uploader.filePicker2 = 'filePicker2';
+            uploader.accept = {
+                title: 'Images',
+                extensions: 'gif,jpg,jpeg,bmp,png',
+                mimeTypes: '*/*'
+            };
+            uploader.run();
+        });
+
+    </script>
+
+<?php include APPLICATION_PATH . '/application/views/index/templates/common/img_box.phtml'; ?>
+<?php include APPLICATION_PATH . '/application/views/index/layout/_footer.phtml'; ?>

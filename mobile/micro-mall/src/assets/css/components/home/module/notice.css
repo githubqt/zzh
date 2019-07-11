@@ -1,0 +1,25 @@
+.home-notice {
+  margin: 0.1rem 0 0.1rem 0.1rem;
+}
+.home-notice .notice-title {
+  padding: 0.05rem 0;
+  font-weight: bold;
+  border: 1px solid #F6C059;
+  margin-right: 0.1rem;
+  color: #F6C059;
+  min-width: 1rem;
+  background: #fff;
+  text-align: center;
+}
+.home-notice .notice-content .newest,
+.home-notice .notice-content .hotest {
+  width: 32px;
+  text-align: center;
+  border: 1px solid #F6C059;
+  margin-right: 0.1rem;
+  color: #F6C059;
+  background: #fff;
+}
+.home-notice .notice-content .yd-rollnotice-box {
+  width: 75%;
+}

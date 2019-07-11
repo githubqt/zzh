@@ -1,0 +1,28 @@
+.guess-like {
+  margin-bottom: .7rem;
+}
+.guess-like .title {
+  height: 1rem;
+  width: 100%;
+  text-align: center;
+  font-size: 0.4rem;
+  line-height: 1rem;
+  background: #fff;
+  color: #dc2821;
+  border-bottom: 2px solid #dee2e6;
+}
+.guess-like .title .circle {
+  display: inline-block;
+  height: 0.1rem;
+  width: 0.1rem;
+  border-radius: 0.1rem;
+  background: #dc2821;
+  vertical-align: middle;
+  margin: 0 .2rem;
+}
+.guess-like .buy {
+  text-align: right;
+}
+.guess-like .buy button {
+  border-radius: 0.3rem !important;
+}

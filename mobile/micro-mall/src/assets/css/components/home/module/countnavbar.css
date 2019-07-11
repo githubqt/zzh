@@ -1,0 +1,27 @@
+.count-navbar {
+  background: #fff;
+  margin-top: 1rem;
+  margin-bottom: 0.1rem;
+  color: #dc2821;
+  text-align: center;
+}
+.count-navbar-logo {
+  height: 1.2rem;
+  border-radius: 0.6rem;
+  margin: 0 0.3rem 0 0.15rem;
+}
+.count-navbar-title {
+  padding: 0.1rem 0;
+  font-weight: bold;
+  font-size: 0.3rem;
+}
+.count-navbar-num {
+  font-size: 0.2rem;
+}
+.count-navbar-link {
+  padding: 0.15rem 0;
+  text-align: center;
+}
+.count-navbar > :first-child {
+  border-right: 1px solid #dee2e6;
+}

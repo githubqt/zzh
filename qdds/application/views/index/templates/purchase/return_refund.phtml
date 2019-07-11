@@ -1,0 +1,98 @@
+<!-- 退款弹出窗 start -->
+<style>
+    .td-title {
+        vertical-align: middle !important;
+        text-align: right;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="<?php echo HOST_STATIC; ?>common/css/table.css">
+<div id="return-refund-dialog" class="easyui-dialog" title="退款" style="width:640px;"
+     data-options="iconCls:'icon-save',modal:true,collapsible:false,closed:true">
+
+    <form action="/index.php?m=Marketing&c=SalesReturn&a=list" id="refund_form" method="post" autocomplete="off">
+        <input type="hidden" name="format" value="refund">
+        <input type="hidden" name="id" id="id" value="">
+        <table class="table table table-bordered">
+            <tr>
+                <td class="td-title">退款至</td>
+                <td>
+                    <label for="return_supplier">
+                        <input type="radio" name="fd[refund_to]" checked="checked" value="supplier" id="return_supplier"> 供应商
+                    </label>
+
+                    <label for="return_merchant">
+                        <input type="radio" name="fd[refund_to]" value="merchant" id="return_merchant"> 商户
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td class="td-title">退还金额</td>
+                <td>
+                    <input class="easyui-validatebox" type="text" name="fd[money]" data-options="required:true"
+                           style="width:300px;height:35px;line-height:35px;"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="td-title">备注</td>
+                <td>
+                    <input class="easyui-validatebox" type="text" name="fd[note]"
+                           style="width:300px;height:35px;line-height:35px;"/>
+                </td>
+            </tr>
+
+        </table>
+
+        <div style="padding:15px;text-align: center">
+            <input type="button" id="sub" class="easyui-linkbutton" data-options="selected:true" value="确定">
+            <a href="javascript:$('#return-refund-dialog').window('close');" style="margin-left:50px" class="easyui-linkbutton">取消</a>
+        </div>
+    </form>
+
+</div>
+<!-- 退款弹出窗 end -->
+<script>
+    $(function () {
+
+        $("#sub").click(function () {
+            var isValid = $('#refund_form').form('validate');
+            if (!isValid) {
+                $.messager.progress('close');
+                return false;
+            }
+            $.messager.confirm({
+                title: '提示',
+                msg: '确定退款？',
+                fn: function (res) {
+                    if (res) {
+                        $('#refund_form').submit();
+                    }
+                }
+            });
+        });
+
+        /**
+         * 提交表单
+         */
+        $('#refund_form').form({
+            onSubmit: function () {
+                $('#refund_form').find("input[type='button']").attr('disabled', true);
+                return true;
+            },
+            success: function (data) {
+                try {
+                    var data = JSON.parse(data);
+                    if (data.code == '200') {
+                        location.href = 'index.php?m=Marketing&c=SalesReturn&a=list';
+                    } else {
+                        $.messager.alert('提示', data.msg);
+                        throw data.msg;
+                    }
+                } catch (e) {
+                    $('#refund_form').find("input[type='button']").attr('disabled', false);
+                }
+            }
+        });
+
+
+    });
+</script>

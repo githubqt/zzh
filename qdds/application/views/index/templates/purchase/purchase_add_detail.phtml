@@ -1,0 +1,130 @@
+<!--添加采购选择商品弹出窗中查看商品详细-->
+<script id="purchase_add_detail" type="text/html">
+    <div class="content">
+        <div class="easyui-tabs1" style="width:100%;">
+            <div title="基本信息" data-options="closable:false" class="basic-info">
+                <table class="kv-table">
+                    <tbody>
+                    <tr>
+                        <td class="kv-label">商品ID</td>
+                        <td class="kv-content">{{data.id}}</td>
+                        <td class="kv-label">商品名称</td>
+                        <td class="kv-content">{{data.name}}</td>
+                        <td class="kv-label">商品编号</td>
+                        <td class="kv-content">{{data.self_code}}</td>
+                    </tr>
+                    <tr>
+                        <td class="kv-label">商品分类</td>
+                        <td class="kv-content">{{data.category_name}}</td>
+
+                        <td class="kv-label">商品品牌</td>
+                        <td colspan="3" class="kv-content">{{data.brand_name}}</td>
+                    </tr>
+                    <tr>
+                        <td class="kv-label">公价</td>
+                        <td class="kv-content">{{data.market_price}}</td>
+                        <td class="kv-label">供应价</td>
+                        <td class="kv-content" colspan="3">{{data.channel_price}}</td>
+                    </tr>
+                    <tr>
+                        <td class="kv-label">添加时间</td>
+                        <td class="kv-content">{{data.created_at}}</td>
+                        <td class="kv-label">当前库存</td>
+                        <td class="kv-content" colspan="3">{{data.stock}}</td>
+                    </tr>
+                    <tr>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <table class="kv-table" style="margin:20px 0;">
+        <tbody>
+        <tr>
+            <td class="kv-label">商品主图</td>
+            <td class="kv-content">
+                <div class="imgbox">
+                    <img height="100" class="smallimg"
+                         src="{{data.full_logo_url}}"/>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="kv-label">商品附图</td>
+            <td class="kv-content">
+                {{if data.imglist.length}}
+                    {{each data.imglist item index}}
+                <div class="imgbox">
+                    <img height="100" class="smallimg"
+                         src="{{item.full_img_url}}"/>
+                </div>
+                    {{/each}}
+                {{else}}
+                    --
+                {{/if}}
+            </td>
+        </tr>
+
+        {{if data.attribute}}
+        <tr>
+            <td class="kv-label">商品属性</td>
+            <td class="kv-content">
+                <table disabled="disabled" style="width:800px" id="erpAttributeList"
+                       class=" table table-border table-bordered table-bg table-hover table-sort ">
+                    <tr>
+                        <th width="50%">属性</th>
+                        <th width="50%">属性明细</th>
+                    </tr>
+
+                    {{each data.attribute attribute index}}
+                    <tr class="attribute_class" data-id="{{attribute.attribute_id}}" id="values_{{attribute.attribute_id}}">
+                        <th class="w9">
+                            {{attribute.attribute_name}}
+                        </th>
+                        <th>
+                            {{if attribute.input_type == '1'}}
+                            {{each attribute.values value index}}
+                            <span style="margin: 0 5px">{{value.value}}</span>
+                            {{/each}}
+                            {{/if}}
+
+                            {{if attribute.input_type == '2'}}
+                            {{each attribute.values value index}}
+                            <span style="margin: 0 5px">{{value.value}}</span>
+                            {{/each}}
+                            {{/if}}
+
+                            {{if attribute.input_type == '3'}}
+                            <span style="margin: 0 5px">{{attribute.attribute_value_name}}</span>
+                            {{/if}}
+
+                        </th>
+                    </tr>
+                    {{/each}}
+                </table>
+            </td>
+        </tr>
+        {{/if}}
+        <tr>
+            <td class="kv-label">商品详情</td>
+            <td class="kv-content" width="900" >
+                <div style="width:900px;height:900px;overflow: auto;">
+                    {{if data.introduction}}
+                    {{@ data.introduction}}
+                    {{else}}
+                        --
+                    {{/if}}
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</script>
+
+<div id="purchase_add_detail_dialog" class="easyui-dialog" title="基本信息" style="width:90%;"
+     data-options="iconCls:'icon-save',modal:true,collapsible:false,closed:true">
+</div>

@@ -1,0 +1,114 @@
+# LogFrom:d:/zzh/qdds/public/index.php LogSetPath:Debug/E_USER_ERROR #
+
+URL: /index.php?m=Machine&c=Machineservicelog&a=list&format=list
+REF: http://ad.zhahehe.com/index.php?m=Machine&c=Machineservicelog&a=list
+DATE: 2019-07-09 16:57:11
+INFO: 错误级别: E_WARNING(2), 文件: D:\zzh\qdds\application\library\Core\PDOQuery.php, 行号: 669
+MSG: PDOStatement::execute(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'zzh.qdd_machineservicelog' doesn't exist
+TRACE: #0  Bootstrap->{closure}()
+#1  PDOStatement->execute() called at [D:\zzh\qdds\application\library\Core\PDOQuery.php:669]
+#2  Core\PDOQuery->YDParseSql() called at [D:\zzh\qdds\application\library\Core\PDOQuery.php:653]
+#3  Core\PDOQuery->YDGetAll() called at [D:\zzh\qdds\application\models\Base.php:1183]
+#4  BaseModel::paginate() called at [D:\zzh\qdds\application\models\Machine\Machineservicelog.php:61]
+#5  Machine\MachineservicelogModel::getList() called at [D:\zzh\qdds\application\modules\Machine\controllers\Machineservicelog.php:27]
+#6  MachineservicelogController->listAction()
+#7  Yaf_Application->run() called at [D:\zzh\qdds\public\index.php:8]
+
+URL: /index.php?m=Machine&c=Machineservicelog&a=list&format=list
+REF: http://ad.zhahehe.com/index.php?m=Machine&c=Machineservicelog&a=list
+DATE: 2019-07-09 16:57:11
+INFO: 错误级别: E_WARNING(2), 文件: D:\zzh\qdds\application\library\Core\PDOQuery.php, 行号: 669
+MSG: PDOStatement::execute(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'zzh.qdd_machineservicelog' doesn't exist
+TRACE: #0  Bootstrap->{closure}()
+#1  PDOStatement->execute() called at [D:\zzh\qdds\application\library\Core\PDOQuery.php:669]
+#2  Core\PDOQuery->YDParseSql() called at [D:\zzh\qdds\application\library\Core\PDOQuery.php:653]
+#3  Core\PDOQuery->YDGetAll() called at [D:\zzh\qdds\application\models\Base.php:1184]
+#4  BaseModel::paginate() called at [D:\zzh\qdds\application\models\Machine\Machineservicelog.php:61]
+#5  Machine\MachineservicelogModel::getList() called at [D:\zzh\qdds\application\modules\Machine\controllers\Machineservicelog.php:27]
+#6  MachineservicelogController->listAction()
+#7  Yaf_Application->run() called at [D:\zzh\qdds\public\index.php:8]
+
+URL: /index.php?m=Machine&c=Machineservicelog&a=list&format=list
+REF: http://ad.zhahehe.com/index.php?m=Machine&c=Machineservicelog&a=list
+DATE: 2019-07-09 16:57:13
+INFO: 错误级别: E_WARNING(2), 文件: D:\zzh\qdds\application\library\Core\PDOQuery.php, 行号: 669
+MSG: PDOStatement::execute(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'zzh.qdd_machineservicelog' doesn't exist
+TRACE: #0  Bootstrap->{closure}()
+#1  PDOStatement->execute() called at [D:\zzh\qdds\application\library\Core\PDOQuery.php:669]
+#2  Core\PDOQuery->YDParseSql() called at [D:\zzh\qdds\application\library\Core\PDOQuery.php:653]
+#3  Core\PDOQuery->YDGetAll() called at [D:\zzh\qdds\application\models\Base.php:1183]
+#4  BaseModel::paginate() called at [D:\zzh\qdds\application\models\Machine\Machineservicelog.php:61]
+#5  Machine\MachineservicelogModel::getList() called at [D:\zzh\qdds\application\modules\Machine\controllers\Machineservicelog.php:27]
+#6  MachineservicelogController->listAction()
+#7  Yaf_Application->run() called at [D:\zzh\qdds\public\index.php:8]
+
+URL: /index.php?m=Machine&c=Machineservicelog&a=list&format=list
+REF: http://ad.zhahehe.com/index.php?m=Machine&c=Machineservicelog&a=list
+DATE: 2019-07-09 16:57:13
+INFO: 错误级别: E_WARNING(2), 文件: D:\zzh\qdds\application\library\Core\PDOQuery.php, 行号: 669
+MSG: PDOStatement::execute(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'zzh.qdd_machineservicelog' doesn't exist
+TRACE: #0  Bootstrap->{closure}()
+#1  PDOStatement->execute() called at [D:\zzh\qdds\application\library\Core\PDOQuery.php:669]
+#2  Core\PDOQuery->YDParseSql() called at [D:\zzh\qdds\application\library\Core\PDOQuery.php:653]
+#3  Core\PDOQuery->YDGetAll() called at [D:\zzh\qdds\application\models\Base.php:1184]
+#4  BaseModel::paginate() called at [D:\zzh\qdds\application\models\Machine\Machineservicelog.php:61]
+#5  Machine\MachineservicelogModel::getList() called at [D:\zzh\qdds\application\modules\Machine\controllers\Machineservicelog.php:27]
+#6  MachineservicelogController->listAction()
+#7  Yaf_Application->run() called at [D:\zzh\qdds\public\index.php:8]
+
+URL: /index.php?m=Machine&c=Machineservicelog&a=list&format=list
+REF: http://ad.zhahehe.com/index.php?m=Machine&c=Machineservicelog&a=list
+DATE: 2019-07-09 16:57:19
+INFO: 错误级别: E_WARNING(2), 文件: D:\zzh\qdds\application\library\Core\PDOQuery.php, 行号: 669
+MSG: PDOStatement::execute(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'zzh.qdd_machineservicelog' doesn't exist
+TRACE: #0  Bootstrap->{closure}()
+#1  PDOStatement->execute() called at [D:\zzh\qdds\application\library\Core\PDOQuery.php:669]
+#2  Core\PDOQuery->YDParseSql() called at [D:\zzh\qdds\application\library\Core\PDOQuery.php:653]
+#3  Core\PDOQuery->YDGetAll() called at [D:\zzh\qdds\application\models\Base.php:1183]
+#4  BaseModel::paginate() called at [D:\zzh\qdds\application\models\Machine\Machineservicelog.php:61]
+#5  Machine\MachineservicelogModel::getList() called at [D:\zzh\qdds\application\modules\Machine\controllers\Machineservicelog.php:27]
+#6  MachineservicelogController->listAction()
+#7  Yaf_Application->run() called at [D:\zzh\qdds\public\index.php:8]
+
+URL: /index.php?m=Machine&c=Machineservicelog&a=list&format=list
+REF: http://ad.zhahehe.com/index.php?m=Machine&c=Machineservicelog&a=list
+DATE: 2019-07-09 16:57:19
+INFO: 错误级别: E_WARNING(2), 文件: D:\zzh\qdds\application\library\Core\PDOQuery.php, 行号: 669
+MSG: PDOStatement::execute(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'zzh.qdd_machineservicelog' doesn't exist
+TRACE: #0  Bootstrap->{closure}()
+#1  PDOStatement->execute() called at [D:\zzh\qdds\application\library\Core\PDOQuery.php:669]
+#2  Core\PDOQuery->YDParseSql() called at [D:\zzh\qdds\application\library\Core\PDOQuery.php:653]
+#3  Core\PDOQuery->YDGetAll() called at [D:\zzh\qdds\application\models\Base.php:1184]
+#4  BaseModel::paginate() called at [D:\zzh\qdds\application\models\Machine\Machineservicelog.php:61]
+#5  Machine\MachineservicelogModel::getList() called at [D:\zzh\qdds\application\modules\Machine\controllers\Machineservicelog.php:27]
+#6  MachineservicelogController->listAction()
+#7  Yaf_Application->run() called at [D:\zzh\qdds\public\index.php:8]
+
+URL: /index.php?m=Machine&c=Machineservicelog&a=list&format=list
+REF: http://ad.zhahehe.com/index.php?m=Machine&c=Machineservicelog&a=list
+DATE: 2019-07-09 16:57:23
+INFO: 错误级别: E_WARNING(2), 文件: D:\zzh\qdds\application\library\Core\PDOQuery.php, 行号: 669
+MSG: PDOStatement::execute(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'zzh.qdd_machineservicelog' doesn't exist
+TRACE: #0  Bootstrap->{closure}()
+#1  PDOStatement->execute() called at [D:\zzh\qdds\application\library\Core\PDOQuery.php:669]
+#2  Core\PDOQuery->YDParseSql() called at [D:\zzh\qdds\application\library\Core\PDOQuery.php:653]
+#3  Core\PDOQuery->YDGetAll() called at [D:\zzh\qdds\application\models\Base.php:1183]
+#4  BaseModel::paginate() called at [D:\zzh\qdds\application\models\Machine\Machineservicelog.php:61]
+#5  Machine\MachineservicelogModel::getList() called at [D:\zzh\qdds\application\modules\Machine\controllers\Machineservicelog.php:27]
+#6  MachineservicelogController->listAction()
+#7  Yaf_Application->run() called at [D:\zzh\qdds\public\index.php:8]
+
+URL: /index.php?m=Machine&c=Machineservicelog&a=list&format=list
+REF: http://ad.zhahehe.com/index.php?m=Machine&c=Machineservicelog&a=list
+DATE: 2019-07-09 16:57:23
+INFO: 错误级别: E_WARNING(2), 文件: D:\zzh\qdds\application\library\Core\PDOQuery.php, 行号: 669
+MSG: PDOStatement::execute(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'zzh.qdd_machineservicelog' doesn't exist
+TRACE: #0  Bootstrap->{closure}()
+#1  PDOStatement->execute() called at [D:\zzh\qdds\application\library\Core\PDOQuery.php:669]
+#2  Core\PDOQuery->YDParseSql() called at [D:\zzh\qdds\application\library\Core\PDOQuery.php:653]
+#3  Core\PDOQuery->YDGetAll() called at [D:\zzh\qdds\application\models\Base.php:1184]
+#4  BaseModel::paginate() called at [D:\zzh\qdds\application\models\Machine\Machineservicelog.php:61]
+#5  Machine\MachineservicelogModel::getList() called at [D:\zzh\qdds\application\modules\Machine\controllers\Machineservicelog.php:27]
+#6  MachineservicelogController->listAction()
+#7  Yaf_Application->run() called at [D:\zzh\qdds\public\index.php:8]
+

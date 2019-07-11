@@ -1,0 +1,42 @@
+.flex1 {
+  -webkit-box-flex: 1 !important;
+  -ms-flex: 1 !important;
+  flex: 1 !important;
+}
+
+.flex2 {
+  -webkit-box-flex: 2 !important;
+  -ms-flex: 2 !important;
+  flex: 2 !important;
+}
+
+.record-title {
+  text-align: center;
+  padding: 0.2rem 0;
+  border-bottom: 1px solid #d0d0d0;
+  font-weight: bold;
+  color: #333;
+}
+
+.record-data,
+.record-nodata {
+  text-align: center;
+  padding: 0.1rem 0;
+  color: #999;
+}
+
+.record-data .yd-flexbox-item {
+  padding: 0.03rem 0;
+}
+.record-data .in {
+  background: #ff0000;
+  color: #fff;
+}
+.record-data .out {
+  background: #ccc;
+  color: #fff;
+}
+
+.data-label span {
+  margin-right: 0.05rem;
+}

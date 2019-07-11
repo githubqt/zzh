@@ -1,0 +1,123 @@
+.recycling-order-container {
+    .order-count-time {
+        box-shadow: 0 .125rem .25rem rgba($black, .075);
+        border-radius: 0.2rem;
+        border: 1px solid rgba($black, .03);
+        margin: 0.2rem 0.24rem;
+        padding: 0.2rem 0.24rem;
+        background: rgba($primary, .65);
+        color: #fff;
+    }
+    .order-product {
+        box-shadow: 0 .125rem .25rem rgba($black, .075);
+        border-radius: 0.2rem;
+        border: 1px solid rgba($black, .03);
+        margin: 0.2rem 0.24rem;
+        padding: 0 0.24rem;
+        .order-product-title {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.2rem 0;
+            .title-left {
+                text-align: left;
+            }
+            .title-right {
+                text-align: right;
+                color: $primary;
+            }
+        }
+        .order-product-detail {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 0.2rem;
+            position: relative;
+            .img-lightbox {
+                overflow: hidden;
+                height: 2rem;
+                width: 2rem;
+                margin-right: 0.3rem;
+                min-width: 2rem;
+                min-height: 2rem;
+                img {
+                    height: 2rem;
+                    width: 2rem;
+                    min-width: 2rem;
+                    min-height: 2rem;
+                    object-fit: cover;
+                }
+            }
+            .img-count {
+                position: absolute;
+                top: 1.6rem;
+                left: 0;
+                height: 0.4rem;
+                line-height: 0.4rem;
+                text-align: center;
+                display: block;
+                width: 2rem;
+                background: rgba($black, .15);
+                color: #ffffff;
+            }
+            img {
+                height: 2rem;
+                width: 2rem;
+                min-width: 2rem;
+                min-height: 2rem;
+                object-fit: cover;
+                margin-right: 0.3rem;
+            }
+            .product-order {
+                .product-title {
+                    font-weight: bold;
+                    margin-bottom: 0.2rem;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                    word-break: break-all;
+                }
+                .llabel {
+                    margin-right: 0.1rem;
+                    color: #666;
+                    display: inline-block;
+                }
+                .product-price {
+                    .price {
+                        font-size: 0.3rem;
+                        color: $primary;
+                    }
+                    .tips {
+                        color: #666;
+                        font-size: 0.2rem;
+                    }
+                }
+                .product-order-no,
+                .product-order-time {
+                    margin-top: 0.1rem;
+                    color: #666;
+                    font-size: 0.2rem;
+                }
+            }
+        }
+        .operator-box {
+            margin-bottom: 0.2rem;
+            text-align: right;
+        }
+    }
+    .order-status-box {
+        box-shadow: 0 .125rem .25rem rgba($black, .075);
+        border-radius: 0.2rem;
+        border: 1px solid rgba($black, .03);
+        margin: 0.2rem 0.24rem;
+        padding: 0 0.24rem;
+        margin-top: 0.2rem;
+        .order-status-title {
+            padding: 0.24rem 0;
+            border-bottom: 1px solid rgba($black, .05);
+        }
+        .order-status-desc {
+            padding: 0.24rem 0 0.72rem 0;
+            color: rgba($primary, .75)
+        }
+    }
+}

@@ -1,0 +1,388 @@
+<?php include APPLICATION_PATH . '/application/views/index/layout/_header_v2.phtml'; ?>
+    <script type="text/javascript">
+        document.domain = 'zhahehe.com';
+    </script>
+    <link rel="stylesheet" type="text/css" href="<?php echo HOST_STATIC; ?>common/js/kindeditor/themes/default/default.css">
+    <script type="text/javascript" charset="utf-8" src="<?php echo HOST_STATIC; ?>common/js/kindeditor/kindeditor-all-min.js"></script>
+    <style>
+        .editor-box {
+            width: 800px;
+            height: 240px;
+            border: 1px solid #cccccc;
+            overflow: auto;
+            background: #f8f8f8;
+        }
+        .editor-box img[src*='upload']{
+            /*height: 240px;*/
+            /*display: block;*/
+            /*margin: auto;*/
+        }
+    </style>
+    <div class="container">
+        <div class="content">
+            <div class="easyui-tabs1" style="width:100%;">
+                <div title="基本信息" data-options="closable:false" class="basic-info">
+                    <form id="ff1" method="post" action="/index.php?m=Company&c=Company&a=set&format=set&id=<?php echo $supplier['id'] ?>&tap=1">
+                        <table cellpadding="5">
+                            <tbody>
+                            <tr>
+                                <td><span class="red">*</span>企业名称</td>
+                                <td><input class="easyui-textbox" type="text"
+                                           name="info[company]"
+                                           value="<?php echo $supplier['company'] ?>"
+                                           disabled="disabled"
+                                           style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="red">*</span>商城名称</td>
+                                <td><input class="easyui-textbox" type="text" name="info[shop_name]"
+                                           disabled="disabled"
+                                           value="<?php echo $supplier['shop_name'] ?>"
+                                           style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="red">*</span>企业法人</td>
+                                <td><input class="easyui-textbox" type="text" name="info[legal_person]"
+                                           disabled="disabled"
+                                           value="<?php echo $supplier['legal_person'] ?>"
+                                           style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="red">*</span>唯一标识</td>
+                                <td><input class="easyui-textbox" data-options="validType:['english']" type="text" name="info[domain]"
+                                           disabled="disabled"
+                                           value="<?php echo $supplier['domain'] ?>" style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td>短信签名</td>
+                                <td><input class="easyui-textbox" disabled="disabled" type="text" name="info[sms_name]"
+                                           value="<?php echo $supplier['sms_name'] ?>" style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td>注册资金</td>
+                                <td><input class="easyui-numberbox" type="text" name="info[registered_capital]"
+                                           disabled="disabled"
+                                           value="<?php echo $supplier['registered_capital'] ?>" style="width:300px;height:35px;line-height:35px;"/>（万元）
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>开户行名称</td>
+                                <td><input class="easyui-textbox" disabled="disabled" type="text" name="info[bank_name]"
+                                           value="<?php echo $supplier['bank_name'] ?>"
+                                           style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+
+                            <tr>
+                                <td>支行名称</td>
+                                <td><input class="easyui-textbox" disabled="disabled" type="text" name="info[bank_branch_name]"
+                                           value="<?php echo $supplier['bank_branch_name'] ?>"
+                                           style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+
+                            <tr>
+                                <td>开户行账号</td>
+                                <td><input class="easyui-numberbox" disabled="disabled" type="text" name="info[bank_account]"
+                                           value="<?php echo $supplier['bank_account'] ?>"
+                                           style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+
+                            <tr>
+                                <td>开户姓名</td>
+                                <td><input class="easyui-textbox" disabled="disabled" type="text" name="info[bank_account_name]"
+                                           value="<?php echo $supplier['bank_account_name'] ?>"
+                                           style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+
+                            <tr>
+                                <td>企业类型</td>
+                                <td>
+                                    <select name="info[enterprise_type]" style="height:35px;width:166px;" disabled="disabled">
+                                        <option value="通用" <?php if ($supplier['enterprise_type'] == '通用') { ?> selected <?php } ?> >通用</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>地址</td>
+                                <td>
+                                    <select id="province_id" name="info[province_id]" disabled="disabled" style="height:35px;width:166px;"></select>
+                                    <select id="city_id" name="info[city_id]" disabled="disabled" style="height:35px;width:166px;"></select>
+                                    <select id="area_id" name="info[area_id]" disabled="disabled" style="height:35px;width:166px;"></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>详细地址</td>
+                                <td><input class="easyui-textbox" type="text" name="info[address]" disabled="disabled"
+                                           value="<?php echo $supplier['address'] ?>"
+                                           style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td>成立时间</td>
+                                <td><input class="easyui-datebox" name="info[founding_time]" disabled="disabled"
+                                           value="<?php echo $supplier['founding_time'] ?>"
+                                           style="width:166px;height:35px;line-height:35px;"></td>
+                            </tr>
+                            <tr>
+                                <td>营业执照</td>
+
+                                <td>
+                                    <?php if (!empty($supplier['business_license_url'])) { ?>
+                                        <img class="lazy" data-original="<?php echo HOST_FILE . $supplier['business_license_url']; ?>" width="100"
+                                             height="100"/>
+                                    <?php } ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>是否绑定微信</td>
+                                <td>
+                                    <input class="easyui-radio" disabled="disabled" <?php if ($supplier['is_wechat'] == 2) { ?> checked="checked" <?php } ?>
+                                           type="radio"
+                                           name="info[is_wechat]" value="2"/>是 &nbsp;&nbsp;&nbsp;
+                                    <input class="easyui-radio" disabled="disabled" <?php if ($supplier['is_wechat'] == 1) { ?> checked="checked" <?php } ?>
+                                           type="radio"
+                                           name="info[is_wechat]" value="1"/>否
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>公司介绍</td>
+                                <td width="800">
+                                    <div class="editor-box">
+                                        <?php echo htmlspecialchars_decode($supplier['company_introduction']) ?>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>业务介绍</td>
+                                <td width="800">
+                                    <div class="editor-box">
+                                        <?php echo htmlspecialchars_decode($supplier['business_introduction']) ?>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>公司荣誉</td>
+                                <td width="800">
+                                    <div class="editor-box">
+                                        <?php echo htmlspecialchars_decode($supplier['company_honors']) ?>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </form>
+                </div>
+                <div title="其他信息" data-options="closable:false">
+                    <form id="ff2" method="post" action="/index.php?m=Company&c=Company&a=set&format=set&id=<?php echo $supplier['id'] ?>&tap=2">
+                        <table cellpadding="5" style="margin-bottom: 100px;">
+                            <tbody>
+                            <tr>
+                                <td>公司电话</td>
+                                <td><input class="easyui-textbox" data-options="validType:['mobile']" type="text" name="info[phone]"
+                                           value="<?php echo $supplier['phone'] ?>" style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td>联系人</td>
+                                <td><input class="easyui-textbox" type="text" name="info[contact]" value="<?php echo $supplier['contact'] ?>"
+                                           style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td>联系电话</td>
+                                <td><input class="easyui-textbox" data-options="validType:['phone']" type="text" name="info[mobile]"
+                                           value="<?php echo $supplier['mobile'] ?>" style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td>公司网站</td>
+                                <td><input class="easyui-textbox" type="text" name="info[web_home]" value="<?php echo $supplier['web_home'] ?>"
+                                           style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td>邮箱</td>
+                                <td><input class="easyui-textbox" validtype="email" type="text" name="info[email]" value="<?php echo $supplier['email'] ?>"
+                                           style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="red">*</span>客服电话</td>
+                                <td>
+                                    <textarea type="textarea" name="info[customer_tel]" placeholder="多个电话请换行,最多添加5个" style="width:300px;height:100px;line-height:20px;" ><?php echo $supplier['customer_tel_show']?></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>微信号</td>
+                                <td><input class="easyui-textbox" disabled="disabled" data-options="validType:['engnumber']" type="text"
+                                           name="info[wechat_name]"
+                                           value="<?php echo $supplier['wechat_name'] ?>" style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+ 				    		<tr>
+				    			<td><span class="red">*</span>本店说明</td>
+				    			<td width="800">
+				    				<textarea type="text/plain" id="shop_instructions" name="info[shop_instructions]" style="width:100%;height:240px;">
+									    <?php echo $supplier['shop_instructions']?>
+									</textarea>
+									<span style="color:#989292">本店说明：商行可进行填写声明、包邮、保价及其他适用本店内的政策</span>
+				    			</td>
+				    		</tr>		
+                            </tbody>
+                        </table>
+                        <div style="padding:25px;position: fixed;bottom: 0px;width: 100%;background: #f1f1f1;text-align: center;margin-left: -70px;">
+                            <input type="button" onclick="onstatus(2)" class="easyui-linkbutton" data-options="selected:true" value="保存">
+                        </div>
+                    </form>
+                </div>
+                <!-- <div title="公众号信息" data-options="closable:false">
+                    <form id="ff3" method="post" action="/index.php?m=Company&c=Company&a=set&format=set&id=<?php echo $supplier['id'] ?>&tap=3">
+                        <table cellpadding="5">
+                            <tbody>
+                            <tr>
+                                <td>公众号账号</td>
+                                <td><input class="easyui-textbox"
+                                           disabled="disabled"
+                                           data-options="validType:['engnumber']" type="text" name="info[wechat_user]"
+                                           value="<?php echo $supplier['wechat_user'] ?>" style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td>公众号密码</td>
+                                <td><input class="easyui-textbox"
+                                           disabled="disabled"
+                                           data-options="validType:['engnumber']" type="text" name="info[wechat_pass]"
+                                           value="<?php echo $supplier['wechat_pass'] ?>" style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td>微信APPID</td>
+                                <td><input class="easyui-textbox"
+                                           disabled="disabled"
+                                           data-options="validType:['engnumber']" type="text" name="info[app_id]"
+                                           value="<?php echo $supplier['app_id'] ?>" style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td>微信APPSECRET</td>
+                                <td><input class="easyui-textbox"
+                                           disabled="disabled"
+                                           data-options="validType:['engnumber']" type="text" name="info[app_secret]"
+                                           value="<?php echo $supplier['app_secret'] ?>" style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td>微信Token</td>
+                                <td><input class="easyui-textbox"
+                                           disabled="disabled"
+                                           data-options="validType:['engnumber']" type="text" name="info[app_token]"
+                                           value="<?php echo $supplier['app_token'] ?>" style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td>微信AES</td>
+                                <td><input class="easyui-textbox"
+                                           disabled="disabled"
+                                           data-options="validType:['engnumber']" type="text" name="info[app_aes]"
+                                           value="<?php echo $supplier['app_aes'] ?>" style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td>小程序ID</td>
+                                <td><input class="easyui-textbox"
+                                           disabled="disabled"
+                                           data-options="validType:['engnumber']" type="text" name="info[small_id]"
+                                           value="<?php echo $supplier['small_id'] ?>" style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            <tr>
+                                <td>小程序SECRET</td>
+                                <td><input class="easyui-textbox"
+                                           disabled="disabled"
+                                           data-options="validType:['engnumber']" type="text" name="info[small_secret]"
+                                           value="<?php echo $supplier['small_secret'] ?>" style="width:300px;height:35px;line-height:35px;"/></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+        var tap = 0;
+        var editor_1 = null;
+        var editor_2 = null;
+        var editor_3 = null;
+        $(function () {
+            area_child(0, 1,<?php echo intval($supplier['province_id']);?>,<?php echo intval($supplier['city_id']);?>,<?php echo intval($supplier['area_id']);?>);
+            KindEditor.ready(function(K) {
+  			  editor_4 = K.create('#shop_instructions', {
+                  items:[
+                      'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'code', 'cut', 'copy', 'paste',
+                      'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                      'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                      'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+                      'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                      'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
+                      'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+                      'anchor', 'link', 'unlink', '|', 'about'
+                  ],
+  				allowFileManager : true,
+  				uploadJson : '<?php echo HOST_FILE;?>/upload_json.php',  
+       			fileManagerJson : '<?php echo HOST_FILE;?>/file_manager_json.php'
+  			});
+  		  });	
+            //KindEditor.ready(function(K) {
+            //    editor_1 = K.create('#company_introduction', {
+            //        allowFileManager : true,
+            //        uploadJson : '<?php //echo HOST_FILE;?>///upload_json.php',
+            //        fileManagerJson : '<?php //echo HOST_FILE;?>///file_manager_json.php'
+            //    });
+            //    editor_1.readonly(true);
+            //});
+            //KindEditor.ready(function(K) {
+            //    editor_2 = K.create('#business_introduction', {
+            //        allowFileManager : true,
+            //        uploadJson : '<?php //echo HOST_FILE;?>///upload_json.php',
+            //        fileManagerJson : '<?php //echo HOST_FILE;?>///file_manager_json.php'
+            //    });
+            //    editor_2.readonly(true);
+            //});
+            //KindEditor.ready(function(K) {
+            //    editor_3 = K.create('#company_honors', {
+            //        allowFileManager : true,
+            //        uploadJson : '<?php //echo HOST_FILE;?>///upload_json.php',
+            //        fileManagerJson : '<?php //echo HOST_FILE;?>///file_manager_json.php'
+            //    });
+            //    editor_3.readonly(true);
+            //});
+        });
+
+        $('.easyui-tabs1').tabs({
+            tabHeight: 36
+        });
+        $(window).resize(function () {
+            $('.easyui-tabs1').tabs("resize");
+        }).resize();
+
+        function onstatus(num) {
+
+            $("#shop_instructions").val(editor_4.html());
+            var isValid = $("#ff" + num).form('validate');
+            if (isValid == false) {
+                return isValid;
+            }
+
+            if (num == '2') {
+                $.ajax({
+                    url: $('#ff' + num).attr("action"),
+                    type: "post",
+                    dataType: "jsonp",
+                    jsonp: "jsonpcallback",
+                    data: $('#ff' + num).serialize(),
+                    success: function (data) {
+                        $.messager.alert('提示', data.msg);
+                    }
+                });
+            }
+
+        }
+
+        function clearForm(form) {
+            $('#' + form).form('clear');
+        }
+    </script>
+    <script type="text/javascript" src="<?php echo HOST_STATIC; ?>common/js/area.js"></script>
+<?php include APPLICATION_PATH . '/application/views/index/layout/_footer.phtml'; ?>

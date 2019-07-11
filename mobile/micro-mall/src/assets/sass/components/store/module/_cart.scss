@@ -1,0 +1,126 @@
+.cart-list {
+    .scroll-box {
+        padding: 0 5px;
+        .price-right-box {
+            padding-left: 0.24rem;
+        }
+        .cart-status-txt {
+            padding-bottom: 0.12rem;
+            font-size: 14px;
+            color: #e93b3a;
+        }
+        .price-right-box .yd-spinner {
+            border: none !important;
+        }
+        .spinner-container>a {
+            position: relative;
+            width: 0.5rem;
+            height: 0.5rem;
+            line-height: 0.5rem;
+            background-color: #f5f5f5;
+        }
+        .spinner-container>a:first-child:after {
+            font-family: YDUI-INLAY;
+            content: "\E60B";
+            color: #777;
+            font-size: 0.18rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .spinner-container>a:last-child:after {
+            font-family: YDUI-INLAY;
+            content: "\E602";
+            color: #777;
+            font-size: 0.18rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .spinner-container>input {
+            border: none;
+            outline: none;
+            width: 1rem;
+            text-align: center;
+            background-color: #fff;
+        }
+        .cart-pay-box {
+            width: 100%;
+            text-align: right;
+            background-color: #fff;
+            padding: 0 0.24rem 0.24rem 0.24rem;
+        }
+        .merchant-list-item {
+            margin: 0.1rem 0.1rem 0.2rem 0.1rem;
+            .merchant-list-item-title {
+                padding-left: 12px;
+                padding-top: 0.3rem;
+                padding-bottom: 0.3rem;
+                background: $primary-bg-color;
+                border-bottom: 1px solid $border-color;
+                border-top-left-radius: 0.3rem;
+                border-top-right-radius: 0.3rem;
+                .merchant-name {
+                    position: relative;
+                    padding-left: 0.7rem;
+                    .icon-custom-dianpu {
+                        color: $primary;
+                        margin-bottom: -0.1rem;
+                        position: absolute;
+                        top: -0.2rem;
+                        left: 0.1rem;
+                    }
+                }
+            }
+            .yd-checklist {
+                border-bottom-left-radius: 0.3rem;
+                border-bottom-right-radius: 0.3rem;
+            }
+            .product-list-item {
+                padding-top: 0.2rem;
+            }
+            .product-extra-info {
+                margin-bottom: 0.2rem;
+                .fight-group {
+                    &::after {
+                        margin-left: .05rem;
+                        margin-right: -.08rem;
+                        display: inline-block;
+                        font-family: YDUI-INLAY;
+                        font-size: 0.24rem;
+                        color: #c9c9c9;
+                        content: "\E608";
+                    }
+                    .fight-group-price,
+                    .fight-group-link {
+                        font-size: 0.24rem;
+                    }
+                }
+            }
+        }
+    }
+    .cart-button {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        justify-content: flex-end;
+        background-color: #ffffff;
+        z-index: 11;
+        .cart-button-left {
+            font-size: 0.24rem;
+            padding: 0.12rem 0.24rem;
+        }
+        .cart-button-right {
+            margin: 0 !important;
+            max-width: 3.4rem;
+            button {
+                margin: 0 !important;
+            }
+        }
+    }
+}

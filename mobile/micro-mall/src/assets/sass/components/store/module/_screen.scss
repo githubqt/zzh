@@ -1,0 +1,303 @@
+.store-screen-container {
+    position: fixed;
+    z-index: 10;
+    top: 1.2rem;
+    right: 0;
+    left: 0;
+}
+
+.screen-modal {
+    bottom: 1rem;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.store-screen-header-box {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    background-color: #fff;
+    margin-top: -1px;
+    height: .8rem;
+    display: flex;
+}
+
+.store-screen-header-box:after {
+    position: absolute;
+    content: '';
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background-color: #d8d8d8;
+    transform: scale3d(1, .5, 1);
+}
+
+.store-screen-header-item {
+    position: relative;
+    display: block;
+    width: 33.33%;
+    height: .8rem;
+    line-height: .8rem;
+    text-align: center;
+}
+
+.store-screen-header-item:after {
+    position: absolute;
+    content: '';
+    top: .12rem;
+    right: 0;
+    bottom: .12rem;
+    width: 1px;
+    background-color: #d8d8d8;
+    transform: scale3d(.5, 1, 1);
+}
+
+.store-screen-header-item:last-child:after {
+    width: 0;
+}
+
+.store-screen-content-box {
+    position: absolute;
+    z-index: 10;
+    top: .8rem;
+    width: 100%;
+    background-color: #fff;
+}
+
+.screen-content-scroll {
+    display: block;
+    width: 100%;
+}
+
+.store-screen-content-con {
+    position: relative;
+    width: 100%;
+    padding: 0;
+}
+
+.screen-content-btn {
+    position: relative;
+    width: 100%;
+    height: 1rem;
+    padding: 0 .24rem;
+    text-align: center;
+    line-height: 1rem;
+}
+
+.screen-content-btn:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background-color: #d8d8d8;
+    transform: scale3d(1, .5, 1);
+}
+
+.screen-content-btn:after {
+    position: absolute;
+    content: '';
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background-color: #d8d8d8;
+    transform: scale3d(1, .5, 1);
+}
+
+.screen-content-btn button {
+    width: 40%;
+}
+
+.store-screen-content-box .yd-accordion-head,
+.store-screen-content-box .yd-cell:after {
+    display: none;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: all .8s;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+    transform: translate(-100%, 0);
+}
+
+.sort-list {
+    position: relative;
+    padding: 0 .12rem;
+    height: .8rem;
+}
+
+.sort-list:after {
+    position: absolute;
+    content: '';
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background-color: #fff;
+    transform: scale3d(1, .5, 1);
+}
+
+.sort-list:last-child:after {
+    height: 0;
+}
+
+.sort-on,
+.sort-on .yd-icon-checkoff {
+    color: #dab461 !important;
+}
+
+.store-screen-brand-left {
+    width: 90%;
+    max-height: 5rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.screen-brand-header {
+    line-height: .7rem;
+    padding-left: .36rem;
+    background-color: #f2f2f2;
+}
+
+.store-screen-brand-left .yd-cell-item {
+    height: .8rem;
+    padding-left: .24rem;
+}
+
+.screen-brand-right {
+    position: absolute;
+    top: .24rem;
+    right: .24rem;
+    bottom: .24rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border: 1px solid #cccccc;
+    background-color: #f2f2f2;
+    border-radius: .5rem .5rem .5rem .5rem;
+}
+
+.screen-brand-right li a {
+    display: block;
+    text-align: center;
+    padding: .04rem 0;
+}
+
+.screen-category-menu {
+    display: block;
+    max-height: 5rem;
+    background-color: #f5f5f5;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.screen-category-list {
+    display: block;
+    padding: 0 .3rem;
+    line-height: .8rem;
+    font-size: .28rem;
+    color: #495060;
+}
+
+.screen-category-active {
+    background-color: #fff;
+}
+
+.store-screen-category-content {
+    max-height: 5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    align-self: flex-start !important;
+}
+
+.store-screen-category-content .yd-cell-item {
+    height: .8rem;
+}
+
+.store-screen-category-content .yd-cell-item:last-child:after,
+.store-screen-brand-left .yd-cell-item:not(:last-child):after,
+.store-screen-category-content .yd-cell-item:not(:last-child):after {
+    display: none;
+    border-width: 0;
+}
+
+.store-screen-container .yd-cell-right input[type=checkbox]:not(.yd-switch)+.yd-cell-checkbox-icon:after,
+.store-screen-container .yd-cell-right input[type=radio]+.yd-cell-checkbox-icon:after {
+    content: "" !important;
+}
+
+.store-screen-container .yd-cell-right input[type=checkbox]:not(.yd-switch):checked+.yd-cell-checkbox-icon:after,
+.store-screen-container .yd-cell-right input[type=radio]:checked+.yd-cell-checkbox-icon:after {
+    color: #dab461 !important;
+    content: "\E600" !important;
+}
+
+.store-screen-container {
+    .p2 {
+        padding: 0.3rem 0.2rem;
+    }
+    .screen-header-order {
+        height: 1rem;
+        background: $primary-bg-color;
+        line-height: 1rem;
+        border-bottom: 1px solid $border-color;
+        position: relative;
+        &-item {
+            text-align: center;
+        }
+        .screen-header-order-item {
+            .active {
+                color: $yellow;
+            }
+        }
+        .more-search {
+            width: 1.3rem;
+            border-left: 1px solid $border-color;
+        }
+        .zh-order {
+            background: $primary-bg-color;
+            position: absolute;
+            top: 1rem;
+            z-index: 20;
+        }
+    }
+    .btn-right {
+        text-align: right;
+    }
+    .network-city {
+        border-bottom: 1px solid $border-color;
+    }
+    .network-area {
+        .area-title {
+            line-height: 0.8rem;
+            margin-top: 0.2rem;
+            margin-bottom: 0.3rem;
+            b {
+                font-size: 0.3rem;
+            }
+        }
+        .area-item {
+            width: 100%;
+            .area-item-name {
+                box-sizing: border-box;
+                float: left;
+                width: 50%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                padding-right: 0.2rem;
+                line-height: 0.6rem;
+                height: 0.6rem;
+            }
+            .active {
+                border-bottom: 1px solid $yellow;
+                color: $yellow;
+            }
+        }
+    }
+}

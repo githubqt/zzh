@@ -1,0 +1,40 @@
+<!-- 查询物流弹出窗 start -->
+<div id="express-box-dialog" class="easyui-dialog" title="物流信息" style="width:600px;height:400px"
+     data-options="iconCls:'icon-save',modal:true,collapsible:false,closed:true"></div>
+<!-- 查询物流弹出窗 end -->
+<!-- 查询物流模板 start -->
+<script type="text/html" id="express-box-tpl">
+    <table class="table table table-bordered">
+        <tr>
+            <td>快递公司</td>
+            <td>{{express.express_name}}</td>
+        </tr>
+        <tr>
+            <td>快递单号</td>
+            <td>{{express.express_no}}</td>
+        </tr>
+        <tr>
+            <td>当前状态</td>
+            <td>{{express.state_text}}</td>
+        </tr>
+    </table>
+
+    <div class="time-line">
+        {{ each express.data item index}}
+        <div class="time-item time">
+            <div class="content-left"><span>{{item.ftime}}</span><label><i class="line"></i><span class="dot"></span></label></div>
+            <div class="content-right"><span class="left-arrow"></span>
+                <div class="detail-outer">
+                    <div class="detail">
+                        <div>{{item.context}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+    </div>
+
+</script>
+<!-- 查询物流模板 end -->
+

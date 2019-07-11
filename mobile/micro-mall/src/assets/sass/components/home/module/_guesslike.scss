@@ -1,0 +1,30 @@
+.guess-like {
+    margin-bottom: .7rem;
+    .title {
+        height: 1rem;
+        width: 100%;
+        text-align: center;
+        font-size: 0.4rem;
+        line-height: 1rem;
+        background: $primary-bg-color;
+        color: $primary;
+        border-bottom: 2px solid $border-color;
+        margin: 0;
+        padding: 0;
+        .circle {
+            display: inline-block;
+            height: 0.1rem;
+            width: 0.1rem;
+            border-radius: 0.1rem;
+            background: $primary;
+            vertical-align: middle;
+            margin: 0 .2rem;
+        }
+    }
+    .buy {
+        text-align: right;
+        button {
+            border-radius: 0.3rem !important;
+        }
+    }
+}
