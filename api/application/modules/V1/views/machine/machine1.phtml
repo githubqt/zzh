@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>设备列表</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="<?php echo HOST_STATIC;?>mobile/css/weui.css"/>
+    <link rel="stylesheet" href="<?php echo HOST_STATIC;?>mobile/css/weuix.css"/>
+
+    <script src="<?php echo HOST_STATIC;?>mobile/js/zepto.min.js"></script>
+    <script>
+        $(function(){
+            $('div .js-category').click(function(){
+                $parent = $(this).parent('li');
+                if($parent.hasClass('js-show')){
+                    $parent.removeClass('js-show');
+                    $(this).children('i').removeClass('icon-35').addClass('icon-74');
+                }else{
+                    $parent.siblings().removeClass('js-show');
+                    $parent.addClass('js-show');
+                    $(this).children('i').removeClass('icon-74').addClass('icon-35');
+                    $parent.siblings().find('i').removeClass('icon-35').addClass('icon-74');
+                }
+            });
+        });
+    </script>
+</head>
+
+<body ontouchstart class="page-bg">
+<div class="page-hd">
+    <h3 class="page-hd-title"><?=$data['machine_name']?></h3>
+</div>
+<div class="page-bd">
+    <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>设备编码：<?=$data['machine_self_code']?></p>
+            </div>
+            <div class="weui-cell__ft">
+                <a href="<?=$data['log_scheme']?>">维护日志</a>
+            </div>
+        </div>
+        <?php if(isset($data['parent'])) { ?>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>父级设备</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <a href="<?=$data['parent']['scheme']?>"><?=$data['parent']['machine_name']?></a>
+                </div>
+            </div>
+        <?php }?>
+    </div>
+    <div class="weui-cells__title">子级设备</div>
+    <?= $data['child_html'] ?? ''?>
+</div>
+</body>
+</html>
