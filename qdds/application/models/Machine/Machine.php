@@ -54,12 +54,12 @@ class MachineModel extends \BaseModel
         $end_time = Arr::value($search, 'end_time');
         $end_time and $builder->where('created_at', '<=', Date::startOfDay($end_time));
         $list = static::paginate($builder);
-        if (!empty($list)) {
-            foreach ($list as $key => $value) {
-                $list[$key]['parent_name'] = '顶级设备';
+        if (!empty($list['rows'])) {
+            foreach ($list['rows'] as $key => $value) {
+                $list['rows'][$key]['parent_name'] = '顶级设备';
                 if ($value['parent_id'] != 0) {
                     $parent = self::findOneWhere(['id'=>$value['parent_id'] ]);
-                    $list[$key]['parent_name'] = $parent['name'];
+                    $list['rows'][$key]['parent_name'] = $parent['name'];
                 }
             }
         }
