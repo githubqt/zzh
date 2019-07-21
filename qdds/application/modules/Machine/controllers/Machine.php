@@ -114,8 +114,6 @@ class MachineController extends BaseController {
             $info['supplier_id'] = $auth['supplier_id'];
             $info['self_code'] = MachineModel::getSelfCode();
             $info['parent_id'] = intval($info['parent_id']);
-            print_r($info);
-            exit;
             $machine_id = MachineModel::addData($info);
             if (!$machine_id) {
                 $jsonData['code'] = '500';
