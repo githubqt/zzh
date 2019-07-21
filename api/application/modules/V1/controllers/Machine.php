@@ -84,10 +84,7 @@ class MachineController extends BaseController {
             }
         }
         //查询子集
-        $child_html = self::getChildHtml($machine['supplier_id'], $machine['id']);
-        if (!empty($child_html)) {
-            $data['child_html'] = $child_html;
-        }
+        $data['child_html'] = self::getChildHtml($machine['supplier_id'], $machine['id']);
         Yaf_Dispatcher::getInstance ()->enableView ();
         $this->getView ()->assign ( "data", $data );
     }
@@ -126,33 +123,15 @@ class MachineController extends BaseController {
             $childer = '';
             foreach ($child as $key=>$value) {
                 $childer .= '
-                <li>
-                   <div class="weui-flex js-category">
-                      <div class="weui-flex__item">'.$value['name'].' <a href="/v1/Machine/logview?self_code='.$value['self_code'].'">维护日志</a></div>
-                         <i class="icon icon-74"></i>
-                      </div>';
+                   <div data-role="collapsible">
+                      <h1>'.$value['name'].' <a href="/v1/Machine/machine?self_code='.$value['self_code'].'">设备详情</a></h1>';
                 $childer_s = self::getChildHtml($supplier_id, $value['id']);
                 if (!empty($childer_s)) {
-                    $childer .= '
-                    <div class="page-category js-categoryInner">
-                        <div class="weui-cells page-category-content"><a class="weui-cell weui-cell_access" href="JavaScript:;">
-                        <div class="weui-cell__bd">
-                            <p>杨超越</p>
-                        </div>
-                        <div class="weui-cell__ft"></div>
-                    </a>
-                    <a class="weui-cell weui-cell_access" href="JavaScript:;">
-                        <div class="weui-cell__bd">
-                            <p>柳岩</p>
-                        </div>
-                        <div class="weui-cell__ft"></div>
-                    </a></div>
-                    </div>';
+                    $childer .= $childer_s;
                 }
-                $childer .= '</li>';
+                $childer .= '</div>';
             }
-            $childer_html = '<ul class="collapse">'.$childer.'</ul>';
-            return $childer_html;
+            return $childer;
         }
         return '';
     }
