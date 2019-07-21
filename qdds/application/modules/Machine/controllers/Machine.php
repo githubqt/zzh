@@ -252,21 +252,11 @@ class MachineController extends BaseController {
     public function deleteAction()
     {
         $id = $this->_request->get('id');
-
-        $detail = ProductModel::find($id);
-
+        $detail = MachineModel::find($id);
         if (!$detail){
-            $this->error('商品不存在');
+            $this->error('设备不存在');
         }
-
-        if ($detail->on_status != ProductModel::ON_STATUS_1){
-            $this->error(ProductModel::ON_STATUS_VALUE[$detail->on_status] . "商品不允许删除操作");
-        }
-
-        //删除属性
-        ProductAttributeModel::deleteByProductID($id);
-        ProductMultiPointModel::deleteByProductID($id);
-        $delete = ProductModel::deleteByID($id);
+        $delete = MachineModel::deleteByID($id);
         if (!$delete) {
             $jsonData['code'] = '500';
             $jsonData['msg'] = '删除失败！';
@@ -285,7 +275,7 @@ class MachineController extends BaseController {
 		$detail = MachineModel::getInfoByID ( $id );
 		$suppplier_detail = SupplierModel::getInfoByID ( $detail ['supplier_id'] );
 		//$url = sprintf ( M_URL, $suppplier_detail ['domain'] ) . '?self_code=' . $detail['self_code'];
-        $url = 'http://api.zhahehe.com/v1/Machine/logview?self_code=' . $detail['self_code'];
+        $url = 'http://api.zhahehe.com/v1/Machine/machine?self_code=' . $detail['self_code'];
 		// $url='http://test.m.zhahehe.com/mobile/details?id='.$id;
 		// http://test.testm.zhahehe.com/mobile/details?id= 测试
 		// http://test.m.zhahehe.com/mobile/details?id= 正式

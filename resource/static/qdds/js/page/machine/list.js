@@ -27,11 +27,12 @@ var fields = [[{
 }, {
     field: 'operate',
     title: '操作',
-    width: 150,
+    width: 180,
     align: 'left',
     formatter: function (value, row, index) {
         var str =  '<input type="button" onclick="javascript:promoteProductnow(' + row.id + ');"  class="easyui-linkbutton" data-options="selected:true" value="二维码" >';
         str +=  '<input type="button" onclick="location.href=\'/?m=Machine&c=Machine&a=addlog&id=' + row.id + '\'" class="easyui-linkbutton" data-options="selected:true" value="维护" >';
+        str += '<input type="button" onclick="javascript:delproduct(' + row.id + ');"  class="easyui-linkbutton" data-options="selected:true" value="删除" >';
         return str;
     }
 }
@@ -48,4 +49,8 @@ function promoteProductnow(id) {
         href: '/?m=Machine&c=Machine&a=erweima&id=' + id+'&is_menu=1',
         modal: true
     });
+}
+
+function delproduct(id) {
+    deleteInfo("/?m=Machine&c=Machine&a=delete&id=" + id, "/index.php?m=Machine&c=Machine&a=list");
 }
