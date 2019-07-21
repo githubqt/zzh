@@ -124,7 +124,8 @@ class MachineController extends BaseController {
             foreach ($child as $key=>$value) {
                 $childer .= '
                    <div data-role="collapsible">
-                      <h1>'.$value['name'].' <a href="/v1/Machine/machine?self_code='.$value['self_code'].'">设备详情</a></h1>';
+                      <a href="/v1/Machine/machine?self_code='.$value['self_code'].'">设备详情</a>
+                      <h1>'.$value['name'].'</h1>';
                 $childer_s = self::getChildHtml($supplier_id, $value['id']);
                 if (!empty($childer_s)) {
                     $childer .= $childer_s;
