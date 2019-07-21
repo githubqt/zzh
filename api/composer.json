@@ -1,6 +1,0 @@
-{
-    "require": {
-        "elasticsearch/elasticsearch": "~6.0",
-        "lcobucci/jwt": "v3.2.*"
-    }
-}

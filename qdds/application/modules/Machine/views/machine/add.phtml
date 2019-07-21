@@ -9,6 +9,16 @@
 		    			<td><input class="easyui-textbox"  type="text" name="info[name]"  data-options="required: true" style="width:300px;height:35px;line-height:35px;" /></td>
 		    		</tr>
                     <tr>
+                        <td> 选择父级设备</td>
+                        <td>
+                            <select name="info[parent_id]" style="width:300px;height:35px;line-height:35px;">
+                                <?php foreach ($machines as $machine) { ?>
+                                    <option value="<?=$machine['id']?>" ><?=$machine['name']?></option>
+                                <?php }?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
                         <td> 自定义码</td>
                         <td><input class="easyui-textbox" data-options="validType:['engnumber']" type="text" name="info[custom_code]" value="" style="width:300px;height:35px;line-height:35px;" /></td>
                     </tr>

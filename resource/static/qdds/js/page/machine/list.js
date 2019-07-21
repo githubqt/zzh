@@ -17,9 +17,9 @@ var fields = [[{
     width: 200,
     title: '自定义码'
 }, {
-    field: 'note',
+    field: 'parent_name',
     width: 200,
-    title: '设备备注'
+    title: '父级设备'
 }, {
     field: 'created_at',
     width: 200,

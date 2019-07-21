@@ -101,6 +101,7 @@ class MachineController extends BaseController {
     public function addAction()
     {
         $format = $this->_request->get('format');
+        $auth = MachineModel::auth();
         if (!empty($format) && $format == "add") {
             $info = $this->_request->get('info');
             $validate = \Assemble\Support\Validate::validation("machine");
@@ -110,7 +111,6 @@ class MachineController extends BaseController {
                 echo $this->apiOut($jsonData);
                 exit;
             }
-            $auth = MachineModel::auth();
             $info['supplier_id'] = $auth['supplier_id'];
             $info['self_code'] = MachineModel::getSelfCode();
             $machine_id = MachineModel::addData($info);
@@ -140,7 +140,9 @@ class MachineController extends BaseController {
             echo $this->apiOut($jsonData);
             exit;
         }
-        $this->getView();
+        //查询一级设备
+        $machines = MachineModel::findMoreWhere(array('supplier_id' => $auth['supplier_id'], 'parent_id' => 0, 'is_del' => 2));
+        $this->getView()->assign("machines", $machines);
     }
 
     /**

@@ -23,6 +23,7 @@ class MachineModel extends \BaseModel
      */
     public static $showColumns = [
         'id',
+        'parent_id',
         'name',
         'self_code',
         'custom_code',
@@ -52,7 +53,17 @@ class MachineModel extends \BaseModel
         $start_time and $builder->where('created_at', '>=', Date::startOfDay($start_time));
         $end_time = Arr::value($search, 'end_time');
         $end_time and $builder->where('created_at', '<=', Date::startOfDay($end_time));
-        return static::paginate($builder);
+        $list = static::paginate($builder);
+        if (!empty($list)) {
+            foreach ($list as $key => $value) {
+                $list[$key]['parent_name'] = '顶级设备';
+                if ($value['parent_id'] != 0) {
+                    $parent = self::findOneWhere(['id'=>$value['parent_id'] ]);
+                    $list[$key]['parent_name'] = $parent['name'];
+                }
+            }
+        }
+        return $list;
     }
 
     /**
@@ -62,6 +73,19 @@ class MachineModel extends \BaseModel
     {
         $pdo = self::_pdo('db_r');
         $detail =  $pdo->clear()->select('*')->from(self::table())->where($where)->getRow();
+        if ($detail) {
+            return $detail;
+        }
+        return FALSE;
+    }
+
+    /**
+     * 条件查询
+     */
+    public static function findMoreWhere($where)
+    {
+        $pdo = self::_pdo('db_r');
+        $detail =  $pdo->clear()->select('*')->from(self::table())->where($where)->getALl();
         if ($detail) {
             return $detail;
         }
