@@ -101,7 +101,6 @@ class MachineController extends BaseController {
     public function addAction()
     {
         $format = $this->_request->get('format');
-        $auth = MachineModel::auth();
         if (!empty($format) && $format == "add") {
             $info = $this->_request->get('info');
             $validate = \Assemble\Support\Validate::validation("machine");
@@ -111,6 +110,7 @@ class MachineController extends BaseController {
                 echo $this->apiOut($jsonData);
                 exit;
             }
+            $auth = MachineModel::auth();
             $info['supplier_id'] = $auth['supplier_id'];
             $info['self_code'] = MachineModel::getSelfCode();
             $machine_id = MachineModel::addData($info);
@@ -140,9 +140,7 @@ class MachineController extends BaseController {
             echo $this->apiOut($jsonData);
             exit;
         }
-        //查询一级设备
-        $machines = MachineModel::findMoreWhere(array('supplier_id' => $auth['supplier_id'], 'parent_id' => 0, 'is_del' => 2));
-        $this->getView()->assign("machines", $machines);
+        $this->getView();
     }
 
     /**
@@ -335,6 +333,43 @@ class MachineController extends BaseController {
 		$this->getView ()->assign ( "num", $num );
 		$this->getView ()->assign ( "suppplier", $suppplier ['m_url'] );
 	}
+
+    /**
+     * 获得设备分级
+     */
+    public function selectAction() {
+        $auth = MachineModel::auth();
+        $parent = MachineModel::findMoreWhere(array('supplier_id' => $auth['supplier_id'], 'parent_id' => 0, 'is_del' => 2));
+        $list = [];
+        if (!empty($parent)) {
+            foreach ($parent as $k=>$val) {
+                $item = [];
+                $item['id'] = $val['id'];
+                $item['text'] = $val['name'];
+                $child = MachineModel::findMoreWhere(array('supplier_id' => $auth['supplier_id'], 'parent_id' => $val['id'], 'is_del' => 2));
+                if (!empty($child)) {
+                    $childer = [];
+                    foreach ($child as $key=>$value) {
+                        $childer_item = [];
+                        $childer_item['id'] = $value['id'];
+                        $childer_item['text'] = $value['name'];
+                        $childer[] = $childer_item;
+                    }
+                    $item['children'] = $childer;
+                }
+                $list[] = $item;
+            }
+        }
+        $top = array(array(
+            "id"=>0,
+            "name"=>"顶级设备",
+            "text"=>"顶级设备",
+            "state"=>"open",
+            "children"=>$list
+        ));
+        echo $this->apiOut($top);
+        exit;
+    }
 }
 
 

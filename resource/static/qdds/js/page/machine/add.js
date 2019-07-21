@@ -15,7 +15,12 @@
 					location.href="/index.php?m=Machine&c=Machine&a=list"
 				} else {
 					$.messager.alert('提示', data.msg);
-				}
-			}
+				}}
+    	});
+
+		var self = $('#parent_id').combotree({
+			url:'/index.php?m=Machine&c=Machine&a=select',
+			required: true,
 		});
+
     });
