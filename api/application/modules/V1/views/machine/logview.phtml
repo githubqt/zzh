@@ -51,12 +51,14 @@
             <div class="weui-panel weui-panel_access">
                 <div class="weui-panel__hd">维护信息</div>
                 <div class="weui-panel__bd">
-                    <?php foreach ($data['log'] as $log) { ?>
+                    <?php
+                        if (isset($data['log']) && !empty($data['log'])) {
+                        foreach ($data['log'] as $log) { ?>
                         <div class="weui-media-box weui-media-box_text">
                             <h4 class="weui-media-box__title"><?=$log['created_at']?></h4>
                             <p class="weui-media-box__desc"><?=$log['admin_name'].'：'.$log['note']?></p>
                         </div>
-                    <?php } ?>
+                    <?php }} ?>
                 </div>
 <!--                <div class="weui-panel__ft">-->
 <!--                    <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">-->
