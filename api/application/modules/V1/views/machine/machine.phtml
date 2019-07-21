@@ -2,17 +2,43 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>设备列表</title>
     <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="<?php echo HOST_STATIC;?>mobile/css/weui.css"/>
+    <link rel="stylesheet" href="<?php echo HOST_STATIC;?>mobile/css/weuix.css"/>
+
+    <script src="<?php echo HOST_STATIC;?>mobile/js/zepto.min.js"></script>
 </head>
 <body>
 
 <div data-role="page" id="pageone">
     <div data-role="header">
-        <h1>可折叠块</h1>
+        <h1><?=$data['machine_name']?></h1>
     </div>
-
+    <div class="page-bd">
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>设备编码：<?=$data['machine_self_code']?></p>
+                </div>
+                <div class="weui-cell__ft">
+                    <a href="<?=$data['log_scheme']?>">维护日志</a>
+                </div>
+            </div>
+            <?php if(isset($data['parent'])) { ?>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <p>父级设备</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <a href="<?=$data['parent']['scheme']?>"><?=$data['parent']['machine_name']?></a>
+                    </div>
+                </div>
+            <?php }?>
+        </div>
+    </div>
     <div data-role="main" class="ui-content">
         <div data-role="collapsible">
             <h1>点击我 - 我可以折叠！</h1>
@@ -36,10 +62,6 @@
                 <p>我是可折叠的内容。</p>
             </div>
         </div>
-    </div>
-
-    <div data-role="footer">
-        <h1>页脚文本</h1>
     </div>
 </div>
 
