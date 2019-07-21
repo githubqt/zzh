@@ -10,7 +10,7 @@
     <script src="<?php echo HOST_STATIC;?>mobile/js/zepto.min.js"></script>
     <script>
         $(function(){
-            $('.collapse .js-category').click(function(){
+            $('div .js-category').click(function(){
                 $parent = $(this).parent('li');
                 if($parent.hasClass('js-show')){
                     $parent.removeClass('js-show');
@@ -22,56 +22,37 @@
                     $parent.siblings().find('i').removeClass('icon-35').addClass('icon-74');
                 }
             });
-
         });
-
     </script>
 </head>
 
 <body ontouchstart class="page-bg">
 <div class="page-hd">
     <h3 class="page-hd-title"><?=$data['machine_name']?></h3>
-    <p class="page-hd-desc"><?=!empty($data['machine_self_code'])?'设备编码：'.$data['machine_self_code']:''?></p>
 </div>
 <div class="page-bd">
-    <ul class="collapse">
-        <li><div class="weui-flex js-category" >
-                <div class="weui-flex__item" >您喜欢的美女是谁?</div>
-                <i class="icon icon-74"></i>
+    <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>设备编码：<?=$data['machine_self_code']?></p>
             </div>
-            <div class="page-category js-categoryInner">
-                <div class="weui-cells page-category-content">
-                    <a class="weui-cell weui-cell_access" href="JavaScript:;">
-                        <div class="weui-cell__bd"><p>杨超越</p></div>
-                        <div class="weui-cell__ft"></div>
-                    </a>
-                    <a class="weui-cell weui-cell_access" href="JavaScript:;">
-                        <div class="weui-cell__bd"><p>柳岩</p></div>
-                        <div class="weui-cell__ft"></div>
-                    </a>
-                </div></div>
-        </li>
-        <li><div class="weui-flex js-category" >
-                <div class="weui-flex__item" >谁才是最富有公司?</div>
-                <i class="icon icon-74"></i>
+            <div class="weui-cell__ft">
+                <a href="<?=$data['log_scheme']?>">维护日志</a>
             </div>
-            <div class="page-category js-categoryInner">
-                <div class="weui-cells page-category-content">
-                    <a class="weui-cell weui-cell_access" href="JavaScript:;">
-                        <div class="weui-cell__bd"><p>腾讯科技</p></div>
-                        <div class="weui-cell__ft"></div>
-                    </a>
-                    <a class="weui-cell weui-cell_access" href="JavaScript:;">
-                        <div class="weui-cell__bd"><p>阿里巴巴科技</p></div>
-                        <div class="weui-cell__ft"></div>
-                    </a>
-                    <a class="weui-cell weui-cell_access" href="JavaScript:;">
-                        <div class="weui-cell__bd"><p>谷歌科技</p></div>
-                        <div class="weui-cell__ft"></div>
-                    </a>
-                </div></div>
-        </li>
-    </ul>
+        </div>
+        <?php if(isset($data['parent'])) { ?>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>父级设备</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <a href="<?=$data['parent']['scheme']?>"><?=$data['parent']['machine_name']?></a>
+                </div>
+            </div>
+        <?php }?>
+    </div>
+    <div class="weui-cells__title">子级设备</div>
+    <?= $data['child_html'] ?? ''?>
 </div>
 </body>
 </html>

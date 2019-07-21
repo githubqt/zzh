@@ -69,6 +69,19 @@ class MachineModel extends \BaseModel
     }
 
     /**
+     * 条件查询
+     */
+    public static function findMoreWhere($where)
+    {
+        $pdo = self::_pdo('db_r');
+        $detail =  $pdo->clear()->select('*')->from(self::table())->where($where)->getALl();
+        if ($detail) {
+            return $detail;
+        }
+        return FALSE;
+    }
+
+    /**
      * 记录入库
      * @param array $data 表字段名作为key的数组
      * @return int 入库成功则返回入库记录的自增ID，否则返回FALSE

@@ -1,4 +1,5 @@
 <?php
+use Machine\MachineModel;
 use Custom\YDLib;
 use Core\Express;
 use Order\OrderChildModel;
@@ -53,9 +54,9 @@ class MachineController extends BaseController {
             $self_code = '10001446900001';
         }
         if ($self_code == 0) {
-            $machine = \Machine\MachineModel::findOneWhere(['id'=>1]);
+            $machine = MachineModel::findOneWhere(['id'=>1]);
         } else {
-            $machine = \Machine\MachineModel::findOneWhere(['self_code'=>$self_code]);
+            $machine = MachineModel::findOneWhere(['self_code'=>$self_code]);
         }
         $data ['machine_id'] = $machine ['id'];
         $data ['machine_name'] = $machine ['name'];
@@ -63,33 +64,96 @@ class MachineController extends BaseController {
         $data ['machine_custom_code'] = $machine ['custom_code'];
         $data ['machine_note'] = $machine ['note'];
         $data ['parent_id'] = $machine ['parent_id'];
+        $data ['scheme'] = '/v1/Machine/machine?self_code='.$machine['self_code'];
+        $data ['log_scheme'] = '/v1/Machine/logview?self_code='.$machine['self_code'];
         //父级
-        $parent = array(
-            'id' => 0,
-            'parent_id' => 0,
-            'name' => '顶级设备',
-            'scheme' => '/v1/Machine/machine?self_code=0',
-        );
         if ($machine ['parent_id'] != 0) {
-            $parent_info = \Machine\MachineModel::findOneWhere(['id'=>$machine ['parent_id']]);
+            $parent_info = MachineModel::findOneWhere(['id'=>$machine ['parent_id']]);
             if (!empty($parent_info)) {
                 $parent = array(
-                    'id' => $parent_info['id'],
+                    'machine_id' => $parent_info['id'],
+                    'machine_name' => $parent_info ['name'],
+                    'machine_self_code' => $parent_info ['self_code'],
+                    'machine_custom_code' => $parent_info ['custom_code'],
+                    'machine_note' => $parent_info ['note'],
                     'parent_id' => $parent_info['parent_id'],
-                    'name' => $parent_info['name'],
                     'scheme' => '/v1/Machine/machine?self_code='.$parent_info['self_code'],
+                    'log_scheme' => '/v1/Machine/logview?self_code='.$parent_info['self_code'],
                 );
+                $data['parent'] = $parent;
             }
         }
-        $data['parent'] = $parent;
         //查询子集
-        $child_info = \Machine\MachineModel::findOneWhere(['parent_id'=>$machine ['id'],'is_del'=>2]);
-        if (!empty($child_info)) {
-
+        $child_html = self::getChildHtml($machine['supplier_id'], $machine['id']);
+        if (!empty($child_html)) {
+            $data['child_html'] = $child_html;
         }
         Yaf_Dispatcher::getInstance ()->enableView ();
         $this->getView ()->assign ( "data", $data );
     }
 
+    //循环获取子集
+    public static function getChild($supplier_id, $id) {
+        $child = MachineModel::findMoreWhere(array('supplier_id' => $supplier_id, 'parent_id' => $id, 'is_del' => 2));
+        if (!empty($child)) {
+            $childer = [];
+            foreach ($child as $key=>$value) {
+                $childer_item = array(
+                    'machine_id' => $value['id'],
+                    'machine_name' => $value ['name'],
+                    'machine_self_code' => $value ['self_code'],
+                    'machine_custom_code' => $value ['custom_code'],
+                    'machine_note' => $value ['note'],
+                    'parent_id' => $value['parent_id'],
+                    'scheme' => '/v1/Machine/machine?self_code='.$value['self_code'],
+                    'log_scheme' => '/v1/Machine/logview?self_code='.$value['self_code'],
+                );
+                $childer_s = self::getChild($supplier_id, $value['id']);
+                if (!empty($childer_s)) {
+                    $childer_item['child'] = $childer_s;
+                }
+                $childer[] = $childer_item;
+            }
+            return $childer;
+        }
+        return [];
+    }
 
+    //循环获取子集html
+    public static function getChildHtml($supplier_id, $id) {
+        $child = MachineModel::findMoreWhere(array('supplier_id' => $supplier_id, 'parent_id' => $id, 'is_del' => 2));
+        if (!empty($child)) {
+            $childer = '';
+            foreach ($child as $key=>$value) {
+                $childer .= '
+                <li>
+                   <div class="weui-flex js-category">
+                      <div class="weui-flex__item">'.$value['name'].' <a href="/v1/Machine/logview?self_code='.$value['self_code'].'">维护日志</a></div>
+                         <i class="icon icon-74"></i>
+                      </div>';
+                $childer_s = self::getChildHtml($supplier_id, $value['id']);
+                if (!empty($childer_s)) {
+                    $childer .= '
+                    <div class="page-category js-categoryInner">
+                        <div class="weui-cells page-category-content"><a class="weui-cell weui-cell_access" href="JavaScript:;">
+                        <div class="weui-cell__bd">
+                            <p>杨超越</p>
+                        </div>
+                        <div class="weui-cell__ft"></div>
+                    </a>
+                    <a class="weui-cell weui-cell_access" href="JavaScript:;">
+                        <div class="weui-cell__bd">
+                            <p>柳岩</p>
+                        </div>
+                        <div class="weui-cell__ft"></div>
+                    </a></div>
+                    </div>';
+                }
+                $childer .= '</li>';
+            }
+            $childer_html = '<ul class="collapse">'.$childer.'</ul>';
+            return $childer_html;
+        }
+        return '';
+    }
 }
