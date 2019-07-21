@@ -347,16 +347,9 @@ class MachineController extends BaseController {
                 $item = [];
                 $item['id'] = $val['id'];
                 $item['text'] = $val['name'];
-                $child = MachineModel::findMoreWhere(array('supplier_id' => $auth['supplier_id'], 'parent_id' => $val['id'], 'is_del' => 2));
+                $child = self::getChild($auth['supplier_id'], $val['id']);
                 if (!empty($child)) {
-                    $childer = [];
-                    foreach ($child as $key=>$value) {
-                        $childer_item = [];
-                        $childer_item['id'] = $value['id'];
-                        $childer_item['text'] = $value['name'];
-                        $childer[] = $childer_item;
-                    }
-                    $item['children'] = $childer;
+                    $item['children'] = $child;
                 }
                 $list[] = $item;
             }
@@ -370,6 +363,26 @@ class MachineController extends BaseController {
         ));
         echo $this->apiOut($top);
         exit;
+    }
+
+    //循环获取子集
+    public static function getChild($supplier_id, $id) {
+        $child = MachineModel::findMoreWhere(array('supplier_id' => $supplier_id, 'parent_id' => $id, 'is_del' => 2));
+        if (!empty($child)) {
+            $childer = [];
+            foreach ($child as $key=>$value) {
+                $childer_item = [];
+                $childer_item['id'] = $value['id'];
+                $childer_item['text'] = $value['name'];
+                $childer_s = self::getChild($supplier_id, $value['id']);
+                if (!empty($childer_s)) {
+                    $childer_item['children'] = $childer_s;
+                }
+                $childer[] = $childer_item;
+            }
+            return $childer;
+        }
+        return [];
     }
 }
 
