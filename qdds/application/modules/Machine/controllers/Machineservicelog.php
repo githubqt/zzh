@@ -27,7 +27,6 @@ class MachineservicelogController extends BaseController
             $list = MachineservicelogModel::getList(Arr::get($request, 'info', []));
             $this->result($list);
         }
-		  
        $this->getView();
     }
 
