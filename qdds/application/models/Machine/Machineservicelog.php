@@ -42,6 +42,7 @@ class MachineservicelogModel extends \BaseModel
         $form = sprintf(" %s machine_service_log LEFT JOIN %s machine ON machine_service_log.machine_id = machine.id ", self::getFullTable(), MachineModel::getFullTable());
         $builder->from($form);
         $builder->where('machine_service_log.is_del', self::DELETE_SUCCESS);
+        $builder->where('machine.is_del', self::DELETE_SUCCESS);
         $builder->where('machine_service_log.supplier_id', $auth['supplier_id']);
         $machine_id = Arr::value($search, 'machine_id');
         $machine_id and $builder->where('machine_service_log.machine_id', $machine_id);
